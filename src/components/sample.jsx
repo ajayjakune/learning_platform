@@ -1,4 +1,5 @@
 import React from 'react'
+
 class CommentBox extends React.Component {
     constructor() {
         super();
