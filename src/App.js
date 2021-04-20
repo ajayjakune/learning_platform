@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import Course from './component/courseContent';
+import { HashRouter } from 'react-router-dom';
+// import { Container } from 'react-bootstrap';
+import Body from './components/body';
+
 
 function App() {
   return (
-    
-  )
+    <HashRouter>
+        {/* <Header /> */}
+        <Body />
+        {/* <Footer /> */}
+    </HashRouter >
+  );
 }
 
 export default App;

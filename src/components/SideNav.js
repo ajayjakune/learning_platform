@@ -15,18 +15,16 @@ const SideNav = function() {
                 <li><Nav.Link><img src="file.png" alt="file"/>{lecture}</Nav.Link></li>
             )
             return (
-            <div>
-                
                 <Navbar collapseOnSelect expand="lg" className="sidebar-nav">
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" id="sidebar-toggle"/>
                     <Navbar.Collapse id="responsive-navbar-nav" className="sidebar-nav-collapse">
                         <Accordion className="sidebar-accordian">
                             <Card>
-                                <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+                                <Accordion.Toggle as={Card.Header} variant="link" eventKey={item.id}>
                                     {item.title}
                                 </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="0">
-                                <Card.Body>
+                            <Accordion.Collapse eventKey={item.id}>
+                                <Card.Body className="sidebar-card-body">
                                         <ul className="sidebar-list">
                                             {listItems}
                                         </ul>                          
@@ -36,7 +34,6 @@ const SideNav = function() {
                         </Accordion>
                     </Navbar.Collapse>            
                 </Navbar>
-            </div>
             )
         })}
         
