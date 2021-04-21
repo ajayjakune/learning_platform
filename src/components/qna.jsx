@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Card, Container, Form } from 'react-bootstrap';
-import AskQuestion from './askquestion';
+import { Container } from 'react-bootstrap';
+// import AskQuestion from './askquestion';
 import QuestionBox from './questionbox'
 
 function QnA(props) {
     return <Container>
         <QuestionBox />
-        <AskQuestion />
+        {/* <AskQuestion /> */}
     </Container>
 
     // <Container className="p-2">
