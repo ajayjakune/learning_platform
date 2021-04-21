@@ -6,10 +6,10 @@ import { SideNavData } from './SideNavData';
 
 function LectureVid(props) {
     const chapter = SideNavData.filter(function (chapter) {
-        return chapter.chapterNum == props.match.params.chapterNumber;
+        return chapter.chapterNum === parseInt(props.match.params.chapterNumber);
     });
     const currentlecture = chapter[0].lectures.filter(function (lecture) {
-        return lecture.lectureNum == props.match.params.lectureNumber;
+        return lecture.lectureNum === parseInt(props.match.params.lectureNumber);
     });
 
     return (
