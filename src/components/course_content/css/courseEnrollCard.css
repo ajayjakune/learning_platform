@@ -1,0 +1,17 @@
+.card-size {
+  width: 18rem;
+}
+
+.float-card {
+  float: right;
+  margin-right: 70px;
+  margin-top: 30px;
+}
+div.sticky {
+  position: sticky;
+  top: 2%;
+}
+
+.button-center {
+  margin-left: 30%;
+}
