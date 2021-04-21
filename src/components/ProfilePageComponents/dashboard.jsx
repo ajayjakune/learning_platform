@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import ProfileImage from "../res/profile.jpg";
+import ProfileImage from "./res/profile.jpg";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
-import SeparatorImage from "../res/separator.png";
+import SeparatorImage from "./res/separator.png";
 import Chart from "react-google-charts";
-import AssignmentImage from "../res/assignment.png";
+import AssignmentImage from "./res/assignment.png";
 import "./css/dashboard.css";
-import {dashboardData} from "../data/dashboardData";
+import {dashboardData} from "./data/dashboardData.js";
 
 const renderDashBoard = (profile, index) => {
     return (

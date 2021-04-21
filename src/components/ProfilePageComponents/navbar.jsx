@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import PersistentLogo from "../res/persistent.png";
-import ProfilePhoto from "../res/profile.jpg";
+import PersistentLogo from "./res/persistent.png";
+import ProfilePhoto from "./res/profile.jpg";
 import "./css/navbar.css";
 
 class NavBar extends Component {

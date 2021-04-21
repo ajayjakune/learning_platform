@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Button from 'react-bootstrap/Button';
-import { CourseData } from "../data/CourseData";
+import { CourseData } from "./data/CourseData";
 
 const renderCard = (card, index) => {
         return (
             <div class="col-lg-3 col-md-6">
-                <Card key={index}>
+            <Card  key={index}>
                 <Card.Img variant="top" src={card.Photo} style={{height: '15rem', padding: "20px"}}/>               
                 <Card.Body>
                     <Card.Title>{card.Name}</Card.Title>
@@ -18,8 +18,11 @@ const renderCard = (card, index) => {
                     <div style={{paddingBottom:20}}>
                         <ProgressBar style={{borderRadius:18}} variant="success" now={card.Progress} label={`${card.Progress}%`} />
                     </div>
+                    <span style={{color:"green", paddingRight: 89}}>
+                        <i class="fa fa-lg fa-check green"></i>
+                    </span>
                     
-                    <Button variant="primary" style={{borderRadius:12}}>Resume</Button>
+                    <Button variant="primary" style={{borderRadius:12}}>View Certificate</Button>
                 </Card.Body>               
             </Card>
             </div>
@@ -27,7 +30,7 @@ const renderCard = (card, index) => {
 }
 
 
-class OngoingCourses extends Component {
+class CompletedCourses extends Component {
     state = {};
     render() {
         return (
@@ -36,9 +39,9 @@ class OngoingCourses extends Component {
 
                     {CourseData.map(renderCard)}
                     </div>
-            </div>          
+            </div>               
         );
     }
 }
 
-export default OngoingCourses;
+export default CompletedCourses;

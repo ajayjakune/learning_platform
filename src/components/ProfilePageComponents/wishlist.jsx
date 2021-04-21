@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import pic from "../res/profile.jpg";
+import pic from "./res/profile.jpg";
 
 class WishList extends Component {
     state = {  }

@@ -1,10 +1,10 @@
 import logo from "./logo.svg";
-import NavBar from "./components/navbar";
+import NavBar from "./components/ProfilePageComponents/navbar";
 import React from "react";
-import SideBar from "./components/sidebar";
-import DashBoard from "./components/dashboard";
-import WishList from "./components/wishlist";
-import ProfilePage from "./components/profilepage";
+import SideBar from "./components/ProfilePageComponents/sidebar";
+import DashBoard from "./components/ProfilePageComponents/dashboard";
+import WishList from "./components/ProfilePageComponents/wishlist";
+import ProfilePage from "./components/ProfilePageComponents/profilepage";
 import { Router } from "react-router";
 
 function App() {
