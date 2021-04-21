@@ -1,9 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import Course from './component/courseContent';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import Homepage from './Homepage/Homepage';
 
 function App() {
   return (
+    <div>
+      <Header/>
+      <Homepage/>
+      <Footer/>
+    </div>
     
   )
 }

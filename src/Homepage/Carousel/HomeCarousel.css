@@ -1,0 +1,12 @@
+.autofit {
+    /* margin-left: 10vw;
+    margin-right: 10vw; */
+    width: fit-content;
+    height: 45vh;
+  }
+  
+  .fnormalize {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  
