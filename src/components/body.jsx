@@ -4,7 +4,10 @@ import Extras from './extras';
 import Video from './video';
 import SideNav from './SideNav';
 import '../App.css'
-
+import { Switch, Route } from 'react-router-dom';
+import LectureVid from './LectureVid';
+import Quiz from './Quiz';
+import '../quiz_box.css';
 
 const Body = (props) => {
     return (
@@ -15,12 +18,10 @@ const Body = (props) => {
                     <SideNav />
                 </Col>
                 <Col className="order-md-2" md={9} >
-                    <Row style={{ backgroundColor: "rgb(211, 208, 208)" }}>
-                        <Video video="Videos/testing.mp4" />
-                    </Row>
-                    <Row style={{ backgroundColor: "rgb(211, 208, 208)", height: "400px" }}>
-                        <Extras />
-                    </Row>
+                    <Switch>
+                        <Route path="/chapter/:chapterNumber/lecture/:lectureNumber/" component={LectureVid} />
+                        <Route path="/chapter/:chapterNumber/quiz" component={Quiz} />
+                    </Switch>
                 </Col>
             </Row>
         </Container >
