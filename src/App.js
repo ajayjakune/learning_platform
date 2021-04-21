@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Course from './components/course_enrollment_component/courseContent';
+import Course from './components/course_content/courseContent';
 
 function App() {
   return (
-    <Course />
+
   )
 }
 
