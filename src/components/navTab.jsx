@@ -4,7 +4,7 @@ import '../App.css';
 
 export default function NavTab(props) {
     const listItems = props.lectures.map((lecture) => (
-        <li><Nav.Link eventKey={props.keyVal}><img src="file.png" alt="file" />{lecture}</Nav.Link></li>
+        <li><Nav.Link href={"/chapter/" + props.chapterNum + "/lecture/" + lecture.lectureNum}><img src="file.png" alt="file" />{lecture.title}</Nav.Link></li >
     ));
 
     return (

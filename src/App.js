@@ -1,14 +1,14 @@
 import './App.css';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Body from './components/body';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       {/* <Header /> */}
       <Body />
       {/* <Footer /> */}
-    </HashRouter >
+    </BrowserRouter >
   );
 }
 

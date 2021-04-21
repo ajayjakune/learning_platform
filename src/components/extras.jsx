@@ -9,7 +9,7 @@ function Extras(props) {
     return <Container>
         <Tabs defaultActiveKey="transcript" id="uncontrolled-tab-example">
             <Tab eventKey="transcript" title="Transcript">
-                <Transcript />
+                <Transcript transcript={props.transcript} />
             </Tab>
             <Tab eventKey="resources" title="Resource">
                 <Resource />

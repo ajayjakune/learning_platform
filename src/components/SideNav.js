@@ -8,7 +8,7 @@ import { SideNavData } from './SideNavData';
 const SideNav = function () {
 
     const chapters = SideNavData.map((item, index) => (
-        < NavTab chapterName={item.title} keyVal={"lecture-" + index} lectures={item.lectures} />
+        < NavTab chapterName={item.title} chapterNum={item.chapterNum} keyVal={"lecture-" + index} lectures={item.lectures} />
     ));
 
     return (
