@@ -1,10 +1,13 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import Video from './video';
 import Extras from './extras';
 import { SideNavData } from './SideNavData';
 
 function LectureVid(props) {
+    const chapterNumber = props.match.params.chapterNumber || 1;
+    const lectureNumber = props.match.params.lectureNumber || 1;
+
     const chapter = SideNavData.filter(function (chapter) {
         return chapter.chapterNum === parseInt(props.match.params.chapterNumber);
     });

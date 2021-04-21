@@ -19,6 +19,7 @@ const Body = (props) => {
                 </Col>
                 <Col className="order-md-2" md={9} >
                     <Switch>
+                        <Route exact path="/" component={LectureVid} />
                         <Route path="/chapter/:chapterNumber/lecture/:lectureNumber/" component={LectureVid} />
                         <Route path="/chapter/:chapterNumber/quiz" component={Quiz} />
                     </Switch>
