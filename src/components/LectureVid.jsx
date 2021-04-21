@@ -9,10 +9,10 @@ function LectureVid(props) {
     const lectureNumber = props.match.params.lectureNumber || 1;
 
     const chapter = SideNavData.filter(function (chapter) {
-        return chapter.chapterNum === parseInt(props.match.params.chapterNumber);
+        return chapter.chapterNum === parseInt(chapterNumber);
     });
     const currentlecture = chapter[0].lectures.filter(function (lecture) {
-        return lecture.lectureNum === parseInt(props.match.params.lectureNumber);
+        return lecture.lectureNum === parseInt(lectureNumber);
     });
 
     return (
