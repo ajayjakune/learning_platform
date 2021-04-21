@@ -3,11 +3,11 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Extras from './extras';
 import Video from './video';
 import SideNav from './SideNav';
-import '../App.css'
+import '../../App.css'
 import { Switch, Route } from 'react-router-dom';
 import LectureVid from './LectureVid';
 import Quiz from './Quiz';
-import '../quiz_box.css';
+import '../../quiz_box.css';
 
 const Body = (props) => {
     return (

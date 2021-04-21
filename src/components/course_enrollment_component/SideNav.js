@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import '../App.css';
+import '../../App.css';
 import NavTab from './navTab';
 import { SideNavData } from './SideNavData';
 
