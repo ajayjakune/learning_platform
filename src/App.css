@@ -46,17 +46,6 @@ img{
   margin-right: 20px;
 }
 
-.resource-card-body > ul {
-  list-style-type: none;
-}
-
-.resource-card-body > ul > li > a::after{
-  content: " (" attr(href) ") ";
-}
-.resource-card-body > ul > li > img{
-  width: 30px;
-}
-
 .transcript-container{
   margin-top: 10px;
   padding: 10px;
