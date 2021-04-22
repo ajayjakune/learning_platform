@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Domain = mongoose.model('Domain')
 
 
-router.post('/domains', (req, res) => {
+router.post('/domain', (req, res) => {
     const {domainName, domainDescription} = req.body;
     const domain = new Domain({domain_name: domainName,
                                 domain_description: domainDescription});
