@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+
 import './css/courseEnrollCard.css';
 
 export class CourseEnrollCard extends Component {
     constructor() {
         super();
-        this.state = { btn: "Enroll" };
+        this.state = { btn: "Enroll", link: "/" };
     }
 
     handleChange() {
@@ -12,7 +14,7 @@ export class CourseEnrollCard extends Component {
             this.setState({ btn: "Go to course" });
         }
         else if (this.state.btn === "Go to course") {
-            alert("Already Registerd");
+            // this.setState({ link: "/body" });
         }
     }
     render() {
@@ -27,7 +29,7 @@ export class CourseEnrollCard extends Component {
                 <div className="card-body">
                     <h5 className="card-title">React JS</h5>
                     <p className="card-text">Enroll for react js course and make your career grow</p>
-                    <button className="btn btn-primary button-center" onClick={this.handleChange.bind(this)}>{this.state.btn}</button>
+                    <Link to='/body' className="btn btn-primary button-center" onClick={this.handleChange.bind(this)}>{this.state.btn}</Link>
                 </div>
             </div>
         )
