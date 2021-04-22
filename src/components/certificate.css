@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+.cert-main{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.container-certificate {
+    width: 97%;
+    height: 90%;
+    margin: 10px 10px 10px 10px;
+    border: 10px solid gray;
+    background-color: rgb(191, 235, 246);
+    padding: 20px;
+    /* background-repeat: no-repeat;
+    background-size: 80% 100%; */
+}
+.logo {
+    width: 100%;
+}
+.logo > img {
+    width: 70px;
+    height: 70px;
+}
+.logo > span {
+    font-family: 'Lato';
+    font-size: 2.5vw;
+}
+.marquee {
+    color: rgb(255, 145, 0);
+    font-size: 3.5vw;
+    margin: 20px;
+}
+.assignment {
+    margin: 20px;
+}
+.person {
+    border-bottom: 2px solid black;
+    font-size: 32px;
+    font-style: italic;
+    margin: 20px auto;
+    width: 400px;
+}
+.reason {
+    margin: 20px;
+}
