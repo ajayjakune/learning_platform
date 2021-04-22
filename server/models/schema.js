@@ -83,6 +83,7 @@ const courseSchema = new mongoose.Schema({
   total_enrollments: {
     type: Number,
     require: true,
+    default: 0
   },
 });
 

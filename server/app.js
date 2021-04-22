@@ -22,9 +22,12 @@ mongoose.connection.on('error', (err) => {
 
 //exposing routes to app
 
-require('./models/user');
+require('./models/schema');
 app.use(express.json());
 app.use(require('./routes/auth'));
+app.use(require('./routes/domain'));
+app.use(require('./routes/author'));
+app.use(require('./routes/course'));
 
 //Listening server on PORT
 app.listen(PORT, () => {
