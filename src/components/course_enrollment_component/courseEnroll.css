@@ -18,7 +18,8 @@ body{
     -moz-box-shadow:inset 0px 0px 0px 2px black;
     box-shadow:inset 0px 0px 0px 2px black;
 }
-.text-white{
+.sidebar-main-card{
+    width: 100%;
     font-size: x-large;
 }
 .sidebar-nav{

@@ -19,7 +19,7 @@ const SideNav = function (props) {
 
     return (
         <div className="sidebar-main">
-            <Card className="text-white bg-dark" style={{ width: "100%" }}>
+            <Card className="text-white bg-dark sidebar-main-card">
                 <Card.Header>Course Name</Card.Header>
             </Card>
             {
