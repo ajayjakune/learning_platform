@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 // import '../../App.css';
 import './courseEnroll.css';
 import NavTab from './navTab';
@@ -18,6 +18,7 @@ const SideNav = function () {
                 <Card.Header>Course Name</Card.Header>
             </Card>
             {chapters}
+            <Button href="/chapter/quiz" size="lg" block>Quiz</Button>
         </div>
     );
 }
