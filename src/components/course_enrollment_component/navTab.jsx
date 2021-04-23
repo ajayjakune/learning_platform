@@ -1,6 +1,6 @@
 import React from 'react';
 import { Accordion, Card, Nav, Navbar } from 'react-bootstrap';
-import '../App.css';
+import '../../App.css';
 
 export default function NavTab(props) {
     const listItems = props.lectures.map((lecture) => (

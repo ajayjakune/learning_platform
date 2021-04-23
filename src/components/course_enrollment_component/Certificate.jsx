@@ -1,11 +1,29 @@
 import React from 'react';
-import './certificate.css'
+// import './certificate.css'
+import './courseEnroll.css';
+import Pdf from 'react-to-pdf';
+import { FiDownload } from 'react-icons/fi'
+import { Button } from 'react-bootstrap';
 
 const Certificate = () => {
+    const ref = React.createRef();
+    const options = {
+        orientation: 'landscape',
+        unit: 'in',
+        format: [595,350]
+    };
+
     return (
     <div className="cert-main">
         <h2 className="text-center mt-3">Completion Certificate</h2>
-        <div style={{ border: "20px solid gray", width:"80%", padding:"0", marginLeft:"90px"}}>
+        <span>
+            <Pdf targetRef={ref} filename="gurukul_certificate.pdf" options={options}>
+                {
+                    ({ toPdf }) => <Button style={{ width: "130px", height: "50px", float:"right", marginRight: "110px" }} onClick={toPdf}><strong>Download</strong>&nbsp;<FiDownload /></Button>
+                }
+            </Pdf>
+        </span>
+        <div style={{ border: "20px solid gray", width:"80%", margin:"80px 0 0 90px"}} ref={ref}>
             <div className="container-certificate text-center">
                 <div className="logo">
                     <img src="/persistent_logo.png" alt="logo"/>
