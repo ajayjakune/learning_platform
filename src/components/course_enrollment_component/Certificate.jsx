@@ -1,5 +1,4 @@
 import React from 'react';
-// import './certificate.css'
 import './courseEnroll.css';
 import Pdf from 'react-to-pdf';
 import { FiDownload } from 'react-icons/fi'

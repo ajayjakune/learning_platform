@@ -14,8 +14,8 @@ function Extras(props) {
             <Tab eventKey="resources" title="Resource">
                 <Resource />
             </Tab>
-            <Tab eventKey="qna" title="QnA" >
-                <QnA />
+            <Tab eventKey="qna" title="QnA">
+                <QnA /> 
             </Tab>
         </Tabs>
     </Container>;
