@@ -18,8 +18,7 @@ body{
     -moz-box-shadow:inset 0px 0px 0px 2px black;
     box-shadow:inset 0px 0px 0px 2px black;
 }
-.sidebar-main-card{
-    width: 100%;
+.text-white{
     font-size: x-large;
 }
 .sidebar-nav{
@@ -201,3 +200,5 @@ ul.sidebar-list{
 .reason {
     margin: 20px;
 }
+
+

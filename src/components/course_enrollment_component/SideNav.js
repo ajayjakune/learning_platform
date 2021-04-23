@@ -19,7 +19,7 @@ const SideNav = function (props) {
 
     return (
         <div className="sidebar-main">
-            <Card className="text-white bg-dark sidebar-main-card">
+            <Card className="text-white bg-dark" style={{ width: "100%" }}>
                 <Card.Header>Course Name</Card.Header>
             </Card>
             {
@@ -49,6 +49,8 @@ const SideNav = function (props) {
                     );
                 })}
             <Button onClick={handleQuiz} variant="dark" size="lg" block style={{ width: "90%", margin: "10px 0 10px 17px" }}>< GiBookPile />&nbsp;Quiz</Button>
+            {/* {chapters}
+            <Button href="/chapter/quiz" variant="dark" size="lg" block style={{ width: "90%", margin: "10px 0 10px 17px" }}><GiBookPile/>&nbsp;Quiz</Button> */}
         </div>
     );
 }
