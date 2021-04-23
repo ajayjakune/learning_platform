@@ -5,7 +5,7 @@ import { MdVideoLibrary } from 'react-icons/md';
 
 export default function NavTab(props) {
     const listItems = props.lectures.map((lecture) => (
-        <li><Nav.Link href={"/chapter/" + props.chapterNum + "/lecture/" + lecture.lectureNum}><MdVideoLibrary />{lecture.title}</Nav.Link></li>
+        <li><Nav.Link href={"/chapter/" + props.chapterNum + "/lecture/" + lecture.lectureNum}><MdVideoLibrary />&nbsp;{lecture.title}</Nav.Link></li>
     ));
 
     return (
