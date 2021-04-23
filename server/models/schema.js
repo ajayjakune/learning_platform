@@ -21,17 +21,23 @@ const userSchema = new mongoose.Schema({
   },
   last_login: {
     type: String,
-    required: true,
+    required: false,
+  },
+  profile_photo: {
+    type: String,
+    require: true,
+    default:
+      "https://cdn2.vectorstock.com/i/thumb-large/23/81/default-avatar-profile-icon-vector-18942381.jpg",
   },
 });
 
 const wishlistSchema = new mongoose.Schema({
-  user_id: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  course_id: {
+  course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
     required: true,
@@ -39,12 +45,12 @@ const wishlistSchema = new mongoose.Schema({
 });
 
 const userCoursesEnrollmentSchema = new mongoose.Schema({
-  user_id: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  course_id: {
+  course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
     required: true,
@@ -60,12 +66,12 @@ const userCoursesEnrollmentSchema = new mongoose.Schema({
 });
 
 const courseSchema = new mongoose.Schema({
-  domain_id: {
+  domain: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Domain",
     require: true,
   },
-  author_id: {
+  author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Author",
     require: true,
@@ -83,7 +89,14 @@ const courseSchema = new mongoose.Schema({
   total_enrollments: {
     type: Number,
     require: true,
-    default: 0
+  },
+  course_banner: {
+    type: "String",
+    require: true,
+  },
+  course_photo: {
+    type: "String",
+    require: true,
   },
 });
 
@@ -93,6 +106,10 @@ const domainSchema = new mongoose.Schema({
     require: true,
   },
   domain_description: {
+    type: String,
+    require: true,
+  },
+  domain_photo: {
     type: String,
     require: true,
   },
@@ -106,7 +123,7 @@ const authorSchema = new mongoose.Schema({
 });
 
 const courseContentSchema = new mongoose.Schema({
-  course_id: {
+  course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
     require: true,
@@ -118,12 +135,12 @@ const courseContentSchema = new mongoose.Schema({
 });
 
 const userTestTakenSchema = new mongoose.Schema({
-  registrationId: {
+  registration: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "UserCourseEnrollment",
     require: true,
   },
-  test_id: {
+  test: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Test",
     require: true,
@@ -157,7 +174,7 @@ const questionSchema = new mongoose.Schema({
 });
 
 const answerSchema = new mongoose.Schema({
-  question_id: {
+  question: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Question",
     require: true,
