@@ -2,14 +2,14 @@ import React from 'react';
 import { Container, Tabs, Tab } from 'react-bootstrap';
 import Resource from './resource';
 import QnA from './qna';
-import Transcript from './transcript';
+import Doubt from './doubt';
 
 function Extras(props) {
 
     return <Container>
-        <Tabs defaultActiveKey="transcript" id="uncontrolled-tab-example">
-            <Tab eventKey="transcript" title="Transcript">
-                <Transcript transcript={props.transcript} />
+        <Tabs defaultActiveKey="doubts" id="extras-tab">
+            <Tab eventKey="doubts" title="Doubts??">
+                <Doubt details={props.transcript} />
             </Tab>
             <Tab eventKey="resources" title="Resource">
                 <Resource />

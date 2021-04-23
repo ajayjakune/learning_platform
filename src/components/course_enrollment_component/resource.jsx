@@ -5,7 +5,7 @@ import { AiOutlineLink } from "react-icons/ai";
 
 function Resource(props) {
     return <Container>
-        <Card style={{ marginBottom: "10px", borderRadius: "5px" }}>
+        <Card className="mt-2" style={{ marginBottom: "10px", borderRadius: "5px" }}>
             <Card.Header>Reference Links</Card.Header>
             <Card.Body>
                 <Card.Text className="resource-card-body">
@@ -17,7 +17,6 @@ function Resource(props) {
                 </Card.Text>
             </Card.Body>
         </Card>
-
     </Container>
 }
 
