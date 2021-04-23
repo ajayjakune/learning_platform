@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 
 const QuizResultComponent = props => {
     return (
@@ -9,10 +9,12 @@ const QuizResultComponent = props => {
                     <p className="mt-2">Hooray! You have scored <strong>{props.score}</strong>/{props.quesLength}</p>
                     <span className="quiz-badge pass">&nbsp;Pass&nbsp;</span>
                     <br /><br />
-                    <Button href="/chapter/certificate">View Certificate</Button>
+                    <div className="certificate-link-div bg-primary" style={{ borderRadius: "20px", width: "10em", marginLeft: "30px" }}>
+                        <Nav.Link href="/chapter/certificate" className="text-white" style={{ fontSize: "18px" }}>View Certificate</Nav.Link>
+                    </div>
                 </div>
-                : <div>
-                    <p className="result-div mt-4">Oops! You have scored <strong>{props.score}</strong>/{props.quesLength}</p>
+                : <div className="result-div mt-4">
+                    <p className="mt-2">Oops! You have scored <strong>{props.score}</strong>/{props.quesLength}</p>
                     <p style={{ fontSize: "20px" }}>Required grades - <strong>{props.quesLength / 2}</strong>/{props.quesLength}</p>
                     <span className="quiz-badge fail">&nbsp;Fail&nbsp;</span>
                 </div>

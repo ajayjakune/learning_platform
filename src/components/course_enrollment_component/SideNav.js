@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
-// import '../../App.css';
 import './courseEnroll.css';
 import NavTab from './navTab';
 import { SideNavData } from './SideNavData';
+import { GiBookPile } from 'react-icons/gi'
 
 
 const SideNav = function () {
@@ -14,11 +14,11 @@ const SideNav = function () {
 
     return (
         <div className="sidebar-main">
-            <Card className="sidebar-main-card">
+            <Card className="text-white bg-dark sidebar-main-card">
                 <Card.Header>Course Name</Card.Header>
             </Card>
             {chapters}
-            <Button href="/chapter/quiz" size="lg" block>Quiz</Button>
+            <Button href="/chapter/quiz" variant="dark" size="lg" block style={{ width: "90%", margin: "10px 0 10px 17px" }}>< GiBookPile/>&nbsp;Quiz</Button>
         </div>
     );
 }
