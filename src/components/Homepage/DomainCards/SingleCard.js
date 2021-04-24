@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import {Link} from 'react-router-dom'
 import './Card.css'
 
 
@@ -27,13 +28,15 @@ const SingleCard = (props) => {
 
             <div className="card-wrapper col-lg-4 col-md-6 col-xs-12">
             <Card style={{ marginTop: "10px", marginBottom: "20px", height: "300px", borderRadius: "15px", }} className="fcard" > 
-            <Card.Img variant="top" src={props.ImageUrl} style={{ objectFit: "cover", height: "180px", borderTopRightRadius: "15px", borderTopLeftRadius: "15px"}} />
+            <Card.Img variant="top" src={props.imageUrl} style={{ objectFit: "cover", height: "180px", borderTopRightRadius: "15px", borderTopLeftRadius: "15px"}} />
             <Card.Body>
-                <Card.Title>{props.Title}</Card.Title> 
+                <Card.Title>{props.title}</Card.Title> 
                 {/* <Card.Text>
                     {props.Description}
                 </Card.Text> */}
-                <Button variant="primary" className="fbtn" onClick={() => props.setselectedCard(props.Title)} >{props.button}</Button>
+                <Link to={ props.for === 'domain' ? `/domain/${props.cardId}` : `/course/${props.cardId}`}>
+                <Button variant="primary" className="fbtn" >{props.buttonText}</Button>
+                </Link>
             </Card.Body>
             </Card>
             </div>

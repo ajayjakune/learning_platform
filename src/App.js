@@ -1,23 +1,23 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Homepage from './components/Homepage/Homepage';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AllCoursesCards from './components/Courlistpage/AllCoursesCards';
 
 
 
 function App() {
-
-  const [selectedCard, setselectedCard] = useState('')
-
-  console.log(selectedCard)
-
   return (
     <div>
-      <Header />
-
-        <Homepage setselectedCard={setselectedCard}/>
-  
-      <Footer/> 
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route path="/Homepage" component={Homepage}/>
+            <Route path="/domain/:id" component={AllCoursesCards}/>      
+        </Switch>
+        <Footer/> 
+      </BrowserRouter>
 
     </div>
   );

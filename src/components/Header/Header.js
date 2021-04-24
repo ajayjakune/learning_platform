@@ -22,8 +22,6 @@ function Header() {
             </Form>
           </Nav>
           <Nav>
-            <Nav.Link href="#Option1">Option1</Nav.Link>
-            <Nav.Link href="#Option2">Option2</Nav.Link>
             <NavDropdown 
                 id="basic-nav-dropdown"
                 title={
@@ -37,8 +35,10 @@ function Header() {
                 alignRight
               >
               <NavDropdown.Item href="#userProfile">Signed in as <br/><b>Username</b></NavDropdown.Item>
-              <NavDropdown.Item href="#menuItem1">Menu Item 1</NavDropdown.Item>
-              <NavDropdown.Item href="#menuItem2">Menu Item2</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#menuItem1">Ongoing Courses</NavDropdown.Item>
+              <NavDropdown.Item href="#menuItem2">Completed Courses</NavDropdown.Item>
+              <NavDropdown.Item href="#menuItem2">Wishlist</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
