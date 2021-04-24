@@ -9,7 +9,7 @@ function Extras(props) {
     return <Container>
         <Tabs defaultActiveKey="doubts" id="extras-tab">
             <Tab eventKey="doubts" title="Doubts??">
-                <Doubt details={props.transcript} />
+                <Doubt/>
             </Tab>
             <Tab eventKey="resources" title="Resource">
                 <Resource />

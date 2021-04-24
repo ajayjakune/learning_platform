@@ -6,7 +6,7 @@ import { SideNavData } from './SideNavData';
 import { GiBookPile } from 'react-icons/gi'
 
 
-const SideNav = function () {
+const SideNav = function (props) {
 
     const chapters = SideNavData.map((item, index) => (
         < NavTab chapterName={item.title} chapterNum={item.chapterNum} keyVal={"lecture-" + index} lectures={item.lectures} />
