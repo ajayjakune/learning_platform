@@ -89,6 +89,7 @@ const courseSchema = new mongoose.Schema({
   total_enrollments: {
     type: Number,
     require: true,
+    default: 0
   },
   course_banner: {
     type: 'String',
@@ -122,7 +123,7 @@ const authorSchema = new mongoose.Schema({
   },
 });
 
-const courseContentSchema = new mongoose.Schema({
+const courseSyallabusSchema = new mongoose.Schema({
   course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Course',
@@ -245,7 +246,7 @@ mongoose.model('User', userSchema);
 mongoose.model('Course', courseSchema);
 mongoose.model('Domain', domainSchema);
 mongoose.model('Author', authorSchema);
-mongoose.model('CourseContent', courseContentSchema);
+mongoose.model('Syllabus', courseContentSchema);
 mongoose.model('CourseEnrollment', userCoursesEnrollmentSchema);
 mongoose.model('TestEnrollment', userTestTakenSchema);
 mongoose.model('Wishlist', wishlistSchema);
