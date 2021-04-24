@@ -30,11 +30,26 @@ router.post('/signup', (req, res) => {
           .json({ error: 'User already exists with inputted email' });
       }
       bcrypt.hash(password, 12).then((hashedpassword) => {
+        let today = new Date();
+        let date =
+          today.getFullYear() +
+          '-' +
+          (today.getMonth() + 1) +
+          '-' +
+          today.getDate();
+        let time =
+          today.getHours() +
+          ':' +
+          today.getMinutes() +
+          ':' +
+          today.getSeconds();
+        let dateTime = date + ' ' + time;
         const user = new User({
           email,
           password: hashedpassword,
           first_name: firstName,
           last_name: lastName,
+          last_login: dateTime,
         });
 
         user
@@ -71,10 +86,33 @@ router.post('/signin', (req, res) => {
           // res.json({ message: 'Successfully Signed In' });
           //Token which used for session management
           const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
-          const { _id, email, first_name, last_name } = savedUser;
-          res.json({
-            token,
-            user: { _id, first_name, last_name, email },
+          const { _id, email, first_name, last_name, last_login } = savedUser;
+          let today = new Date();
+          let date =
+            today.getFullYear() +
+            '-' +
+            (today.getMonth() + 1) +
+            '-' +
+            today.getDate();
+          let time =
+            today.getHours() +
+            ':' +
+            today.getMinutes() +
+            ':' +
+            today.getSeconds();
+          let dateTime = date + ' ' + time;
+          User.findByIdAndUpdate(
+            { _id },
+            { last_login: dateTime },
+            { new: true }
+          ).exec((err, result) => {
+            if (err) {
+              return res.json(err);
+            }
+            res.json({
+              token,
+              user: { _id, first_name, last_name, email, last_login },
+            });
           });
         } else {
           return res.status(422).json({ error: 'Invalid Email or Password' });
