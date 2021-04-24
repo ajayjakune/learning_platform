@@ -7,47 +7,44 @@ const HomeCarousel = () => {
     return (
         <div>
             <Carousel controls={false}>
-                <Carousel.Item interval={2000}>
+                <Carousel.Item interval={3500}>
                     <div className="autofit">
-                    <img
+                    {/* <img
                         className="d-block w-100 fnormalize"
-                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        src="/home1.gif"
                         alt="First slide"
-                    />
+                    /> */}
+                    <video className="d-block w-100 fnormalize" playsinline autoPlay muted loop>
+                        <source src="/movie.mp4" type="video/mp4"></source>
+                        Your browser does not support the video tag.
+                    </video>
                     </div>
                     <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>Enjoy the new Persistent <span style={{ color: "#FFD700"}}>Gurukul</span> learning Platform !</h3>
+    
                     </Carousel.Caption>
                 </Carousel.Item>
                 
-                <Carousel.Item interval={2000}>
+                <Carousel.Item interval={2050}>
                     <div className="autofit">
                         <img
-                        className="d-block w-100"
-                        src="https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        className="d-block w-100 home2"
+                        src="/home2.png"
                         alt="Second slide"
                         />
                     </div>
-                    <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
                 </Carousel.Item>
-          
-          
-                <Carousel.Item interval={2000}>
+
+                
+                <Carousel.Item interval={2050}>
                     <div className="autofit">
                         <img
-                        className="d-block w-100"
-                        src="https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        className="d-block w-100 home3"
+                        src="/home3.png"
                         alt="Third slide"
                         />
                     </div>
-                    <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </Carousel.Caption>
+            
                 </Carousel.Item>
         </Carousel>
         </div>

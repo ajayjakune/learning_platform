@@ -1,9 +1,11 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {NavDropdown, Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
 
 function Header() {   
     return (
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" className="justify-content-between" sticky="top">
+        <Link to="/">
         <Navbar.Brand  href="#home">  
             <img
               src="/Persistent.png"
@@ -13,6 +15,7 @@ function Header() {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
+          </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">

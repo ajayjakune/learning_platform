@@ -13,8 +13,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/Homepage" component={Homepage}/>
-            <Route path="/domain/:id" component={AllCoursesCards}/>      
+          <Route path="/homepage" exact component={Homepage}/>
+          <Route path="/domain/:id" component={AllCoursesCards}/>      
         </Switch>
         <Footer/> 
       </BrowserRouter>

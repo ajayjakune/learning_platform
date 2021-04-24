@@ -46,7 +46,7 @@ const AllCoursesCards = (props) => {
         <div >
             <div className="container" style={{ marginTop: "15px"}}>
                 
-            <Jumbotron className="fvid" style={{ color: "white", height: "33vh", marginBottom: "10px" }}>
+            <Jumbotron className="fvid" style={{ color: "white", height: "33vh", marginBottom: "10px"}}>
                 <h1>Welcome to {domainName} !</h1>
                 <h5>
                     We have a lot of <span style={{ color: "orange", fontWeight: "bold" }}>EXCITING</span> courses for you in this corpus.
