@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   },
   last_login: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 

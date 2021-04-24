@@ -4,39 +4,42 @@ import './css/courseDetails.css';
 class courseDetails extends Component {
     render() {
         return (
-            <div>
-                <article className="container about-align">
-                    <h3>About Course</h3>
-                    <p>React is an open-source, front end, JavaScript library<br />
-                    for building user interfaces or UI components.<br />
-                    It is maintained by Facebook and a community of<br />
-                    individual developers and companies.<br />
-                    </p>
-                </article>
-                <article className="container">
-                    <h3>Syllabus</h3>
-                    <p>
-                        <h4>Overview</h4>
-                    What Is React?<br />
-                    Inspecting the Starter Code<br />
-                    Passing Data Through Props<br />
-                    Making an Interactive Component<br />
-                    Developer Tools<br /><br />
-                        <h4>Completing the Game</h4>
-                    Lifting State Up<br />
-                    Why Immutability Is Important<br />
-                    Function Components<br />
-                    Taking Turns<br />
-                    Declaring a Winner<br /><br />
-                        <h4>Adding Time Travel</h4>
-                    Storing a History of Moves<br />
-                    Lifting State Up, Again<br />
-                    Showing the Past Moves<br />
-                    Picking a Key<br />
-                    Implementing Time Travel<br />
-                    Wrapping Up<br />
-                    </p>
-                </article>
+            <div className="total">
+                <div classname="about-course">
+                    <article className="container about-align">
+                        <li class="list-group-item active" aria-current="true"><h4> About Course</h4></li>
+                        <li class="list-group-item"><p>React is an open-source, front end, JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies.</p></li>
+                    </article>
+                </div>
+                <div className="syllabus">
+                    <article className="container">                       
+                        <ul class="list-group">
+                            <li class="list-group-item active" aria-current="true"> <h4>Syllabus</h4></li>
+                            <li class="list-group-item"><h5>Overview</h5></li>
+                            <li class="list-group-item">What Is React?</li>
+                            <li class="list-group-item">Inspecting the Starter Code</li>
+                            <li class="list-group-item">Passing Data Through Props</li>
+                            <li class="list-group-item">Making an Interactive Component</li>
+                            <li class="list-group-item">Developer Tools</li>
+                        </ul>
+                        <ul class="list-group">
+                            <li class="list-group-item"><h5>Completing the Game</h5></li>
+                            <li class="list-group-item">Lifting State Up</li>
+                            <li class="list-group-item">Why Immutability Is Important</li>
+                            <li class="list-group-item">Function Components</li>
+                            <li class="list-group-item">Taking Turns</li>
+                            <li class="list-group-item">Declaring a Winner</li>
+                        </ul>
+                        <ul class="list-group">
+                            <li class="list-group-item"><h5>Adding Time Travel</h5></li>
+                            <li class="list-group-item">Lifting State Up, Again</li>
+                            <li class="list-group-item">Showing the Past Moves</li>
+                            <li class="list-group-item">Picking a Key</li>
+                            <li class="list-group-item"> Implementing Time Travel </li>
+                            <li class="list-group-item"> Wrapping Up </li>
+                        </ul>
+                    </article>
+                </div>
             </div>
         )
     }

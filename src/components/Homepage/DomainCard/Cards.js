@@ -1,17 +1,17 @@
 import React from 'react'
 import Badge from 'react-bootstrap/Badge'
-import "./Cards.css"
+//import "./Cards.css"
 
 const Cards = () => {
     return (
         <div >
-            <div class="container" style={{ marginTop: "17px"}}>
-        
+            <div class="container" style={{ marginTop: "17px" }}>
+
                 <h2>
                     Domains
                 </h2>
-                <hr/>
-                <div class="row">   
+                <hr />
+                <div class="row">
                     <div class="card-wrapper col-lg-4 col-md-6 col-xs-12">
                         <div class="card">
                             <div class="card-img-wrapper">
@@ -88,12 +88,12 @@ const Cards = () => {
                                 <a href="#" class="btn btn-primary">EXPLORE !</a>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
-                <hr/> 
+                <hr />
             </div>
-            <br/>
-            
+            <br />
+
         </div>
     )
 }

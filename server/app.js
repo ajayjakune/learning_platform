@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const PORT = 5000;
 const { MONGOURI } = require('./config/keys');
 
+var cors = require('cors')
+app.use(cors())
+
 //connecting to mongoose
 mongoose.connect(MONGOURI, {
   useNewUrlParser: true,

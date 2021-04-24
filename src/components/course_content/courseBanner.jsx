@@ -13,16 +13,16 @@ class CourseBanner extends Component {
                 <div className="card featured-card">
                     <div className="card-body">
                         <div className="column text-center">
+                            <h5 className="card-title">Domain</h5>
+                            <p className="card-text">Web Development</p>
+                        </div>
+                        <div className="column text-center">
                             <h5 className="card-title">Level</h5>
                             <p className="card-text">Advance</p>
                         </div>
                         <div className="column text-center">
-                            <h5 className="card-title">Course Duration</h5>
-                            <p className="card-text">30 hour</p>
-                        </div>
-                        <div className="column text-center">
-                            <h5 className="card-title">Credit Points</h5>
-                            <p className="card-text">5</p>
+                            <h5 className="card-title">Enrollments</h5>
+                            <p className="card-text">100</p>
                         </div>
                     </div>
                 </div>
