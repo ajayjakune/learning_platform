@@ -4,7 +4,10 @@ const app = express();
 const mongoose = require("mongoose");
 const PORT = 5000;
 const { MONGOURI } = require("./config/keys");
+const cors = require('cors')
 
+
+app.use(cors());
 //connecting to mongoose
 mongoose.connect(MONGOURI, {
   useNewUrlParser: true,
@@ -29,6 +32,7 @@ app.use(require("./routes/domain"));
 app.use(require("./routes/author"));
 app.use(require("./routes/course"));
 app.use(require("./routes/user"));
+app.use(require("./routes/syllabus"));
 //Listening server on PORT
 app.listen(PORT, () => {
   console.log("SERVER is running on ", PORT);
