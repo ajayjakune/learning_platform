@@ -7,7 +7,7 @@ import SeparatorImage from "./res/separator.png";
 import Chart from "react-google-charts";
 import AssignmentImage from "./res/assignment.png";
 import "./css/dashboard.css";
-import {dashboardData} from "./data/dashboardData.js";
+import {dashboardData} from "./data/dashboardData";
 
 const renderDashBoard = (profile, index) => {
     return (
@@ -45,9 +45,6 @@ const renderDashBoard = (profile, index) => {
                                     <p>Email</p>
                                     <p>{profile.email}</p>
                                 </div>
-
-                                {/* This card has supporting text below as a natural
-                        lead-in to additional content.{" "} */}
                             </Card.Text>
                             <Image src={SeparatorImage} fluid />
                             <br></br>
@@ -93,7 +90,6 @@ const renderDashBoard = (profile, index) => {
                                     ]}
                                     options={{
                                         title: "Domain Wise Insights",
-                                        // Just add this option
                                         is3D: true,
                                     }}
                                     rootProps={{ "data-testid": "2" }}

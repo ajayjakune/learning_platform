@@ -7,7 +7,7 @@ import { CourseData } from "./data/CourseData";
 const renderCard = (card, index) => {
         return (
             <div class="col-lg-3 col-md-6">
-            <Card  key={index}>
+            <Card key={index}>
                 <Card.Img variant="top" src={card.Photo} style={{height: '15rem', padding: "20px"}}/>               
                 <Card.Body>
                     <Card.Title>{card.Name}</Card.Title>
@@ -39,7 +39,7 @@ class CompletedCourses extends Component {
 
                     {CourseData.map(renderCard)}
                     </div>
-            </div>               
+            </div>           
         );
     }
 }

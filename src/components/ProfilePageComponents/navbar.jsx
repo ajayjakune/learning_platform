@@ -1,105 +1,49 @@
-import React, { Component } from "react";
-import PersistentLogo from "./res/persistent.png";
-import ProfilePhoto from "./res/profile.jpg";
-import "./css/navbar.css";
+import React from 'react'
+import {NavDropdown, Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
 
-class NavBar extends Component {
-    state = {};
-    render() {
-        return (
-            <nav class="navbar navbar-expand-xl navbar-dark">
-                <a href="#" class="navbar-brand">
-                    <img src={PersistentLogo}></img>
-                    <b>PSL University</b>
-                </a>
-                <button
-                    type="button"
-                    class="navbar-toggler"
-                    data-toggle="collapse"
-                    data-target="#navbarCollapse"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div
-                    id="navbarCollapse"
-                    class="collapse navbar-collapse justify-content-start"
-                >
-                    <form class="navbar-form form-inline">
-                        <div class="input-group search-box">
-                            <input
-                                type="text"
-                                id="search"
-                                class="form-control"
-                                placeholder="Search here..."
-                            ></input>
-                            <span class="input-group-addon">
-                                <i class="material-icons"></i>
-                            </span>
-                        </div>
-                    </form>
-                    <div class="navbar-nav ml-auto">
-                        <a href="#" class="nav-item nav-link active">
-                            <i class="fa fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                        <a href="#" class="nav-item nav-link">
-                            <i class="fa fa-gears"></i>
-                            <span>Projects</span>
-                        </a>
-                        <a href="#" class="nav-item nav-link">
-                            <i class="fa fa-users"></i>
-                            <span>Team</span>
-                        </a>
-                        <a href="#" class="nav-item nav-link">
-                            <i class="fa fa-pie-chart"></i>
-                            <span>Reports</span>
-                        </a>
-                        <a href="#" class="nav-item nav-link">
-                            <i class="fa fa-briefcase"></i>
-                            <span>Careers</span>
-                        </a>
-                        <a href="#" class="nav-item nav-link">
-                            <i class="fa fa-envelope"></i>
-                            <span>Messages</span>
-                        </a>
-                        <a href="#" class="nav-item nav-link">
-                            <i class="fa fa-bell"></i>
-                            <span>Notifications</span>
-                        </a>
-                        <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                data-toggle="dropdown"
-                                class="nav-item nav-link dropdown-toggle user-action"
-                            >
-                                <img className="profile"
-                                    src={ProfilePhoto}
-                                    // class="avatar"
-                                    alt="Avatar"
-                                ></img>{" "}
-                                Hiren Ambekar <b class="caret"></b>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">
-                                    <i class="fa fa-user-o"></i> Profile
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <i class="fa fa-calendar-o"></i> Calendar
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <i class="fa fa-sliders"></i> Settings
-                                </a>
-                                <div class="divider dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">
-                                    <i class="material-icons"></i> Logout
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        );
-    }
+function Header() {   
+    return (
+      <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" className="justify-content-between" sticky="top">
+        <Navbar.Brand  href="#home">  
+            <img
+              src="/Persistent.png"
+              width="40"
+              height="40"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+            <Form inline>
+              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <Button variant="outline-light">Search</Button>
+            </Form>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#Option1">Option1</Nav.Link>
+            <Nav.Link href="#Option2">Option2</Nav.Link>
+            <NavDropdown 
+                id="basic-nav-dropdown"
+                title={
+                    <img
+                      src="/profile.png"
+                      width="30"
+                      height="30"
+                      alt="user" 
+                    />
+                }
+                alignRight
+              >
+              <NavDropdown.Item href="#userProfile">Signed in as <br/><b>Username</b></NavDropdown.Item>
+              <NavDropdown.Item href="#menuItem1">Menu Item 1</NavDropdown.Item>
+              <NavDropdown.Item href="#menuItem2">Menu Item2</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    )
 }
 
-export default NavBar;
+export default Header

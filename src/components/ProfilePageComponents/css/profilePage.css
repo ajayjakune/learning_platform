@@ -1,0 +1,9 @@
+#page-wrap {
+    background-color: #edf7f6;
+    position: absolute;
+    top: 65px;
+    bottom: 0;
+    width: 100%;
+    overflow: auto;
+    z-index: 0;
+  }

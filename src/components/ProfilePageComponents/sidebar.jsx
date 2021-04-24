@@ -1,96 +1,86 @@
-import React, { useState, useContext } from 'react'
-import { bubble as Menu } from 'react-burger-menu';
-import './css/sidebar.css';
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default props => {
-  return (
-    <Menu>
-      <NavLink className="menu-item" to={"/"}>
-        Dashboard
-      </NavLink>
-      <NavLink className="menu-item" to={"/ongoing"}>
-        Ongoing Courses
-      </NavLink>
-      <NavLink className="menu-item" to={"/completed"}>
-        Completed Courses
-      </NavLink>
-      <NavLink className="menu-item" to={"/wishlist"}>
-        WishList
-      </NavLink>
-      <NavLink className="menu-item" to={"/settings"}>
-        Account Settings
-      </NavLink>
-    </Menu>
-  );
+//import react pro sidebar components
+import {
+    ProSidebar,
+    Menu,
+    MenuItem,
+    SidebarHeader,
+    SidebarFooter,
+    SidebarContent,
+} from "react-pro-sidebar";
+
+//import icons from react icons
+import { FaRegHeart, FaTachometerAlt, FaSpinner, FaClipboardCheck, FaRobot } from "react-icons/fa";
+import {
+    FiLogOut,
+    FiArrowLeftCircle,
+    FiArrowRightCircle,
+} from "react-icons/fi";
+
+//import sidebar css from react-pro-sidebar module and our custom css
+import "react-pro-sidebar/dist/css/styles.css";
+import "./css/sidebar.css";
+
+const Header = () => {
+    //create initial menuCollapse state using useState hook
+    const [menuCollapse, setMenuCollapse] = useState(true);
+
+    //create a custom function that will change menucollapse state from false to true and true to false
+    const menuIconClick = () => {
+        //condition checking to change state from true to false and vice versa
+        menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+    };
+
+    return (
+        <>
+            <div id="profileHeader">
+                {/* collapsed props to change menu size using menucollapse state */}
+                <ProSidebar collapsed={menuCollapse}>
+                    <SidebarHeader>
+                        <div className="logotext">
+                            {/* small and big change using menucollapse state */}
+                            <p>{menuCollapse ? "Menu" : "Select Option"}</p>
+                        </div>
+                        <div className="closemenu" onClick={menuIconClick}>
+                            {/* changing menu collapse icon on click */}
+                            {menuCollapse ? (
+                                <FiArrowRightCircle />
+                            ) : (
+                                <FiArrowLeftCircle />
+                            )}
+                        </div>
+                    </SidebarHeader>
+                    <SidebarContent>
+                        <Menu iconShape="square">
+                            <MenuItem icon={<FaTachometerAlt />}>
+                                Dashboard
+                                <Link to="/" />
+                            </MenuItem>
+                            <MenuItem icon={<FaSpinner />}>
+                                Ongoing Courses
+                                <Link to="/ongoing" />
+                            </MenuItem>
+                            <MenuItem icon={<FaClipboardCheck />}>
+                                Completed Courses
+                                <Link to="/completed" />
+                            </MenuItem>
+                            <MenuItem icon={<FaRegHeart />}>
+                                WishList
+                                <Link to="/wishlist" />
+                            </MenuItem>
+                        </Menu>
+                    </SidebarContent>
+                    <SidebarFooter>
+                        <Menu iconShape="square">
+                            <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+                        </Menu>
+                    </SidebarFooter>
+                </ProSidebar>
+            </div>
+        </>
+    );
 };
 
-
-// // make a new context
-// const MyContext = React.createContext();
-
-// // create the provider
-// const MyProvider = (props) => {
-//   const [menuOpenState, setMenuOpenState] = useState(false)
-  
-//   return (
-//     <MyContext.Provider value={{
-//       isMenuOpen: menuOpenState,
-//       toggleMenu: () => setMenuOpenState(!menuOpenState),
-//       stateChangeHandler: (newState) => setMenuOpenState(newState.isOpen)
-//     }}>
-//       {props.children}
-//     </MyContext.Provider>
-//   )
-// }
-
-// // create a button that calls a context function to set a new open state when clicked
-// const Button = () => {
-//   const ctx = useContext(MyContext)
-//   return (
-//     <button onClick={ctx.toggleMenu}>Toggle menu</button>
-//   )
-// }
-
-// // create a navigation component that wraps the burger menu
-// const Navigation = () => {
-//   const ctx = useContext(MyContext)
-
-//   return (
-//     <Menu 
-//       customBurgerIcon={false}
-//       isOpen={ctx.isMenuOpen}
-//       onStateChange={(state) => ctx.stateChangeHandler(state)}
-//     >
-//       <NavLink className="menu-item" to={"/"}>
-//         Dashboard
-//       </NavLink>
-//       <NavLink className="menu-item" to={"/ongoing"}>
-//         Ongoing Courses
-//       </NavLink>
-//       <NavLink className="menu-item" to={"/completed"}>
-//         Completed Courses
-//       </NavLink>
-//       <NavLink className="menu-item" to={"/wishlist"}>
-//         WishList
-//       </NavLink>
-//       <NavLink className="menu-item" to={"/settings"}>
-//         Account Settings
-//       </NavLink>
-//     </Menu>
-//   )
-// }
-
-// // default export here
-// const App = () => {
-//   return (
-//     <MyProvider>
-//       <div>
-//         <Button />
-//         <Navigation />
-//       </div>
-//     </MyProvider>
-//   )
-// }
-
-// export default App;
+export default Header;

@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import pic from "./res/profile.jpg";
+import { CourseData } from "./data/CourseData";
+
+const renderCard = (card, index) => {
+    return (
+        <div class="col-lg-3 col-md-6">
+        <Card key={index}>
+            <Card.Img variant="top" src={card.Photo} style={{height: '15rem', padding: "20px"}}/>               
+            <Card.Body>
+                <Card.Title>{card.Name} <span style={{color:"red", marginLeft: 10}}>
+                    <i class="fa fa-lg fa-heart"></i>
+                </span></Card.Title>
+                <Card.Text>
+                    {card.Description}
+                </Card.Text>
+
+                <div class="row justify-content-center">
+                <Button variant="primary" style={{borderRadius:12}}>Enroll</Button>
+                <Button variant="primary" style={{borderRadius:12}}>Remove</Button>
+                </div>
+            </Card.Body>               
+        </Card>
+        </div>
+    )
+}
 
 class WishList extends Component {
     state = {  }
     render() { 
-        return ( <Card style={{ width: '18rem', borderRadius:18}}>
-        <Card.Img variant="top" src={pic} style={{height: '15rem'}}/>               
-        <Card.Body>
-            <Card.Title>{this.props.CourseName}</Card.Title>
-            <Card.Text>
-                {this.props.CourseDescription}
-            </Card.Text>
+        return (
+            <div class="container">
+                <div class="row justify-content-center">
 
-            <span style={{color:"green", paddingRight: 89}}>
-                <i class="fa fa-lg fa-check green"></i>
-            </span>
-            
-            <Button variant="primary" style={{borderRadius:12}}>View Certificate</Button>
-        </Card.Body>               
-    </Card> );
+                    {CourseData.map(renderCard)}
+                    </div>
+            </div> 
+        )
     }
 }
  
