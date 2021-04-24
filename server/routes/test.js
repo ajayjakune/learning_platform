@@ -58,12 +58,16 @@ router.get('/:courseId/test', requireLogin, (req, res) => {
 router.post('/:courseId/test', requireLogin, (req, res) => {
   const courseId = req.params.courseId;
   const userId = req.user._id;
-  const { isPassed, score } = req.body;
+
   Test.findOne({ course: courseId, user: userId })
     .then((savedUserWIthCourse) => {
       if (savedUserWIthCourse) {
-        return res.json({ msg: 'Already give test' });
+        return res.json({
+          msg: 'Already given test',
+          userDetails: savedUserWIthCourse,
+        });
       } else {
+        const { isPassed, score } = req.body;
         const newUserTest = new Test({
           course: courseId,
           user: userId,
