@@ -1,21 +1,24 @@
-import Container from 'react-bootstrap/Container'
-import Footer from './components/Footer/Footer'
-import HomeCarousel from './components/Homepage/HomepageCarousel/HomeCarousel'
+import React, {useState} from 'react'
 import Header from './components/Header/Header'
-import AllDomainsCards from './components/Homepage/DomainCards/AllDomainsCards'
+import Footer from './components/Footer/Footer'
+import Homepage from './components/Homepage/Homepage';
+
 
 
 function App() {
+
+  const [selectedCard, setselectedCard] = useState('')
+
+  console.log(selectedCard)
+
   return (
     <div>
       <Header />
-      {/* <Container> */}
-        <HomeCarousel/>
-        <AllDomainsCards/>
-        {/* <AllCoursesCards/> */}
-        {/* <CourseList/> */}
-        <Footer/> 
-      {/* </Container> */}
+
+        <Homepage setselectedCard={setselectedCard}/>
+  
+      <Footer/> 
+
     </div>
   );
 }

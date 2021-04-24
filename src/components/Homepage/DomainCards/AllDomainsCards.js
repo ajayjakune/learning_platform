@@ -3,13 +3,14 @@ import SingleCard from './SingleCard'
 // import "./Cards.css"
 import Courses from './courses'
 
-const AllDomainsCards = () => {
+const AllDomainsCards = (props) => {
 
+    
     const allDomainsCards = Courses.domains.map( (domain) => {
-            console.log(domain.category)
-            console.log(domain.description)
+            // console.log(domain.category)
+            // console.log(domain.description)
             return (
-                <SingleCard Title={domain.category} Description={domain.description} ImageUrl={domain.url} button={"Explore !"}/>
+                <SingleCard setselectedCard={props.setselectedCard} Title={domain.category} Description={domain.description} ImageUrl={domain.url} button={"Explore !"}/>
             ) 
         })
     
@@ -18,7 +19,7 @@ const AllDomainsCards = () => {
         <div >
             <div className="container" style={{ marginTop: "17px"}}>
         
-                <h2>
+                <h2 style={{ color: "black" }}>
                     Domains
                 </h2>
                 <hr/>

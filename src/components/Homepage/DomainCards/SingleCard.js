@@ -1,14 +1,18 @@
-import React from 'react'
-// import "./Cards.css"
+import React, {useState} from 'react'
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import './Card.css'
+
 
 const SingleCard = (props) => {
-    console.log(props.Title)
-    console.log(props.Description)
+    // console.log(props.Title)
+    // console.log(props.Description)
+
+
+    
     return (
         <>
-            {/* <div className="card-wrapper col-lg-4 col-md-6 col-xs-12">
+            {/* <div className="col-lg-4 col-md-6 col-xs-12" style={{ marginBottom: "30px"}}>
                 <div className="card">
                     <div className="card-img-wrapper">
                         <img className="card-img-top" src={props.ImageUrl} alt="Card image cap"></img>
@@ -20,15 +24,16 @@ const SingleCard = (props) => {
                     </div>
                 </div>
             </div> */}
+
             <div className="card-wrapper col-lg-4 col-md-6 col-xs-12">
-            <Card style={{ marginTop: "10px", marginBottom: "20px" }}>
-            <Card.Img variant="top" src={props.ImageUrl} />
+            <Card style={{ marginTop: "10px", marginBottom: "20px", height: "300px", borderRadius: "15px", }} className="fcard" > 
+            <Card.Img variant="top" src={props.ImageUrl} style={{ objectFit: "cover", height: "180px", borderTopRightRadius: "15px", borderTopLeftRadius: "15px"}} />
             <Card.Body>
-                <Card.Title>{props.Title}</Card.Title>
-                <Card.Text>
-                {props.Description}
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Card.Title>{props.Title}</Card.Title> 
+                {/* <Card.Text>
+                    {props.Description}
+                </Card.Text> */}
+                <Button variant="primary" className="fbtn" onClick={() => props.setselectedCard(props.Title)} >{props.button}</Button>
             </Card.Body>
             </Card>
             </div>
