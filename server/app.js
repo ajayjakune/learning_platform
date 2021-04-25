@@ -33,6 +33,7 @@ app.use(require("./routes/course"));
 app.use(require("./routes/user"));
 app.use(require("./routes/syllabus"));
 app.use(require("./routes/test"));
+app.use(require("./routes/checkenrollment"));
 //Listening server on PORT
 app.listen(PORT, () => {
   console.log("SERVER is running on ", PORT);
