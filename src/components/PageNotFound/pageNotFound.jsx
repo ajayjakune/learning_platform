@@ -1,9 +1,9 @@
 import React from 'react'
-import { Col, Row, Spinner, Table } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
 
 export default function PageNotFound() {
     return (
-        <div className="row justify-content-center jumbotron">
+        <div className="row justify-content-center jumbotron" style={{ height: "80vh", width: "100vw" }}>
             <table>
                 <th></th>
                 <th><Spinner animation="grow" variant="danger" size="sm" />

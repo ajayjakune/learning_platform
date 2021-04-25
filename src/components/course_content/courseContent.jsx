@@ -10,6 +10,9 @@ const CourseContent = (props) => {
     const courseId = props.match.params.id;
     const [courseData, setCourseData] = useState(null);
     const [syllabus, setSyllabus] = useState([]);
+    const [isEnrolled, setIsEnrolled] = useState(false);
+    const userid = localStorage.getItem("userid");
+    const header = { 'Authorization': `Bearer ${localStorage.getItem("jwt")}` }
 
     useEffect(() => {
         axios.get(`http://localhost:5000/course/${courseId}`)
@@ -20,7 +23,15 @@ const CourseContent = (props) => {
                     .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
+        axios.post('http://localhost:5000/checkenrollment', { userid: userid, courseid: courseId }, {
+            headers: header
+        })
+            .then(res => {
+                setIsEnrolled(res.data.status)
+            }).catch(e => console.log(e))
     }, [courseId])
+
+
 
     return (
         <>
