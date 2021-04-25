@@ -105,4 +105,15 @@ router.get('/pendingassignments', requireLogin, (req, res) => {
     });
 });
 
+//completed courses
+router.get('/pendingassignments', requireLogin, (req, res) => {
+  const userId = req.user._id;
+  Test.find({ user: userId, isTakenTest: true })
+    .select('course')
+    .populate('course')
+    .then((courses) => {
+      res.json(courses);
+    });
+});
+
 module.exports = router;
