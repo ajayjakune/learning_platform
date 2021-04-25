@@ -1,15 +1,34 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import {NavDropdown, Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
+import {NavDropdown, Navbar, Nav, Form, FormControl} from 'react-bootstrap'
+import axios from 'axios';
+import './Header.css'
+import SearchCourse from './SearchCourse';
 
 function Header() {   
+    const [searchText, setSearchText] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
+
+    useEffect(() => {
+      if(searchText.length > 0){
+      axios.get(`http://localhost:5000/search/course?courseName=${searchText}`)
+      .then( res => {
+        setSearchResult(res.data)
+      })
+      .catch( err => console.log(err))}
+    }, [searchText])
+
+    const handleSearch = (e) => setSearchText(e.target.value);
+    
+    const handleResultClick = () => setSearchText('')
+
     return (
-      <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" className="justify-content-between" sticky="top">
-        <Link to="/">
-        <Navbar.Brand  href="#home">  
+      <Navbar collapseOnSelect expand="lg" variant="dark" bg="dark" className="justify-content-between" sticky="top">
+        <Link to="/homepage">
+        <Navbar.Brand>  
             <img
-              src="/Persistent.png"
-              width="40"
+              src="/gurukul.png"
+              width="160"
               height="40"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
@@ -20,10 +39,25 @@ function Header() {
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
             <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="outline-light">Search</Button>
+              <FormControl 
+                type="text" 
+                placeholder="Search" 
+                style={{width:"300px"}} 
+                onChange={handleSearch} 
+                value={searchText} 
+              />
             </Form>
-          </Nav>
+            <div className="result-component">
+              {
+                searchText ?
+                searchResult.map( (course, index) =>
+                  <SearchCourse key={index} img={course.course_photo} name={course.course_name} courseId={course._id} onSelect={handleResultClick}/>
+                )
+                :
+                null
+              }
+            </div>
+        </Nav>
           <Nav>
             <NavDropdown 
                 id="basic-nav-dropdown"
@@ -38,10 +72,7 @@ function Header() {
                 alignRight
               >
               <NavDropdown.Item href="#userProfile">Signed in as <br/><b>Username</b></NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#menuItem1">Ongoing Courses</NavDropdown.Item>
-              <NavDropdown.Item href="#menuItem2">Completed Courses</NavDropdown.Item>
-              <NavDropdown.Item href="#menuItem2">Wishlist</NavDropdown.Item>
+              <NavDropdown.Item href="#menuItem2">Sign Out</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

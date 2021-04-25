@@ -62,8 +62,8 @@ const AllCoursesCards = (props) => {
                 <div className="row"> 
                 
                 {
-                    courseList.map( course => 
-                            <SingleCard title={course.course_name} for='course' description={course.course_description} imageUrl={course.course_photo} cardId={course._id} buttonText={"See Course content ->"}/> 
+                    courseList.map( (course, index) => 
+                            <SingleCard key={index} title={course.course_name} for='course' description={course.course_description} imageUrl={course.course_photo} cardId={course._id} buttonText={"See Course content ->"}/> 
                         )
                 }
                 </div>
