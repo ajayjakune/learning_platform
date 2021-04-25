@@ -16,6 +16,8 @@ const Body = (props) => {
     const [quiz, setQuiz] = useState(false);
     const [currentLink, setCurrentLink] = useState('');
     const [resources, setResources] = useState('')
+    const [authorName, setAuthorName] = useState('');
+    const [authorEmail, setAuthorEmail] = useState('')
 
     useEffect(() => {
         axios.get(`http://localhost:5000/syllabus/608271ce0ffb371d38b95daf`)
@@ -23,9 +25,16 @@ const Body = (props) => {
                 setSyllabus(res.data.syllabus);
                 setCurrentLink(res.data.syllabus[0].lectures[0].link);
                 setResources(res.data.syllabus[0].lectures[0].resources);
-                console.log(res.data.syllabus);
                 })
             .catch(err => console.log(err))
+
+        axios.get(`http://localhost:5000/author/608271ce0ffb371d38b95daf`)
+            .then(res => {
+                setAuthorName(res.data.author.author_name);
+                setAuthorEmail(res.data.author.author_email);
+                })
+            .catch(err => console.log(err))
+
     }, []);
 
     function handleLecture(link, resources1) {
@@ -54,7 +63,7 @@ const Body = (props) => {
                                 <Quiz />
                                 :
                                 resources && currentLink ?
-                                <LectureVid resources={resources} link={currentLink} />
+                                <LectureVid resources={resources} link={currentLink}/>
                                 :
                                 null
                         }
