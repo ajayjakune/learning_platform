@@ -2,7 +2,6 @@ import React from 'react';
 import { Row } from 'react-bootstrap';
 import Video from './video';
 import Extras from './extras';
-import { SideNavData } from './SideNavData';
 
 function LectureVid(props) {
     return (

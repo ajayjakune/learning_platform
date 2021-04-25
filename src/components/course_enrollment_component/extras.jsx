@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Tabs, Tab } from 'react-bootstrap';
 import Resource from './resource';
-import QnA from './qna';
 import Doubt from './doubt';
 
 function Extras(props) {
