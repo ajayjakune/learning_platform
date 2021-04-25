@@ -48,10 +48,20 @@ router.post('/addquestion', (req, res) => {
 //getting test questions
 router.get('/:courseId/test', requireLogin, (req, res) => {
   const courseId = req.params.courseId;
-  QuestionsPerCourse.find({ course: courseId })
-    .populate('questions')
-    .then((result) => res.json(result))
-    .catch((err) => console.log(err));
+  Test.findOne({ course: courseId, user: req.user._id }).then((userData) => {
+    if (userData) {
+      return res.json({
+        message: 'You already attempted test',
+        score: userData.score,
+        isPassed: userData.isPassed,
+      });
+    } else {
+      QuestionsPerCourse.find({ course: courseId })
+        .populate('questions')
+        .then((result) => res.json(result))
+        .catch((err) => console.log(err));
+    }
+  });
 });
 
 //After test given submit button
@@ -82,6 +92,17 @@ router.post('/:courseId/test', requireLogin, (req, res) => {
       }
     })
     .catch((err) => console.log(err));
+});
+
+//pending assignments
+router.get('/pendingassignments', requireLogin, (req, res) => {
+  const userId = req.user._id;
+  Test.find({ user: userId, isTakenTest: false })
+    .select('course')
+    .populate('course')
+    .then((courses) => {
+      res.json(courses);
+    });
 });
 
 module.exports = router;

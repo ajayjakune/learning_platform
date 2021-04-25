@@ -1,9 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const mongoose = require("mongoose");
-const requireLogin = require("../middleware/requireLogin");
-const CourseEnrollment = mongoose.model("CourseEnrollment");
-router.post("/enroll", requireLogin, (req, res) => {
+const mongoose = require('mongoose');
+const requireLogin = require('../middleware/requireLogin');
+const CourseEnrollment = mongoose.model('CourseEnrollment');
+const Test = mongoose.model('Test');
+router.post('/enroll', requireLogin, (req, res) => {
   const { userid, courseid } = req.body;
   const enrollment = new CourseEnrollment({
     userid,
@@ -17,8 +18,14 @@ router.post("/enroll", requireLogin, (req, res) => {
         enrollment
           .save()
           .then((enrollment) => {
-            res.json({
-              status: "success",
+            const userData = new Test({
+              user: userid,
+              course: courseid,
+            });
+            userData.save().then((data) => {
+              res.json({
+                status: 'success',
+              });
             });
           })
           .catch((e) => {
@@ -26,7 +33,7 @@ router.post("/enroll", requireLogin, (req, res) => {
           });
       } else {
         res.json({
-          status: "failed",
+          status: 'failed',
         });
       }
     })
