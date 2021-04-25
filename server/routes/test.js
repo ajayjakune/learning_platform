@@ -65,7 +65,7 @@ router.get('/:courseId/test', requireLogin, (req, res) => {
 });
 
 //After test given submit button
-router.post('/:courseId/test', requireLogin, (req, res) => {
+router.put('/:courseId/test', requireLogin, (req, res) => {
   const courseId = req.params.courseId;
   const userId = req.user._id;
 
@@ -78,17 +78,30 @@ router.post('/:courseId/test', requireLogin, (req, res) => {
         });
       } else {
         const { isPassed, score } = req.body;
-        const newUserTest = new Test({
-          course: courseId,
-          user: userId,
-          isPassed: Boolean(isPassed),
-          score: Number(score),
-          isTakenTest: true,
+        Test.findOneAndUpdate(
+          { course: courseId, user: userId },
+          {
+            isPassed: isPassed,
+            score: score,
+          }
+        ).exec((err, result) => {
+          if (err) {
+            return res.status(422).json({ error: err });
+          } else {
+            return res.json(result);
+          }
         });
-        newUserTest
-          .save()
-          .then((savedUser) => res.json(savedUser))
-          .catch((err) => console.log(err));
+        // const newUserTest = new Test({
+        //   course: courseId,
+        //   user: userId,
+        //   isPassed: Boolean(isPassed),
+        //   score: Number(score),
+        //   isTakenTest: true,
+        // });
+        // newUserTest
+        //   .save()
+        //   .then((savedUser) => res.json(savedUser))
+        //   .catch((err) => console.log(err));
       }
     })
     .catch((err) => console.log(err));
