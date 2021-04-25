@@ -3,15 +3,17 @@ import HomeCarousel from './Carousel/HomeCarousel'
 import Cards from './DomainCard/Cards'
 
 const Homepage = () => {
-    const firstName = localStorage.getItem('first_name');
-    const lastName = localStorage.getItem('last_name');
+    // const userdata = localStorage.getItem('userdata');
+    const token = localStorage.getItem('jwt');
+    const id = localStorage.getItem('userid');
     return (
         <div>
             <HomeCarousel />
             <Cards />
-            <p>User Name: {firstName + " " + lastName}</p>
+            <p>User Name:{token} {id}</p>
         </div>
     )
 }
+
 
 export default Homepage

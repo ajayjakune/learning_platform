@@ -15,7 +15,7 @@ router.post('/domain', (req, res) => {
 
 
 router.get('/domain/all', (req, res) => {
-    Domain.find()
+    Domain.find().select('-__v')
     .then( domains => res.send(domains))
     .catch( err => console.log(err));
 } )
