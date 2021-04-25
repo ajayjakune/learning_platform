@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import RelatedCourse from './relatedCourses';
 import CourseDetails from './courseDetails';
 import CourseBanner from './courseBanner';
 import CourseEnrollCard from './courseEnrollCard';
 import axios from 'axios';
+import { Spinner } from 'react-bootstrap';
 
 const CourseContent = (props) => {
 
@@ -42,10 +42,12 @@ const CourseContent = (props) => {
                             courseSyllabus={syllabus}
                         />
                     </div>
-                    <RelatedCourse />
+                    <br />
                 </div>
                 :
-                null
+                <div className="row justify-content-center jumbotron">
+                    <Spinner animation="border" variant="primary" />
+                </div>
             }
         </>
     )
