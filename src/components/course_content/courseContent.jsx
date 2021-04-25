@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react';
-import RelatedCourse from './relatedCourses';
 import CourseDetails from './courseDetails';
 import CourseBanner from './courseBanner';
 import CourseEnrollCard from './courseEnrollCard';
@@ -42,7 +41,6 @@ const CourseContent = (props) => {
                         courseSyllabus= {syllabus}
                     />
                 </div>
-                <RelatedCourse />
             </div>
             :
             null
