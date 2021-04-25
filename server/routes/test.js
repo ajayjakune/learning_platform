@@ -49,7 +49,7 @@ router.post('/addquestion', (req, res) => {
 router.get('/:courseId/test', requireLogin, (req, res) => {
   const courseId = req.params.courseId;
   Test.findOne({ course: courseId, user: req.user._id }).then((userData) => {
-    if (userData) {
+    if (userData.isPassed === true) {
       return res.json({
         message: 'You already attempted test',
         score: userData.score,
@@ -71,7 +71,7 @@ router.post('/:courseId/test', requireLogin, (req, res) => {
 
   Test.findOne({ course: courseId, user: userId })
     .then((savedUserWIthCourse) => {
-      if (savedUserWIthCourse) {
+      if (savedUserWIthCourse.isPassed === true) {
         return res.json({
           msg: 'Already given test',
           userDetails: savedUserWIthCourse,
@@ -97,7 +97,7 @@ router.post('/:courseId/test', requireLogin, (req, res) => {
 //pending assignments
 router.get('/pendingassignments', requireLogin, (req, res) => {
   const userId = req.user._id;
-  Test.find({ user: userId, isTakenTest: false })
+  Test.find({ user: userId, isPassed: false })
     .select('course')
     .populate('course')
     .then((courses) => {
@@ -106,9 +106,9 @@ router.get('/pendingassignments', requireLogin, (req, res) => {
 });
 
 //completed courses
-router.get('/completedcourses', requireLogin, (req, res) => {
+router.get('/coursecompleted', requireLogin, (req, res) => {
   const userId = req.user._id;
-  Test.find({ user: userId, isTakenTest: true })
+  Test.find({ user: userId, isPassed: true })
     .select('course')
     .populate('course')
     .then((courses) => {
