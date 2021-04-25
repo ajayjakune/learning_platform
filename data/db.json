@@ -120,7 +120,7 @@
                 },
                 {
                     "title": "Implementing Time Travel",
-                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
                     "isCompleted": false,
                     "resources": [
                         {
@@ -150,5 +150,76 @@
                 }
             ]
         }
-    ]
+    ],
+    "questions": [
+        {
+            "options": [
+                "True",
+                "False",
+                "Can be true or false",
+                "Can not say"
+            ],
+            "_id": "60841533adebe60414047b0d",
+            "question": "Does React creates a VIRTUAL DOM in memory?",
+            "correct_answer": "True",
+            "course": "608271ce0ffb371d38b95daf",
+            "__v": 0
+        },
+        {
+            "options": [
+                "Methods",
+                "Injected",
+                "Both",
+                "None of the above"
+            ],
+            "_id": "60841696adebe60414047b0f",
+            "question": "Props are ____ into other components.",
+            "correct_answer": "Methods",
+            "course": "608271ce0ffb371d38b95daf",
+            "__v": 0
+        },
+        {
+            "options": [
+                "Middleware",
+                "Controller",
+                "Model",
+                "Router"
+            ],
+            "_id": "608416f1adebe60414047b10",
+            "question": "What is React.js in MVC?",
+            "correct_answer": "Controller",
+            "course": "608271ce0ffb371d38b95daf",
+            "__v": 0
+        },
+        {
+            "options": [
+                "getInitialState",
+                "render",
+                "renderComponent",
+                "None"
+            ],
+            "_id": "60841792adebe60414047b11",
+            "question": "Which of the following API is a MUST for every ReactJS component?",
+            "correct_answer": "renderComponent",
+            "course": "608271ce0ffb371d38b95daf",
+            "__v": 0
+        },
+        {
+            "options": [
+                "JS library",
+                "JS framework",
+                "Both",
+                "None"
+            ],
+            "_id": "60841838adebe60414047b12",
+            "question": "React is a ____",
+            "correct_answer": "JS library",
+            "course": "608271ce0ffb371d38b95daf",
+            "__v": 0
+        }
+    ],
+    "author": {
+        "author_name": "Rahul Shetty",
+        "author_email": "rahul_shetty@yahoo.com"
+    }
 }
