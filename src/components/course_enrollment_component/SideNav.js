@@ -1,24 +1,54 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Accordion, Nav, Navbar } from 'react-bootstrap';
 import './courseEnroll.css';
-import NavTab from './navTab';
-import { SideNavData } from './SideNavData';
 import { GiBookPile } from 'react-icons/gi'
-
+import { MdVideoLibrary } from 'react-icons/md';
 
 const SideNav = function (props) {
 
-    const chapters = SideNavData.map((item, index) => (
-        < NavTab chapterName={item.title} chapterNum={item.chapterNum} keyVal={"lecture-" + index} lectures={item.lectures} />
-    ));
+    function handleLecture(event, link, resources) {
+        event.preventDefault();
+        const { lectureCallback } = props;
+        lectureCallback(link, resources);
+    }
+    function handleQuiz(event) {
+        event.preventDefault();
+        const { quizCallback } = props;
+        quizCallback("quiz");
+    }
 
     return (
         <div className="sidebar-main">
             <Card className="text-white bg-dark sidebar-main-card">
                 <Card.Header>Course Name</Card.Header>
             </Card>
-            {chapters}
-            <Button href="/chapter/quiz" variant="dark" size="lg" block style={{ width: "90%", margin: "10px 0 10px 17px" }}>< GiBookPile/>&nbsp;Quiz</Button>
+            {
+                props.syllabus.map((chapter, index) => {
+                    return (
+                        <Navbar collapseOnSelect expand="lg" className="sidebar-nav">
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" id="sidebar-toggle" />
+                            <Navbar.Collapse id="responsive-navbar-nav" className="sidebar-nav-collapse">
+                                <Accordion className="sidebar-accordian">
+                                    <Card>
+                                        <Accordion.Toggle as={Card.Header} variant="link" eventKey={`chapter-${index}`}>
+                                            {chapter.title}
+                                        </Accordion.Toggle>
+                                        <Accordion.Collapse eventKey={`chapter-${index}`}>
+                                            <Card.Body className="sidebar-card-body">
+                                                <ul className="sidebar-list">
+                                                    {chapter.lectures.map((lecture) => (
+                                                        <li><Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources)}><MdVideoLibrary />&nbsp;{lecture.title}</Nav.Link></li>
+                                                    ))}
+                                                </ul>
+                                            </Card.Body>
+                                        </Accordion.Collapse>
+                                    </Card>
+                                </Accordion>
+                            </Navbar.Collapse>
+                        </Navbar>
+                    );
+                })}
+            <Button onClick={handleQuiz} variant="dark" size="lg" block style={{ width: "90%", margin: "10px 0 10px 17px" }}>< GiBookPile />&nbsp;Quiz</Button>
         </div>
     );
 }

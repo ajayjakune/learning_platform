@@ -9,13 +9,10 @@ function Extras(props) {
     return <Container>
         <Tabs defaultActiveKey="doubts" id="extras-tab">
             <Tab eventKey="doubts" title="Doubts??">
-                <Doubt/>
+                <Doubt />
             </Tab>
             <Tab eventKey="resources" title="Resource">
-                <Resource />
-            </Tab>
-            <Tab eventKey="qna" title="QnA">
-                <QnA /> 
+                <Resource resources={props.resources} />
             </Tab>
         </Tabs>
     </Container>;

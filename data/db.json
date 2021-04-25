@@ -1,0 +1,154 @@
+{
+    "syllabus": [
+        {
+            "title": "Overview",
+            "lectures": [
+                {
+                    "title": "What is React?",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                },
+                {
+                    "title": "Inspecting the Starter Code",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                },
+                {
+                    "title": "Developer Tools",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Completing the Game",
+            "lectures": [
+                {
+                    "title": "Lifting State Up",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                },
+                {
+                    "title": "Functional Components",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                },
+                {
+                    "title": "Declaring a Winner",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Adding Time Travel",
+            "lectures": [
+                {
+                    "title": "Lifting State Up, Again",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                },
+                {
+                    "title": "Implementing Time Travel",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                },
+                {
+                    "title": "Wrapping Up",
+                    "link": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    "isCompleted": false,
+                    "resources": [
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        },
+                        {
+                            "title": "Google",
+                            "link": "http://www.google.com"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
