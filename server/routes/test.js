@@ -81,9 +81,12 @@ router.put('/:courseId/test', requireLogin, (req, res) => {
         Test.findOneAndUpdate(
           { course: courseId, user: userId },
           {
+            $set:
+          {
             isPassed: isPassed,
             score: score,
           }
+          },{new:true}
         ).exec((err, result) => {
           if (err) {
             return res.status(422).json({ error: err });
