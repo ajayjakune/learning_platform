@@ -25,7 +25,7 @@ const SideNav = function (props) {
             {
                 props.syllabus.map((chapter, index) => {
                     return (
-                        <Navbar collapseOnSelect expand="lg" className="sidebar-nav">
+                        <Navbar key={index} collapseOnSelect expand="lg" className="sidebar-nav">
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" id="sidebar-toggle" />
                             <Navbar.Collapse id="responsive-navbar-nav" className="sidebar-nav-collapse">
                                 <Accordion className="sidebar-accordian">
@@ -36,8 +36,8 @@ const SideNav = function (props) {
                                         <Accordion.Collapse eventKey={`chapter-${index}`}>
                                             <Card.Body className="sidebar-card-body">
                                                 <ul className="sidebar-list">
-                                                    {chapter.lectures.map((lecture) => (
-                                                        <li><Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources)}><MdVideoLibrary />&nbsp;{lecture.title}</Nav.Link></li>
+                                                    {chapter.lectures.map((lecture, index1) => (
+                                                        <li key={index1}><Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources)}><MdVideoLibrary />&nbsp;{lecture.title}</Nav.Link></li>
                                                     ))}
                                                 </ul>
                                             </Card.Body>

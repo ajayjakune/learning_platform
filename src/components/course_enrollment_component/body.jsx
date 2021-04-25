@@ -12,56 +12,58 @@ import axios from 'axios';
 
 const Body = (props) => {
     // const courseId = props.params.match.id;
-    const courseId = 1;
     const [syllabus, setSyllabus] = useState(null);
     const [quiz, setQuiz] = useState(false);
     const [currentLink, setCurrentLink] = useState('');
     const [resources, setResources] = useState('')
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/syllabus`)
+        axios.get(`http://localhost:5000/syllabus/608271ce0ffb371d38b95daf`)
             .then(res => {
-                setCurrentLink(res.data[0].lectures[0].link);
-                setResources(res.data[0].lectures[0].resources);
-                setSyllabus(res.data);
-                console.log(res.data);
-            })
+                setSyllabus(res.data.syllabus);
+                setCurrentLink(res.data.syllabus[0].lectures[0].link);
+                setResources(res.data.syllabus[0].lectures[0].resources);
+                console.log(res.data.syllabus);
+                })
             .catch(err => console.log(err))
-    }, [courseId]);
+    }, []);
 
-    function handleLecture(link, resources) {
+    function handleLecture(link, resources1) {
         setCurrentLink(link);
-        setResources(resources);
-        setQuiz(false);
+        setResources(resources1);
+        console.log(link);
     }
-    function handleQuiz(msg) {
-        setQuiz(true);
+    function handleQuiz() {
+        setQuiz(!quiz);
     }
 
     return (
         <div>
-            {syllabus ?
-                (<Container className="container-main">
-                    <Row>
-                        <Col style={{ padding: 0 }}>
+            <Container className="container-main">
+                <Row>
+                    <Col style={{ padding: 0 }}>
+                        { syllabus ? 
                             <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} />
-                        </Col>
-                        <Col className="order-md-2" md={9} >
-                            {
-                                quiz ?
-                                    <Quiz />
-                                    :
-                                    <LectureVid resources={resources} link={currentLink} />
-                            }
-                            <Switch>
-                                <Route path="/chapter/certificate" component={Certificate} />
-                            </Switch>
-                        </Col>
-                    </Row>
-                </Container >
-                ) :
-                null
-            }
+                            :
+                            null
+                        }
+                    </Col>
+                    <Col className="order-md-2" md={9} >
+                        {
+                            quiz ?
+                                <Quiz />
+                                :
+                                resources && currentLink ?
+                                <LectureVid resources={resources} link={currentLink} />
+                                :
+                                null
+                        }
+                        <Switch>
+                            <Route path="/chapter/certificate" component={Certificate} />
+                        </Switch>
+                    </Col>
+                </Row>
+            </Container >
         </div>
     );
 }
