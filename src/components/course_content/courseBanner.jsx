@@ -4,25 +4,24 @@ import './css/courseBanner.css';
 class CourseBanner extends Component {
     render() {
         return (
-            <div className="banner">
+            <div className="banner" style={{backgroundImage:'url("'+this.props.courseBanner+'")'}}>
                 <div className="container text-danger">
-                    <h1>React JS with professional certificate</h1>
-                    <p>Advance your career in UI</p>
-                    <p>Offered by PSL Learning</p>
+                    <h1>{this.props.courseTitle}</h1>
+                    <p>Offered by Gurukul</p>
                 </div>
                 <div className="card featured-card">
                     <div className="card-body">
                         <div className="column text-center">
                             <h5 className="card-title">Domain</h5>
-                            <p className="card-text">Web Development</p>
+                            <p className="card-text">{this.props.courseDomain}</p>
                         </div>
                         <div className="column text-center">
                             <h5 className="card-title">Level</h5>
-                            <p className="card-text">Advance</p>
+                            <p className="card-text">Beginner</p>
                         </div>
                         <div className="column text-center">
                             <h5 className="card-title">Enrollments</h5>
-                            <p className="card-text">100</p>
+                            <p className="card-text">{this.props.enrollments}</p>
                         </div>
                     </div>
                 </div>
@@ -30,5 +29,7 @@ class CourseBanner extends Component {
         )
     }
 }
+
+// style={{backgroundImage:'url("link")'}}
 
 export default CourseBanner;
