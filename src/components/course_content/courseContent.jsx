@@ -12,14 +12,14 @@ const CourseContent = (props) => {
     const courseId = props.match.params.id;
     const [courseData, setCourseData] = useState(null);
     const [syllabus, setSyllabus] = useState([]);
-    const [isEnrolled, setIsEnrolled] = useState(null);
+    const [isEnrolled, setIsEnrolled] = useState(false);
 
     useEffect(() => {
         axios.post('http://localhost:5000/checkenrollment', 
                     {userid:localStorage.getItem("userid"), courseid: courseId}, 
                     {headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})  
             .then(res2 => {
-                setIsEnrolled(res2.data)
+                setIsEnrolled(res2.data.status)
                 axios.get(`http://localhost:5000/course/${courseId}`)
                 .then(res => {
                     setCourseData(res.data)
@@ -37,7 +37,7 @@ const CourseContent = (props) => {
                     {userid:localStorage.getItem("userid"), courseid: courseId},
                     {headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
         .then(() => {
-            axios.post(`http://localhost:500/incrementEnroll/${courseId}`)
+            axios.post(`http://localhost:5000/incrementEnroll/${courseId}`)
             .then(() => setIsEnrolled(true))
             .catch(err => console.log(err))
         })
@@ -53,7 +53,7 @@ const CourseContent = (props) => {
                             <img className="card-img-top" src={`${courseData.course_photo}`} alt="course" />
                             <div className="card-body">
                                 <h5 className="card-title text-center">{courseData.course_name}</h5>
-                                { isEnrolled.status ?
+                                { isEnrolled ?
                                     <Link to='/course' className="btn btn-primary">Go to Course</Link>
                                     :
                                     <button className="btn btn-primary" onClick={handleEnrollment}>Enroll for the Course</button>
