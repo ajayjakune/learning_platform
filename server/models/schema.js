@@ -59,9 +59,10 @@ const userCoursesEnrollmentSchema = new mongoose.Schema({
     type: Date,
     require: true,
   },
-  date_of_completion: {
-    type: Date,
+  isCompleted: {
+    type: Boolean,
     require: false,
+    default: false
   },
 });
 
@@ -208,11 +209,7 @@ const testSchema = new mongoose.Schema({
   score: {
     type: Number,
     default: 0,
-  },
-  isTakenTest: {
-    type: Boolean,
-    default: false,
-  },
+  }
 });
 const questionPerCourse = new mongoose.Schema({
   course: {

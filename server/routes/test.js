@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Question = mongoose.model('Question');
 const QuestionsPerCourse = mongoose.model('QuestionsPerCourse');
+const CourseEnrollment = mongoose.model("CourseEnrollment");
 const Test = mongoose.model('Test');
 const requireLogin = require('../middleware/requireLogin');
 
@@ -35,11 +36,11 @@ router.post('/addquestion', (req, res) => {
         {
           new: true,
         }
-      ).exec((err, result) => {
+      ).exec((err, result1) => {
         if (err) {
           return res.json(err);
         }
-        res.json(result);
+        res.json(result1);
       });
     })
     .catch((err) => console.log(err));
@@ -93,6 +94,11 @@ router.put('/:courseId/test', requireLogin, (req, res) => {
           } else {
             return res.json(result);
           }
+        })
+        .then(() => {
+            CourseEnrollment.findOneAndUpdate({courseid:courseId, userid:userId})
+            .then(()=> res.status(200).json('Success'))
+            .catch((err) => res.json(err))
         });
         // const newUserTest = new Test({
         //   course: courseId,
@@ -114,17 +120,6 @@ router.put('/:courseId/test', requireLogin, (req, res) => {
 router.get('/pendingassignments', requireLogin, (req, res) => {
   const userId = req.user._id;
   Test.find({ user: userId, isPassed: false })
-    .select('course')
-    .populate('course')
-    .then((courses) => {
-      res.json(courses);
-    });
-});
-
-//completed courses
-router.get('/coursecompleted', requireLogin, (req, res) => {
-  const userId = req.user._id;
-  Test.find({ user: userId, isPassed: true })
     .select('course')
     .populate('course')
     .then((courses) => {

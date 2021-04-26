@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middleware/requireLogin');
 const CourseEnrollment = mongoose.model('CourseEnrollment');
 const Test = mongoose.model('Test');
+
+
 router.post('/enroll', requireLogin, (req, res) => {
   const { userid, courseid } = req.body;
   const enrollment = new CourseEnrollment({
@@ -17,7 +19,7 @@ router.post('/enroll', requireLogin, (req, res) => {
       if (!course) {
         enrollment
           .save()
-          .then((enrollment) => {
+          .then(() => {
             const userData = new Test({
               user: userid,
               course: courseid,
