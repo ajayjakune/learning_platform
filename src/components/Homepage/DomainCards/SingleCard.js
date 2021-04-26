@@ -1,23 +1,15 @@
 import React from 'react'
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import {Link} from 'react-router-dom'
 import './Cards.css'
 
 
 const SingleCard = (props) => {
-    // console.log(props.Title)
-    // console.log(props.Description)
-
-
-
-    
     return (
         <>
             <div className="card-wrapper cus-card-wrapper col-lg-4 col-md-6 col-xs-12" style={{ marginBottom: "30px"}}>
                 <div className="card cus-card">
                     <div className="card-img-wrapper cus-card-img-wrapper">
-                        <img className="card-img-top cus-card-img-top" src={props.imageUrl} alt="Card image cap"></img>
+                        <img className="card-img-top cus-card-img-top" src={props.imageUrl} alt="Card cap"></img>
                     </div>
                     <div className="card-body cus-card-body">
                         <h5 className="card-title cus-card-title">{props.title}</h5>

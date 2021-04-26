@@ -14,7 +14,7 @@ const HomeCarousel = () => {
                         src="/home1.gif"
                         alt="First slide"
                     /> */}
-                    <video className="d-block w-100 fnormalize" playsinline autoPlay muted loop>
+                    <video className="d-block w-100 fnormalize" playsInline autoPlay muted loop>
                         <source src="/movie.mp4" type="video/mp4"></source>
                         Your browser does not support the video tag.
                     </video>

@@ -9,7 +9,7 @@ const Footer = () => {
 				<div className="row">
 					<div className="col-md-12 text-center">
 						<div className="copyright">
-							<p>© <span>2021</span> <a href="#" className="transition">Persistent Systems Ltd.</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span> All rights reserved.</p>
+							<p>© <span>2021</span> <a href="#persistent" className="transition">Persistent Systems Ltd.</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span> All rights reserved.</p>
 						</div>
 					</div>
 				</div>
