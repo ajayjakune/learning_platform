@@ -48,40 +48,88 @@ router.post('/addquestion', (req, res) => {
 //getting test questions
 router.get('/:courseId/test', requireLogin, (req, res) => {
   const courseId = req.params.courseId;
-  QuestionsPerCourse.find({ course: courseId })
-    .populate('questions')
-    .then((result) => res.json(result))
-    .catch((err) => console.log(err));
+  Test.findOne({ course: courseId, user: req.user._id }).then((userData) => {
+    if (userData.isPassed === true) {
+      return res.json({
+        message: 'You already attempted test',
+        score: userData.score,
+        isPassed: userData.isPassed,
+      });
+    } else {
+      QuestionsPerCourse.find({ course: courseId })
+        .populate('questions')
+        .then((result) => res.json(result))
+        .catch((err) => console.log(err));
+    }
+  });
 });
 
 //After test given submit button
-router.post('/:courseId/test', requireLogin, (req, res) => {
+router.put('/:courseId/test', requireLogin, (req, res) => {
   const courseId = req.params.courseId;
   const userId = req.user._id;
 
   Test.findOne({ course: courseId, user: userId })
     .then((savedUserWIthCourse) => {
-      if (savedUserWIthCourse) {
+      if (savedUserWIthCourse.isPassed === true) {
         return res.json({
           msg: 'Already given test',
           userDetails: savedUserWIthCourse,
         });
       } else {
         const { isPassed, score } = req.body;
-        const newUserTest = new Test({
-          course: courseId,
-          user: userId,
-          isPassed: Boolean(isPassed),
-          score: Number(score),
-          isTakenTest: true,
+        Test.findOneAndUpdate(
+          { course: courseId, user: userId },
+          {
+            $set:
+          {
+            isPassed: isPassed,
+            score: score,
+          }
+          },{new:true}
+        ).exec((err, result) => {
+          if (err) {
+            return res.status(422).json({ error: err });
+          } else {
+            return res.json(result);
+          }
         });
-        newUserTest
-          .save()
-          .then((savedUser) => res.json(savedUser))
-          .catch((err) => console.log(err));
+        // const newUserTest = new Test({
+        //   course: courseId,
+        //   user: userId,
+        //   isPassed: Boolean(isPassed),
+        //   score: Number(score),
+        //   isTakenTest: true,
+        // });
+        // newUserTest
+        //   .save()
+        //   .then((savedUser) => res.json(savedUser))
+        //   .catch((err) => console.log(err));
       }
     })
     .catch((err) => console.log(err));
+});
+
+//pending assignments
+router.get('/pendingassignments', requireLogin, (req, res) => {
+  const userId = req.user._id;
+  Test.find({ user: userId, isPassed: false })
+    .select('course')
+    .populate('course')
+    .then((courses) => {
+      res.json(courses);
+    });
+});
+
+//completed courses
+router.get('/coursecompleted', requireLogin, (req, res) => {
+  const userId = req.user._id;
+  Test.find({ user: userId, isPassed: true })
+    .select('course')
+    .populate('course')
+    .then((courses) => {
+      res.json(courses);
+    });
 });
 
 module.exports = router;
