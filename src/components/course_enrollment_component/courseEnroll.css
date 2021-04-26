@@ -42,11 +42,11 @@ body{
 ul.sidebar-list{
     list-style-type: none;
 }
-img{
+/* img{
     width: 25px;
     height: 22px;
     margin-right: 20px;
-}
+} */
   
 .transcript-container{
     margin-top: 10px;
@@ -113,7 +113,7 @@ img{
     display: inline;
   } */
   
-button {
+.quiz-button {
     width: 100%;
     font-size: 16px;
     color: #000000;
@@ -127,16 +127,16 @@ button {
     cursor: pointer;
 }
   
-button:hover {
+.quiz-button:hover {
     background-color: #3c3d3c;
     color: white;
 }
   
-  button:focus {
+  .quiz-button:focus {
     outline: none;
 }
   
-button svg {
+.quiz-button svg {
     margin-right: 5px;
 }
   

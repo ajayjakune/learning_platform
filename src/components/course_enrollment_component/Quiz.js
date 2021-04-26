@@ -73,7 +73,7 @@ export default function Quiz(props) {
 						<div className='answer-section'>
 							{questions[currentQuestion].options.map((answerOption, index) => (
 								<div key={index}>
-									<button onClick={() => handleAnswerOptionClick(answerOption)}>{index + 1}. {answerOption}</button>
+									<button className="quiz-button" onClick={() => handleAnswerOptionClick(answerOption)}>{index + 1}. {answerOption}</button>
 								</div>
 							))}
 						</div>
