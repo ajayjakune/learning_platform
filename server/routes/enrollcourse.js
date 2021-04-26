@@ -3,6 +3,8 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const requireLogin = require("../middleware/requireLogin");
 const CourseEnrollment = mongoose.model("CourseEnrollment");
+
+
 router.post("/enroll", requireLogin, (req, res) => {
   const { userid, courseid } = req.body;
   const enrollment = new CourseEnrollment({
@@ -16,7 +18,7 @@ router.post("/enroll", requireLogin, (req, res) => {
       if (!course) {
         enrollment
           .save()
-          .then((enrollment) => {
+          .then(() => {
             res.json({
               status: "success",
             });

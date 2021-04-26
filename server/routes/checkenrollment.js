@@ -10,18 +10,25 @@ router.post("/checkenrollment", requireLogin, (req, res) => {
     .then((course) => {
       if (course) {
         res.json({
-          status: "true",
+          status: true,
         });
       } else {
         res.json({
-          status: "false",
+          status: false,
         });
       }
     })
     .catch((e) => {
       res.json({
-        status: "false",
+        status: false,
       });
     });
 });
+
+router.get('/enroll/:id', (req,res)=>{
+  CourseEnrollment.find({userid:req.params.id})
+  .then( result => res.json(result))
+  .catch( err => console.log(err))
+})
+
 module.exports = router;

@@ -19,7 +19,7 @@ class LoginSignUp extends Component {
     }
 
     handleChecked = (e) => {
-        if (this.state.checked == true) {
+        if (this.state.checked === true) {
             this.setState({ ...this.state, checked: false });
         } else {
             this.setState({ ...this.state, checked: true });
@@ -86,8 +86,8 @@ class LoginSignUp extends Component {
         };
 
         Axios.post(url, user)
-            .then((res) => { })
-            .catch((e) => {
+            .then()
+            .catch(() => {
                 alert('user already exist');
             });
     };
