@@ -54,7 +54,7 @@ router.post('/signup', (req, res) => {
 
         user
           .save()
-          .then((user) => {
+          .then(() => {
             res.json({ message: 'Saved successfully' });
           })
           .catch((err) => {
@@ -86,7 +86,7 @@ router.post('/signin', (req, res) => {
           // res.json({ message: 'Successfully Signed In' });
           //Token which used for session management
           const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
-          const { _id, email, first_name, last_name, last_login } = savedUser;
+          const { _id, email1, first_name, last_name, last_login, profile_photo } = savedUser;
           let today = new Date();
           let date =
             today.getFullYear() +
@@ -111,7 +111,7 @@ router.post('/signin', (req, res) => {
             }
             res.json({
               token,
-              user: { _id, first_name, last_name, email, last_login },
+              user: { _id, first_name, last_name, email1, last_login, profile_photo },
             });
           });
         } else {

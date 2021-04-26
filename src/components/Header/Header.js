@@ -63,7 +63,7 @@ function Header() {
                 id="basic-nav-dropdown"
                 title={
                     <img
-                      src={localStorage.getItem('userimg')}
+                      src={localStorage.getItem('userImg')}
                       width="30"
                       height="30"
                       alt="user" 
@@ -71,12 +71,12 @@ function Header() {
                 }
                 alignRight
               >
-              <NavDropdown.Item as={Link} to="/Homepage">Signed in as <br/><b>{localStorage.getItem('username')}</b></NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/user-dashboard">Signed in as <br/><b>{localStorage.getItem('username')}</b></NavDropdown.Item>
               <NavDropdown.Divider/>
               <NavDropdown.Item as={Link} to="/ongoing-courses">Ongoing Courses</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/completed-courses">Completed Courses</NavDropdown.Item>
               <NavDropdown.Divider/>
-              <NavDropdown.Item as={Link} to="/auth" onClick={localStorage.clear()}>Sign Out</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/auth" onClick={() => localStorage.clear()}>Sign Out</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
