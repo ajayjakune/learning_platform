@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleCard matches the snapshot 1`] = `
+<div
+  className="card-wrapper cus-card-wrapper col-lg-4 col-md-6 col-xs-12"
+  style={
+    Object {
+      "marginBottom": "30px",
+    }
+  }
+>
+  <div
+    className="card cus-card"
+  >
+    <div
+      className="card-img-wrapper cus-card-img-wrapper"
+    >
+      <img
+        alt="Card image cap"
+        className="card-img-top cus-card-img-top"
+        src="https://www.google.com"
+      />
+    </div>
+    <div
+      className="card-body cus-card-body"
+    >
+      <h5
+        className="card-title cus-card-title"
+      >
+        AI
+      </h5>
+      <p
+        className="card-text cus-card-text"
+      >
+        Its some tech
+      </p>
+      <a
+        href="/course/1"
+        onClick={[Function]}
+      >
+        <div
+          className="btn btn-primary fbtn"
+        >
+          Explore !
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;

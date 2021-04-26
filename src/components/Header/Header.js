@@ -6,7 +6,7 @@ function Header() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" className="justify-content-between" sticky="top">
         <Link to="/">
-        <Navbar.Brand  href="#home">  
+        <Navbar.Brand>  
             <img
               src="/Persistent.png"
               width="40"
