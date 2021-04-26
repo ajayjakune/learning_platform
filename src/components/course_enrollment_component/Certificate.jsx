@@ -5,7 +5,7 @@ import { PDFViewer, Document, Page, Text, View, StyleSheet, Image } from '@react
 import pic from './img/persistent_logo.png';
 
 const Certificate = (props) => {
-    const name = "Joe Nathan";
+    const name = localStorage.getItem('username');
     const courseName = "React JS";
     const styles = StyleSheet.create({
         header: {

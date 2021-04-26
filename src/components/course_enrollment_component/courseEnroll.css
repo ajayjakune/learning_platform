@@ -9,54 +9,8 @@
     width: auto;
 }
 .sidebar-main{
-    padding: 0;
-    margin: 0;
-    min-height: 100%;
-    height: auto;
     background-color:rgb(211, 208, 208);
-    -webkit-box-shadow:inset 0px 0px 0px 2px black;
-    -moz-box-shadow:inset 0px 0px 0px 2px black;
-    box-shadow:inset 0px 0px 0px 2px black;
-}
-.sidebar-main-card{
-    width: 100%;
-    font-size: x-large;
-}
-.sidebar-nav{
-    width: 100%;
-    height: 100%;
-}
-  
-#sidebar-toggle{
-    margin-bottom: 10px;
-}
-  
-#sidebar-title{
-    font-size: x-large;
-    position: relative;
-}
-  
-.sidebar-accordian{
-    width: 100%;
-}
-ul.sidebar-list{
-    list-style-type: none;
-}
-/* img{
-    width: 25px;
-    height: 22px;
-    margin-right: 20px;
-} */
-  
-.transcript-container{
-    margin-top: 10px;
-    padding: 10px;
-}
-.transcript-container > p{
-    text-align: justify;
-}
-.comment-card-body > ul {
-    list-style-type: none;
+    border:1px solid black;
 }
 
 /* quiz component */
@@ -185,23 +139,3 @@ ul.sidebar-list{
     font-family: 'Lato';
     font-size: 2.5vw;
 }
-.marquee {
-    color: rgb(255, 145, 0);
-    font-size: 3.5vw;
-    margin: 20px;
-}
-.assignment {
-    margin: 20px;
-}
-.person {
-    border-bottom: 2px solid black;
-    font-size: 32px;
-    margin: 20px auto;
-    width: 400px;
-    font-family: 'Lato';
-}
-.reason {
-    margin: 20px;
-}
-
-

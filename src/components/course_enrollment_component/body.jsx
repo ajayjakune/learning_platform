@@ -64,14 +64,14 @@ const Body = (props) => {
         <div>
             <Container className="container-main">
                 <Row>
-                    <Col style={{ padding: 0 }}>
+                    <Col className="sidebar-main" style={{ padding: 0 }}>
                         {syllabus ?
                             <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} />
                             :
                             null
                         }
                     </Col>
-                    <Col className="order-md-2" md={9} >
+                    <Col md={9} >
                         {
                             quiz ?
                                 questions ?

@@ -18,40 +18,35 @@ const SideNav = function (props) {
     }
 
     return (
-        <div className="sidebar-main">
-            <Card className="text-white bg-dark sidebar-main-card">
-                <Card.Header>Course Name</Card.Header>
-            </Card>
-            {
-                props.syllabus.map((chapter, index) => {
-                    return (
-                        <Navbar key={index} collapseOnSelect expand="lg" className="sidebar-nav">
-                            <Navbar.Toggle aria-controls="responsive-navbar-nav" id="sidebar-toggle" />
-                            <Navbar.Collapse id="responsive-navbar-nav" className="sidebar-nav-collapse">
-                                <Accordion className="sidebar-accordian">
-                                    <Card>
-                                        <Accordion.Toggle as={Card.Header} variant="link" eventKey={`chapter-${index}`}>
-                                            {chapter.title}
-                                        </Accordion.Toggle>
-                                        <Accordion.Collapse eventKey={`chapter-${index}`}>
-                                            <Card.Body className="sidebar-card-body">
-                                                <ul className="sidebar-list">
-                                                    {chapter.lectures.map((lecture, index1) => (
-                                                        <li key={index1}><Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources)}><MdVideoLibrary />&nbsp;{lecture.title}</Nav.Link></li>
-                                                    ))}
-                                                </ul>
-                                            </Card.Body>
-                                        </Accordion.Collapse>
-                                    </Card>
-                                </Accordion>
-                            </Navbar.Collapse>
-                        </Navbar>
-                    );
-                })}
-            <Button onClick={handleQuiz} variant="dark" size="lg" block style={{ width: "90%", margin: "10px 0 10px 17px" }}>< GiBookPile />&nbsp;Quiz</Button>
-            {/* {chapters}
-            <Button href="/chapter/quiz" variant="dark" size="lg" block style={{ width: "90%", margin: "10px 0 10px 17px" }}><GiBookPile/>&nbsp;Quiz</Button> */}
-        </div>
+        <>
+            <Navbar expand="lg">
+                <Navbar.Toggle aria-controls="sidebar-navbar-nav" />
+                <Navbar.Collapse id="sidebar-navbar-nav">
+                    <Nav defaultActiveKey="0" className="flex-column w-100">
+                        <Card className="text-white bg-dark mb-4">
+                            <Card.Header>Course Name</Card.Header>
+                        </Card>
+                        <Accordion>
+                            {props.syllabus.map((chapter, index) => (
+                                <Card>
+                                    <Accordion.Toggle as={Card.Header} className="bg-dark text-white" eventKey={`${index}`}>
+                                        {chapter.title}
+                                    </Accordion.Toggle>
+                                    <Accordion.Collapse eventKey={`${index}`}>
+                                        <Card.Body>
+                                            {chapter.lectures.map((lecture, l_index) => (
+                                                <li key={`${l_index}`} > <Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources)}><MdVideoLibrary />&nbsp;{lecture.title}</Nav.Link></li>
+                                            ))}
+                                        </Card.Body>
+                                    </Accordion.Collapse>
+                                </Card>)
+                            )}
+                        </Accordion>
+                        <Button onClick={handleQuiz} className="mt-2 justify-content-between" variant="dark" size="lg">< GiBookPile />&nbsp;Quiz</Button>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </>
     );
 }
 export default SideNav;

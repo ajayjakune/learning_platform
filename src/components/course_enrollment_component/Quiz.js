@@ -71,7 +71,7 @@ export default function Quiz(props) {
 						<Button variant="primary" onClick={() => checkScoreHandler(score)}>Check your score</Button>
 						<div>
 							{toggle === true
-								? <QuizResultComponent res={result} score={score} quesLength={questions.length} />
+								? <QuizResultComponent res={result} score={score} quesLength={questions.length} feedback={!props.show_score} />
 								: null
 							}
 						</div>

@@ -9,22 +9,22 @@ const QuizResultComponent = props => {
 
     function showFeedback() {
         setCertificateShow(false);
-        setFeedbackShow(true);
+        setFeedbackShow(props.feedback);
     }
     return (
         <div>
             { props.res === true
                 ? <div className="result-div mt-4">
-                    <p className="mt-2">Hooray! You have scored <strong>{props.score}</strong>/{props.quesLength}</p>
+                    <p className="mt-2">Hooray! You have scored <strong>{props.score}</strong></p>
                     <span className="quiz-badge pass">&nbsp;Pass&nbsp;</span>
                     <br /><br />
-                    <div className="certificate-link-div bg-primary" style={{ borderRadius: "20px", width: "10em", marginLeft: "30px" }}>
+                    <div className="certificate-link-div bg-primary" style={{ borderRadius: "20px" }}>
                         <Nav.Link onClick={() => setCertificateShow(true)} className="text-white" style={{ fontSize: "18px" }}>View Certificate</Nav.Link>
                     </div>
                 </div>
                 : <div className="result-div mt-4">
-                    <p className="mt-2">Oops! You have scored <strong>{props.score}</strong>/{props.quesLength}</p>
-                    <p style={{ fontSize: "20px" }}>Required grades - <strong>{props.quesLength / 2}</strong>/{props.quesLength}</p>
+                    <p className="mt-2">Oops! You have scored <strong>{props.score}</strong></p>
+                    <p style={{ fontSize: "20px" }}>Required grades - <strong>{Math.ceil(props.quesLength / 2)}</strong>/{props.quesLength}</p>
                     <span className="quiz-badge fail">&nbsp;Fail&nbsp;</span>
                 </div>
             }
