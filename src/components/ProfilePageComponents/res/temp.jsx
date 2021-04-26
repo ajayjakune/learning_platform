@@ -13,6 +13,16 @@ const renderCard = (card, index) => {
         <Card.Body>
           <Card.Title>{card.Name}</Card.Title>
           <Card.Text>{card.Description}</Card.Text>
+
+          <div style={{ paddingBottom: 20 }}>
+            <ProgressBar
+              style={{ borderRadius: 18 }}
+              variant="success"
+              now={card.Progress}
+              label={`${card.Progress}%`}
+            />
+          </div>
+
           <Button variant="primary" style={{ borderRadius: 12 }}>
             Resume
           </Button>
@@ -40,18 +50,29 @@ function OngoingCourses() {
   for (let i = 0; i < enrolledCourseData.length; i++) {
     idArr.push(enrolledCourseData[i]["courseid"]);
   }
-  let courseData = [];
+  let data = [];
   idArr.map((id) => {
+    let course;
     axios
       .get(`http://localhost:5000/course/${id}`)
       .then((res) => {
-        courseData.push(res.data);
+        data.push(res.data);
       })
       .catch((e) => {
         console.log(e);
       });
   });
-  console.log(courseData);
+  // let CourseData = data.map((d) => {
+  //   return {
+  //     Name: d["course_name"],
+  //     Description: d["course_description"],
+  //     Category: "Web-Development",
+  //     Photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png",
+  //     Progress: "50",
+  //     Completed: "No",
+  //   };
+  // });
+  console.log(data);
   return (
     <div class="container">
       <div class="row justify-content-center">{CourseData.map(renderCard)}</div>
