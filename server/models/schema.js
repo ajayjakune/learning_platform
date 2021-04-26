@@ -121,6 +121,10 @@ const authorSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  author_email: {
+    type: String,
+    require: true,
+  },
 });
 
 const courseSyallabusSchema = new mongoose.Schema({
@@ -246,7 +250,7 @@ mongoose.model('User', userSchema);
 mongoose.model('Course', courseSchema);
 mongoose.model('Domain', domainSchema);
 mongoose.model('Author', authorSchema);
-mongoose.model('Syllabus', courseContentSchema);
+mongoose.model('Syllabus', courseSyallabusSchema);
 mongoose.model('CourseEnrollment', userCoursesEnrollmentSchema);
 mongoose.model('TestEnrollment', userTestTakenSchema);
 mongoose.model('Wishlist', wishlistSchema);
