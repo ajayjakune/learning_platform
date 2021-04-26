@@ -1,27 +1,71 @@
-import React from 'react';
-import { Container, Row, ResponsiveEmbed, Card, Tab, Tabs } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, ResponsiveEmbed, Card, Tab, Tabs, Form, Button, Modal } from 'react-bootstrap';
 import { AiOutlineLink } from "react-icons/ai";
 
 function LectureVid(props) {
+
+    const  [ userQuery, setUserQuery ] = useState(false);
+
+    const handleQuerySubmission = (e) => {
+        e.preventDefault();
+    }
+    const handleUserquery = () => {
+        setUserQuery(!userQuery);
+    }
+
     return (
         <div>
             <Row style={{ backgroundColor: "rgb(211, 208, 208)" }}>
-                <ResponsiveEmbed aspectRatio="16by9">
+                <ResponsiveEmbed aspectRatio="21by9">
                     <video key={props.link} className="p-2" controls>
                         <source src={props.link} type="video/mp4" />
                         video tag is not supported.
                     </video>
                 </ResponsiveEmbed>
             </Row>
-            <Row style={{ backgroundColor: "rgb(211, 208, 208)", height: "400px" }}>
+            <Row style={{ backgroundColor: "rgb(211, 208, 208)" }}>
                 <Container>
                     <Tabs defaultActiveKey="doubts" id="extras-tab">
-                        <Tab eventKey="doubts" title="Doubts??">
+                        <Tab eventKey="doubts" title="Help">
                             <Card className="mt-2" style={{ marginBottom: "10px", borderRadius: "5px" }}>
-                                <Card.Header>Email Your Queries Here !! </Card.Header>
+                                <Card.Header>Please share your doubts below</Card.Header>
                                 <Card.Body>
-                                    <p><i>Author : </i>{props.author.author_name}</p>
-                                    <p><i>Email : </i>{props.author.author_email}</p>
+                                    {/* <p><i><strong>Author : </strong></i>{props.author.author_name}</p>
+                                    <p><i><strong>Email : </strong></i>{props.author.author_email}</p> */}
+                                    <Form onSubmit={handleQuerySubmission}>
+                                        <Form.Group controlId="userEmailId">
+                                            <Form.Label>Email address</Form.Label>
+                                            <Form.Control type="email" placeholder="Enter email" />
+                                            <Form.Text className="text-muted">
+                                            We'll never share your email with anyone else.
+                                            </Form.Text>
+                                        </Form.Group>
+
+                                        <Form.Group controlId="Query">
+                                            <Form.Label>Query</Form.Label>
+                                            <Form.Control as="textarea" rows={3} />
+                                        </Form.Group>
+
+                                        <Button variant="primary" type="submit" onClick={handleUserquery}>
+                                            Submit
+                                        </Button>
+                                        { 
+                                            userQuery 
+                                                ?   <Modal show={userQuery} onHide={setUserQuery}>
+                                                        <Modal.Header>
+                                                            <Modal.Title>
+                                                                Query Submitted!
+                                                            </Modal.Title>                                            
+                                                        </Modal.Header>
+                                                        <Modal.Body>
+                                                            <p>Your query has been recorded! </p>
+                                                            <p>We will try to reach you as soon as possible</p>
+                                                        </Modal.Body>
+                                                    </Modal>
+                                                : <p></p>
+                                        }
+                                    </Form>
+                                    
                                 </Card.Body>
                             </Card>
                         </Tab>

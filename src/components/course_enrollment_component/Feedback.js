@@ -24,6 +24,7 @@ const Feedback = (props) => {
                 size="xl"
                 aria-labelledby="feedback-form"
                 backdrop="static"
+                className="feedback-modal"
             >
                 <Modal.Header>
                     <Modal.Title id="feedback-form">
@@ -78,7 +79,7 @@ const Feedback = (props) => {
             >
                 <Modal.Header>
                     <Modal.Title id="feedback-submit-message">
-                        Form Submitted Successfully
+                        Feedback Submitted Successfully
                 </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
