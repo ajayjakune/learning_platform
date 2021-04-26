@@ -14,9 +14,8 @@ const Body = (props) => {
     const [resources, setResources] = useState('')
     const [author, setAuthor] = useState('');
     const [questions, setQuestions] = useState([]);
-    const [score, setScore] = useState(0)
-    const [passStatus, setPassStatus] = useState(false)
-    // const courseId = '608271ce0ffb371d38b95daf';
+    const [score, setScore] = useState(0);
+    const [passStatus, setPassStatus] = useState(false);
 
     useEffect(() => {
         axios.get(`http://localhost:5000/syllabus/${courseId}`)
@@ -33,34 +32,19 @@ const Body = (props) => {
             })
             .catch(err => console.log(err))
 
-     axios.get(`http://localhost:5000/${courseId}/test`,{headers: {Authorization : `Bearer ${localStorage.getItem('jwt')}`}})
-    .then(res => {
-        setQuestions(res.data[0]);
-        console.log(res.data[0]);
-    })
-    .catch(err => console.log(err))
+        axios.get(`http://localhost:5000/${courseId}/test`, { headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` } })
+            .then(res => {
+                console.log(res.data.isPassed);
+                if (res.data.isPassed) {
+                    setScore(res.data.score);
+                    setPassStatus(res.data.isPassed);
+                }
+                else {
+                    setQuestions(res.data[0].questions);
+                }
+            })
+            .catch(err => console.log(err))
     }, [courseId]);
-
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/syllabus`)
-    //         .then(res => {
-    //             setSyllabus(res.data);
-    //             setCurrentLink(res.data[0].lectures[0].link);
-    //             setResources(res.data[0].lectures[0].resources);
-    //         })
-    //         .catch(err => console.log(err))
-
-    //     axios.get(`http://localhost:5000/author`)
-    //         .then(res => {
-    //             setAuthor(res.data);
-    //         })
-    //         .catch(err => console.log(err))
-    //     axios.get(`http://localhost:5000/questions`)
-    //         .then(res => {
-    //             setQuestions(res.data);
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [courseId]);
 
     function handleLecture(link, resources1) {
         setCurrentLink(link);

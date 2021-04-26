@@ -56,8 +56,8 @@ const Certificate = (props) => {
             }}
         >
             <Modal.Header closeButton>
-                <Modal.Title className="" id="certificate-modal">
-                    Course Completion Completed
+                <Modal.Title id="certificate-modal">
+                    Course Completion Certificate
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

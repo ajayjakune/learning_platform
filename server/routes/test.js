@@ -83,23 +83,24 @@ router.put('/:courseId/test', requireLogin, (req, res) => {
           { course: courseId, user: userId },
           {
             $set:
-          {
-            isPassed: isPassed,
-            score: score,
-          }
-          },{new:true}
+            {
+              isPassed: isPassed,
+              score: score,
+            }
+          }, { new: true }
         ).exec((err, result) => {
           if (err) {
             return res.status(422).json({ error: err });
           } else {
+            CourseEnrollment.findOneAndUpdate({ courseid: courseId, userid: userId })
+              .then(() => res.status(200).json('Success'))
+              .catch((err) => res.json(err))
             return res.json(result);
           }
         })
-        .then(() => {
-            CourseEnrollment.findOneAndUpdate({courseid:courseId, userid:userId})
-            .then(()=> res.status(200).json('Success'))
-            .catch((err) => res.json(err))
-        });
+
+
+
         // const newUserTest = new Test({
         //   course: courseId,
         //   user: userId,

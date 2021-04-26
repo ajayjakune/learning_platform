@@ -8,7 +8,7 @@ export default function Quiz(props) {
 	const [showScore, setShowScore] = useState(props.show_score);
 	const [score, setScore] = useState(props.score);
 	const [toggle, setToggle] = useState(false);
-	const [result, setResult] = useState();
+	const [result, setResult] = useState(false);
 
 	const handleAnswerOptionClick = (answer) => {
 		if (questions[currentQuestion].correct_answer === answer) {
@@ -39,6 +39,7 @@ export default function Quiz(props) {
 			method: 'put',
 			headers: {
 				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${localStorage.getItem('jwt')}`
 			},
 			body: JSON.stringify({
 				isPassed: result,
@@ -86,7 +87,7 @@ export default function Quiz(props) {
 						<div className='answer-section'>
 							{questions[currentQuestion].options.map((answerOption, index) => (
 								<div key={index}>
-									<button className="quiz-button" onClick={() => handleAnswerOptionClick(answerOption)}>{index + 1}. {answerOption}</button><br/>
+									<button className="quiz-button" onClick={() => handleAnswerOptionClick(answerOption)}>{index + 1}. {answerOption}</button><br />
 								</div>
 							))}
 						</div>
