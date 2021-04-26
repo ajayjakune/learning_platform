@@ -1,47 +1,33 @@
-import React, { Component } from "react";
-import Card from 'react-bootstrap/Card';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import Button from 'react-bootstrap/Button';
-import { CourseData } from "./data/CourseData";
+import axios from "axios";
+import React, { useState, useEffect} from "react";
+import CourseCard from "./CourseCard";
 
-const renderCard = (card, index) => {
-        return (
-            <div class="col-lg-3 col-md-6">
-            <Card key={index}>
-                <Card.Img variant="top" src={card.Photo} style={{height: '15rem', padding: "20px"}}/>               
-                <Card.Body>
-                    <Card.Title>{card.Name}</Card.Title>
-                    <Card.Text>
-                        {card.Description}
-                    </Card.Text>
+function CompletedCourses() {
+    const [completedCourses, setCompletedCourses] = useState([])
+    const userid = localStorage.getItem('userid');
+    useEffect(() => {
+        axios
+        .get(`http://localhost:5000/user/${userid}`)
+        .then((res) => {
+            setCompletedCourses(res.data.courses);
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+    }, [userid]);
 
-                    <div style={{paddingBottom:20}}>
-                        <ProgressBar style={{borderRadius:18}} variant="success" now={card.Progress} label={`${card.Progress}%`} />
-                    </div>
-                    <span style={{color:"green", paddingRight: 89}}>
-                        <i class="fa fa-lg fa-check green"></i>
-                    </span>
-                    
-                    <Button variant="primary" style={{borderRadius:12}}>View Certificate</Button>
-                </Card.Body>               
-            </Card>
+    return (
+        <div className="container">
+            <div className="row justify-content-center">
+            {
+                completedCourses.map( (course, index) => 
+                    course.isCompleted === true &&  
+                    <CourseCard key={index} img={course.courseid.course_photo} name={course.courseid.course_name} text={'View Certificate'}/>
+                )
+            }
             </div>
-        )
+        </div>           
+    );
 }
 
-
-class CompletedCourses extends Component {
-    state = {};
-    render() {
-        return (
-            <div class="container">
-                <div class="row justify-content-center">
-
-                    {CourseData.map(renderCard)}
-                    </div>
-            </div>           
-        );
-    }
-}
-
-export default CompletedCourses;
+export default CompletedCourses

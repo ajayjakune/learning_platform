@@ -12,7 +12,7 @@ import {
 } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaRegHeart, FaTachometerAlt, FaSpinner, FaClipboardCheck, FaRobot } from "react-icons/fa";
+import { FaRegHeart, FaTachometerAlt, FaSpinner, FaClipboardCheck} from "react-icons/fa";
 import {
     FiLogOut,
     FiArrowLeftCircle,
