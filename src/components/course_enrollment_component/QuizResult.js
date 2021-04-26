@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import Certificate from './Certificate';
+import Feedback from './Feedback';
 
 const QuizResultComponent = props => {
     const [certificateShow, setCertificateShow] = useState(false);
-    const [feedbackShow, setFeedbackShow] = useState(false)
+    const [feedbackShow, setFeedbackShow] = useState(false);
+
     function showFeedback() {
         setCertificateShow(false);
         setFeedbackShow(true);
@@ -29,6 +31,10 @@ const QuizResultComponent = props => {
             <Certificate
                 show={certificateShow}
                 onHide={showFeedback}
+            />
+            <Feedback
+                show={feedbackShow}
+                onHide={() => setFeedbackShow(false)}
             />
         </div>
     )

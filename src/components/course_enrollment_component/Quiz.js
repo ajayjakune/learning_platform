@@ -5,10 +5,10 @@ import QuizResultComponent from './QuizResult';
 export default function Quiz(props) {
 	const questions = props.questions;
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showScore, setShowScore] = useState(false);
-	const [score, setScore] = useState(0);
+	const [showScore, setShowScore] = useState(props.show_score);
+	const [score, setScore] = useState(props.score);
 	const [toggle, setToggle] = useState(false);
-	const [result, setResult] = useState(false);
+	const [result, setResult] = useState();
 
 	const handleAnswerOptionClick = (answer) => {
 		if (questions[currentQuestion].correct_answer === answer) {
@@ -27,15 +27,14 @@ export default function Quiz(props) {
 		if (score >= questions.length / 2) {
 			setToggle(true);
 			setResult(true);
-			// setScore(0)
+			props.updateScore(score);
 		} else {
 			setToggle(true);
 			setResult(false);
-			// setScore(0)
 		}
 
 		//course id of course for which test is to be conducted
-		const courseId = '608271ce0ffb371d38b95daf';
+		const courseId = props.courseId;
 		fetch(`http://localhost:5000/${courseId}/test`, {
 			method: 'put',
 			headers: {
@@ -49,6 +48,7 @@ export default function Quiz(props) {
 			.then((data) => console.log(data))
 			.catch((err) => console.log(err));
 	};
+
 	/*
 	  	
 		  dataFromResponse[0].questions structure:- Array of questions

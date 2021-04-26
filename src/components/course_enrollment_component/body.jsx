@@ -13,7 +13,10 @@ const Body = (props) => {
     const [currentLink, setCurrentLink] = useState('');
     const [resources, setResources] = useState('')
     const [author, setAuthor] = useState('');
-    const [questions, setQuestions] = useState(null)
+    const [questions, setQuestions] = useState(null);
+    const [score, setScore] = useState(0)
+    const [passStatus, setPassStatus] = useState(false)
+    const courseId = '608271ce0ffb371d38b95daf';
 
     // useEffect(() => {
     //     axios.get(`http://localhost:5000/syllabus/${courseId}`)
@@ -57,15 +60,20 @@ const Body = (props) => {
                 setQuestions(res.data);
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [courseId]);
 
     function handleLecture(link, resources1) {
         setCurrentLink(link);
         setResources(resources1);
-        console.log(link);
+        setQuiz(false);
     }
     function handleQuiz() {
-        setQuiz(!quiz);
+        setQuiz(true);
+    }
+
+    function scoreUpdater(score) {
+        setScore(score);
+        setPassStatus(true);
     }
 
     return (
@@ -83,7 +91,7 @@ const Body = (props) => {
                         {
                             quiz ?
                                 questions ?
-                                    <Quiz questions={questions} />
+                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} />
                                     :
                                     null
                                 :

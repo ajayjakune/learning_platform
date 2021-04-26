@@ -14,7 +14,6 @@ function LectureVid(props) {
                 </ResponsiveEmbed>
             </Row>
             <Row style={{ backgroundColor: "rgb(211, 208, 208)", height: "400px" }}>
-                {/* <Extras resources={props.resources} /> */}
                 <Container>
                     <Tabs defaultActiveKey="doubts" id="extras-tab">
                         <Tab eventKey="doubts" title="Doubts??">
