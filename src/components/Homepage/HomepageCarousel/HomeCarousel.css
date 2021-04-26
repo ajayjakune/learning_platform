@@ -1,0 +1,24 @@
+.autofit {
+    /* margin-left: 10vw;
+    margin-right: 10vw; */
+    width: 100vw;
+    height: 45vh;
+}
+
+.fnormalize {
+    height: auto;
+    width: 100%;
+    background-position: 50% 50%; 
+}
+
+.home2 {
+    height: 100%;
+    width: 100%; 
+}
+
+.home3 {
+    height: auto;
+    width: auto; 
+}
+
+
