@@ -5,9 +5,10 @@ const Domain = mongoose.model('Domain')
 
 
 router.post('/domain', (req, res) => {
-    const {domainName, domainDescription} = req.body;
+    const {domainName, domainDescription, domainPhoto} = req.body;
     const domain = new Domain({domain_name: domainName,
-                                domain_description: domainDescription});
+                                domain_description: domainDescription,
+                                domain_photo: domainPhoto});
     domain.save()
     .then( result => res.json(result))
     .catch( err => console.log(err));

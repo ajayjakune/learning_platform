@@ -121,6 +121,10 @@ const authorSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  author_email: {
+    type: String,
+    require: true,
+  },
 });
 
 const courseSyallabusSchema = new mongoose.Schema({
@@ -242,14 +246,14 @@ const questionSchema = new mongoose.Schema({
   },
 });
 //giving name to schema
-mongoose.model("User", userSchema);
-mongoose.model("Course", courseSchema);
-mongoose.model("Domain", domainSchema);
-mongoose.model("Author", authorSchema);
-mongoose.model("Syllabus", courseSyallabusSchema);
-mongoose.model("CourseEnrollment", userCoursesEnrollmentSchema);
-mongoose.model("TestEnrollment", userTestTakenSchema);
-mongoose.model("Wishlist", wishlistSchema);
+mongoose.model('User', userSchema);
+mongoose.model('Course', courseSchema);
+mongoose.model('Domain', domainSchema);
+mongoose.model('Author', authorSchema);
+mongoose.model('Syllabus', courseSyallabusSchema);
+mongoose.model('CourseEnrollment', userCoursesEnrollmentSchema);
+mongoose.model('TestEnrollment', userTestTakenSchema);
+mongoose.model('Wishlist', wishlistSchema);
 //mongoose.model("Test", testSchema);
 mongoose.model("Question", questionSchema);
 //mongoose.model("Answer", answerSchema);
