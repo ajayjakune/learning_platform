@@ -21,7 +21,7 @@ function OngoingCourses() {
       <div className="row justify-content-center">{
         enrolledCourseData.map( (course, index) => 
           course.isCompleted === false &&  
-          <CourseCard key={index} img={course.courseid.course_photo} name={course.courseid.course_name} text={'Resume'}/>
+          <CourseCard key={index} img={course.courseid.course_photo} name={course.courseid.course_name} courseId={course.courseid._id} text={'Resume'}/>
         )
       }</div>
     </div>

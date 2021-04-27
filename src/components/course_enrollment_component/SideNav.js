@@ -3,6 +3,7 @@ import { Button, Card, Accordion, Nav, Navbar } from 'react-bootstrap';
 import './courseEnroll.css';
 import { GiBookPile } from 'react-icons/gi'
 import { MdVideoLibrary } from 'react-icons/md';
+import { Link } from 'react-router-dom'
 
 const SideNav = function (props) {
 
@@ -24,7 +25,7 @@ const SideNav = function (props) {
                 <Navbar.Collapse id="sidebar-navbar-nav">
                     <Nav defaultActiveKey="0" className="flex-column w-100">
                         <Card className="text-white bg-dark mb-4">
-                            <Card.Header>Course Name</Card.Header>
+                            <Card.Header>{props.courseName}</Card.Header>
                         </Card>
                         <Accordion>
                             {props.syllabus.map((chapter, index) => (
@@ -42,7 +43,7 @@ const SideNav = function (props) {
                                 </Card>)
                             )}
                         </Accordion>
-                        <Button onClick={handleQuiz} className="mt-2 justify-content-between" variant="dark" size="lg">< GiBookPile />&nbsp;Quiz</Button>
+                        <Button as={Link} to="#quiz" onClick={handleQuiz} className="mt-2 justify-content-between" variant="dark" size="lg">< GiBookPile />&nbsp;Quiz</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

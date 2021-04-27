@@ -6,7 +6,6 @@ import pic from './img/persistent_logo.png';
 
 const Certificate = (props) => {
     const name = localStorage.getItem('username');
-    const courseName = "React JS";
     const styles = StyleSheet.create({
         header: {
             width: '30%',
@@ -75,7 +74,7 @@ const Certificate = (props) => {
                                     <Text style={styles.marquee} >Certificate of Completion </Text>
                                     <Text style={{ margin: 20 }} >This certificate is presented to </Text>
                                     <Text style={styles.person} >{name}</Text>
-                                    <Text style={{ margin: 20 }}>For successfully completing {courseName} course at Gurukul</Text>
+                                    <Text style={{ margin: 20 }}>For successfully completing <span style={{color:'rgb(255, 145, 0)', fontWeight:'bold'}}>{props.courseName}</span> course at Gurukul</Text>
                                 </View>
                             </View>
                         </Page>

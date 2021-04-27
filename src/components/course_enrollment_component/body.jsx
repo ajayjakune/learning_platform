@@ -9,6 +9,7 @@ import axios from 'axios';
 const Body = (props) => {
     const courseId = props.match.params.id;
     const [syllabus, setSyllabus] = useState(null);
+    const [courseName, setCourseName] = useState('');
     const [quiz, setQuiz] = useState(false);
     const [currentLink, setCurrentLink] = useState('');
     const [resources, setResources] = useState('')
@@ -23,6 +24,7 @@ const Body = (props) => {
                 setSyllabus(res.data.syllabus);
                 setCurrentLink(res.data.syllabus[0].lectures[0].link);
                 setResources(res.data.syllabus[0].lectures[0].resources);
+                setCourseName(res.data.course.course_name)
             })
             .catch(err => console.log(err))
 
@@ -34,7 +36,6 @@ const Body = (props) => {
 
         axios.get(`http://localhost:5000/${courseId}/test`, { headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` } })
             .then(res => {
-                console.log(res.data.isPassed);
                 if (res.data.isPassed) {
                     setScore(res.data.score);
                     setPassStatus(res.data.isPassed);
@@ -66,7 +67,7 @@ const Body = (props) => {
                 <Row>
                     <Col className="sidebar-main" style={{ padding: 0 }}>
                         {syllabus ?
-                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} />
+                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName}/>
                             :
                             null
                         }
@@ -75,7 +76,7 @@ const Body = (props) => {
                         {
                             quiz ?
                                 questions ?
-                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} />
+                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} courseName={courseName} />
                                     :
                                     null
                                 :

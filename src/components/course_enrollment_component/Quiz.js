@@ -7,7 +7,7 @@ export default function Quiz(props) {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(props.show_score);
 	const [score, setScore] = useState(props.score);
-	const [toggle, setToggle] = useState(false);
+	const [toggle, setToggle] = useState(props.show_score);
 	const [result, setResult] = useState(props.show_score);
 
 	const handleAnswerOptionClick = (answer) => {
@@ -23,35 +23,26 @@ export default function Quiz(props) {
 		}
 	};
 
-	const checkScoreHandler = (score) => {
-		if (result === true) {
-			setToggle(true);
-		}
-		else {
-			if (score >= questions.length / 2) {
-				setToggle(true);
+	const checkScoreHandler = () => {
+		setToggle(true);
+		if (result !== true) {
+			if (score >= (questions.length / 2)) {
 				setResult(true);
 				props.updateScore(score);
-			} else {
-				setToggle(true);
-				setResult(false);
-			}
-
-			//course id of course for which test is to be conducted
-			const courseId = props.courseId;
-			fetch(`http://localhost:5000/${courseId}/test`, {
+				fetch(`http://localhost:5000/${props.courseId}/test`, {
 				method: 'put',
 				headers: {
 					'Content-Type': 'application/json',
 					'Authorization': `Bearer ${localStorage.getItem('jwt')}`
 				},
 				body: JSON.stringify({
-					isPassed: result,
+					isPassed: true,
 					score: score,
 				}),
 			})
 				.then((data) => console.log(data))
 				.catch((err) => console.log(err));
+			} 
 		}
 
 	};
@@ -74,10 +65,10 @@ export default function Quiz(props) {
 			<div className='quiz-card'>
 				{showScore ? (
 					<div className='score-section'>
-						<Button variant="primary" onClick={() => checkScoreHandler(score)}>Check your score</Button>
+						<Button variant="primary" onClick={checkScoreHandler}>Check your score</Button>
 						<div>
 							{toggle === true
-								? <QuizResultComponent res={result} score={score} quesLength={questions.length} feedback={!props.show_score} />
+								? <QuizResultComponent res={result} score={score} quesLength={questions.length} feedback={!props.show_score} courseName={props.courseName}/>
 								: null
 							}
 						</div>

@@ -31,6 +31,7 @@ const QuizResultComponent = props => {
             <Certificate
                 show={certificateShow}
                 onHide={showFeedback}
+                courseName={props.courseName}
             />
             <Feedback
                 show={feedbackShow}
