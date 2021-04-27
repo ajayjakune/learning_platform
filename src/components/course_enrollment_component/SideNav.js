@@ -19,7 +19,7 @@ const SideNav = function (props) {
 
     return (
         <>
-            <Navbar expand="lg">
+            <Navbar expand="lg" collapseOnSelect="true">
                 <Navbar.Toggle aria-controls="sidebar-navbar-nav" />
                 <Navbar.Collapse id="sidebar-navbar-nav">
                     <Nav defaultActiveKey="0" className="flex-column w-100">
@@ -28,7 +28,7 @@ const SideNav = function (props) {
                         </Card>
                         <Accordion>
                             {props.syllabus.map((chapter, index) => (
-                                <Card>
+                                <Card key={`${index}`}>
                                     <Accordion.Toggle as={Card.Header} className="bg-dark text-white" eventKey={`${index}`}>
                                         {chapter.title}
                                     </Accordion.Toggle>

@@ -8,7 +8,7 @@ export default function Quiz(props) {
 	const [showScore, setShowScore] = useState(props.show_score);
 	const [score, setScore] = useState(props.score);
 	const [toggle, setToggle] = useState(false);
-	const [result, setResult] = useState(false);
+	const [result, setResult] = useState(props.show_score);
 
 	const handleAnswerOptionClick = (answer) => {
 		if (questions[currentQuestion].correct_answer === answer) {
@@ -24,30 +24,36 @@ export default function Quiz(props) {
 	};
 
 	const checkScoreHandler = (score) => {
-		if (score >= questions.length / 2) {
+		if (result === true) {
 			setToggle(true);
-			setResult(true);
-			props.updateScore(score);
-		} else {
-			setToggle(true);
-			setResult(false);
+		}
+		else {
+			if (score >= questions.length / 2) {
+				setToggle(true);
+				setResult(true);
+				props.updateScore(score);
+			} else {
+				setToggle(true);
+				setResult(false);
+			}
+
+			//course id of course for which test is to be conducted
+			const courseId = props.courseId;
+			fetch(`http://localhost:5000/${courseId}/test`, {
+				method: 'put',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+				},
+				body: JSON.stringify({
+					isPassed: result,
+					score: score,
+				}),
+			})
+				.then((data) => console.log(data))
+				.catch((err) => console.log(err));
 		}
 
-		//course id of course for which test is to be conducted
-		const courseId = props.courseId;
-		fetch(`http://localhost:5000/${courseId}/test`, {
-			method: 'put',
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-			},
-			body: JSON.stringify({
-				isPassed: result,
-				score: score,
-			}),
-		})
-			.then((data) => console.log(data))
-			.catch((err) => console.log(err));
 	};
 
 	/*

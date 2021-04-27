@@ -13,7 +13,7 @@ function LectureVid(props) {
     }
 
     return (
-        <div>
+        <>
             <Row style={{ backgroundColor: "rgb(211, 208, 208)" }}>
                 <ResponsiveEmbed aspectRatio="21by9">
                     <video key={props.link} className="p-2" controls>
@@ -71,22 +71,20 @@ function LectureVid(props) {
                         <Tab eventKey="resources" title="Resource">
                             <Card className="mt-2" style={{ marginBottom: "10px", borderRadius: "5px" }}>
                                 <Card.Header>Reference Links</Card.Header>
-                                <Card.Body>
-                                    <Card.Text className="resource-card-body">
-                                        <ul style={{ listStyleType: "none" }}>
-                                            {
-                                                props.resources.map((resource, index) => {
-                                                    return <li key={index}><AiOutlineLink /><a href={`${resource.link}`} target="_blank" rel="noreferrer">{resource.title}</a></li>
-                                                })}
-                                        </ul>
-                                    </Card.Text>
+                                <Card.Body className="resource-card-body">
+                                    <ul style={{ listStyleType: "none" }}>
+                                        {
+                                            props.resources.map((resource, index) => {
+                                                return <li key={index}><AiOutlineLink /><a href={`${resource.link}`} target="_blank" rel="noreferrer">{resource.title}</a></li>
+                                            })}
+                                    </ul>
                                 </Card.Body>
                             </Card>
                         </Tab>
                     </Tabs>
                 </Container>
             </Row>
-        </div>
+        </>
     );
 }
 
