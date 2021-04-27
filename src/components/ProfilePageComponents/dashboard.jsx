@@ -1,3 +1,4 @@
+import React,{ useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import SeparatorImage from "./res/separator.png";
@@ -5,18 +6,12 @@ import Chart from "react-google-charts";
 import AssignmentImage from "./res/assignment.png";
 import "./css/dashboard.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 
 const RenderDashBoard = (props) => {
-
-  const getOs = () => {
-    const os = ['Windows', 'Linux', 'Mac']; // add your OS values
-    return os.find(v=>navigator.appVersion.indexOf(v) >= 0);
-    }
   return (
-    <div class="row">
-      <div class="col-lg-6 col-md-12">
+    <div className="row">
+      <div className="col-lg-6 col-md-12">
         <Card className="text-center card-profile">
           <Card.Header className="card-profile-header">Profile Overview</Card.Header>
           <br></br>
@@ -30,11 +25,8 @@ const RenderDashBoard = (props) => {
             <Image src={SeparatorImage} fluid />
             <Card.Text>
               <div className="leftRight">
-                <p>Login</p>
-                <p>
-                  Last Login:- {props.userData["last_login"]}
-                  <br></br>Platform:- {getOs()}
-                </p>
+                <p>Last Login</p>
+                <p>{props.userData["last_login"]}</p>
               </div>
 
               <div className="leftRight">
@@ -47,7 +39,7 @@ const RenderDashBoard = (props) => {
         </Card>
       </div>
 
-      <div class="col-lg-6 col-md-12">
+      <div className="col-lg-6 col-md-12">
         <Card className="card-profile">
           <Card.Header className="card-profile-header">Insights</Card.Header>
           <Card.Body className="card-profile-body">
@@ -56,14 +48,11 @@ const RenderDashBoard = (props) => {
                 width={"auto"}
                 height={"auto"}
                 chartType="PieChart"
-                loader={<div>Loading Chart</div>}
+                loader={'Loading Chart'}
                 data={[
-                  ["Course", "No. of Learnings"],
-                  ["React JS", 11],
-                  ["C/C++", 2],
-                  ["Python", 2],
-                  ["DBMS", 2],
-                  ["Java", 7],
+                  ["Course", "No. of Courses"],
+                  ["Web Dev", 2],
+                  ["AI", 2],
                 ]}
                 options={{
                   title: "Domain Wise Insights",
@@ -97,8 +86,9 @@ const RenderDashBoard = (props) => {
 function DashBoard() {
   const [userData, setUserDate] = useState({});
   const [pendingAssignments, setPendingAssignments] = useState([])
+
   useEffect(() => {
-    axios
+      axios
       .get(`http://localhost:5000/user/${localStorage.getItem('userid')}`)
       .then((res) => {
         setUserDate(res.data.user);
@@ -110,9 +100,14 @@ function DashBoard() {
       axios.get(`http://localhost:5000/pendingassignments`,{headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
       .then((res) => setPendingAssignments(res.data))
       .catch((err) => console.log(err))
-  }, []);
 
-  return <div class="container">{
+      // axios.get(`http://localhost:5000/profileChart`,{headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
+      // .then((res) => console.log(res.data))
+      // .catch((err) => console.log(err))
+  }, []);
+  
+
+  return <div className="container">{
     <RenderDashBoard userData={userData} assignments={pendingAssignments}/>
     }</div>;
 }
