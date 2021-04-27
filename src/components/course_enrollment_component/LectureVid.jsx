@@ -5,11 +5,8 @@ import { useForm, ValidationError } from '@formspree/react';
 
 function LectureVid(props) {
     const [userQuery, setUserQuery] = useState(false);
-    const [ state, handleSubmit ] = useForm("mdoyaood")
+    const [state, handleSubmit] = useForm("mdoyaood")
 
-    // const handleQuerySubmission = (e) => {
-    //     e.preventDefault();
-    // }
     const handleUserquery = () => {
         setUserQuery(!userQuery);
     }
@@ -31,14 +28,12 @@ function LectureVid(props) {
                             <Card className="mt-2 overflow-auto" style={{ marginBottom: "10px", borderRadius: "5px" }}>
                                 <Card.Header>Please share your doubts below</Card.Header>
                                 <Card.Body>
-                                    {/* <p><i><strong>Author : </strong></i>{props.author.author_name}</p>
-                                    <p><i><strong>Email : </strong></i>{props.author.author_email}</p> */}
                                     <form onSubmit={handleSubmit} action="https://formspree.io/f/mdoyaood" method="POST">
                                         <div className="form-group">
                                             <label htmlFor="email">Email address</label>
                                             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" />
                                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                            <ValidationError 
+                                            <ValidationError
                                                 prefix="Email"
                                                 field="email"
                                                 errors={state.errors}
@@ -50,20 +45,20 @@ function LectureVid(props) {
                                         </div>
                                         <button type="submit" className="btn btn-success" onClick={handleUserquery}>Submit</button>
                                         {
-                                            userQuery 
-                                                ?   <Modal show={state.succeeded} onHide={setUserQuery}>
-                                                        <Modal.Header>
-                                                            <Modal.Title>
-                                                                Query Submitted!
-                                                            </Modal.Title>                                            
-                                                        </Modal.Header>
-                                                        <Modal.Body>
-                                                            <p>Your query has been recorded! </p>
-                                                            <p>We will try to reach you as soon as possible</p>
-                                                        </Modal.Body>
-                                                    </Modal>
+                                            userQuery
+                                                ? <Modal show={state.succeeded} onHide={setUserQuery}>
+                                                    <Modal.Header>
+                                                        <Modal.Title>
+                                                            Query Submitted!
+                                                            </Modal.Title>
+                                                    </Modal.Header>
+                                                    <Modal.Body>
+                                                        <p>Your query has been recorded! </p>
+                                                        <p>We will try to reach you as soon as possible</p>
+                                                    </Modal.Body>
+                                                </Modal>
                                                 : console.log(state.succeeded)
-                                        }   
+                                        }
                                     </form>
 
                                 </Card.Body>

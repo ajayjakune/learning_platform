@@ -5,6 +5,7 @@ import LectureVid from './LectureVid';
 import Quiz from './Quiz';
 import './courseEnroll.css';
 import axios from 'axios';
+import LoadingPage from './LoadingPage';
 
 const Body = (props) => {
     const courseId = props.match.params.id;
@@ -12,8 +13,7 @@ const Body = (props) => {
     const [courseName, setCourseName] = useState('');
     const [quiz, setQuiz] = useState(false);
     const [currentLink, setCurrentLink] = useState('');
-    const [resources, setResources] = useState('')
-    const [author, setAuthor] = useState('');
+    const [resources, setResources] = useState('');
     const [questions, setQuestions] = useState([]);
     const [score, setScore] = useState(0);
     const [passStatus, setPassStatus] = useState(false);
@@ -25,12 +25,6 @@ const Body = (props) => {
                 setCurrentLink(res.data.syllabus[0].lectures[0].link);
                 setResources(res.data.syllabus[0].lectures[0].resources);
                 setCourseName(res.data.course.course_name)
-            })
-            .catch(err => console.log(err))
-
-        axios.get(`http://localhost:5000/author/${courseId}`)
-            .then(res => {
-                setAuthor(res.data.author);
             })
             .catch(err => console.log(err))
 
@@ -63,31 +57,25 @@ const Body = (props) => {
 
     return (
         <div>
-            <Container className="container-main">
-                <Row>
-                    <Col className="sidebar-main" style={{ padding: 0 }}>
-                        {syllabus ?
-                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName}/>
-                            :
-                            null
-                        }
-                    </Col>
-                    <Col md={9} >
-                        {
-                            quiz ?
-                                questions ?
-                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} courseName={courseName} />
+            { syllabus && questions && resources && currentLink ?
+                <Container className="container-main">
+                    <Row>
+                        <Col className="sidebar-main" style={{ padding: 0 }}>
+                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName} />
+                        </Col>
+                        <Col md={9} >
+                            {
+                                quiz ?
+                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} />
                                     :
-                                    null
-                                :
-                                resources && currentLink ?
-                                    <LectureVid resources={resources} link={currentLink} author={author} />
-                                    :
-                                    null
-                        }
-                    </Col>
-                </Row>
-            </Container >
+                                    <LectureVid resources={resources} link={currentLink} />
+                            }
+                        </Col>
+                    </Row>
+                </Container >
+                :
+                <LoadingPage />
+            }
         </div>
     );
 }

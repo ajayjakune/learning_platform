@@ -30,19 +30,19 @@ export default function Quiz(props) {
 				setResult(true);
 				props.updateScore(score);
 				fetch(`http://localhost:5000/${props.courseId}/test`, {
-				method: 'put',
-				headers: {
-					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-				},
-				body: JSON.stringify({
-					isPassed: true,
-					score: score,
-				}),
-			})
-				.then((data) => console.log(data))
-				.catch((err) => console.log(err));
-			} 
+					method: 'put',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+					},
+					body: JSON.stringify({
+						isPassed: true,
+						score: score,
+					}),
+				})
+					.then((data) => console.log(data))
+					.catch((err) => console.log(err));
+			}
 		}
 
 	};
@@ -68,7 +68,7 @@ export default function Quiz(props) {
 						<Button variant="primary" onClick={checkScoreHandler}>Check your score</Button>
 						<div>
 							{toggle === true
-								? <QuizResultComponent res={result} score={score} quesLength={questions.length} feedback={!props.show_score} courseName={props.courseName}/>
+								? <QuizResultComponent res={result} score={score} quesLength={questions.length} feedback={!props.show_score} courseId={props.courseId} courseName={props.courseName} />
 								: null
 							}
 						</div>

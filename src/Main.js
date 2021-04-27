@@ -10,24 +10,26 @@ import OngoingCourses from './components/ProfilePageComponents/ongoingCourses'
 import CompletedCourses from './components/ProfilePageComponents/CompletedCourses'
 import ChatBotButton from './components/ChatbotComponents/chatbotButton'
 import Body from './components/course_enrollment_component/body'
+import Certificate from './components/course_enrollment_component/Certificate';
 
 function Main() {
     return (
         <div>
             <Header />
             <Switch>
-            {/* <Route path="/" exact component={LoginSignUp}/>
+                {/* <Route path="/" exact component={LoginSignUp}/>
             <Route path="/auth" exact component={LoginSignUp}/> */}
-            <Route path="/homepage" exact component={Homepage}/>
-            <Route path="/domain/:id" component={AllCoursesCards}/>      
-            <Route path="/course/:id" component={CourseContent}/>      
-            <Route path="/course-content/:id" component={Body}/>  
-            <Route path="/user-dashboard" component={DashBoard}/>      
-            <Route path="/ongoing-courses" component={OngoingCourses}/>      
-            <Route path="/completed-courses" component={CompletedCourses}/>  
+                <Route path="/homepage" exact component={Homepage} />
+                <Route path="/domain/:id" component={AllCoursesCards} />
+                <Route exact path="/course/:id" component={CourseContent} />
+                <Route path="/course-content/:id" component={Body} />
+                <Route exact path="/course/:id/certificate" component={Certificate} />
+                <Route path="/user-dashboard" component={DashBoard} />
+                <Route path="/ongoing-courses" component={OngoingCourses} />
+                <Route path="/completed-courses" component={CompletedCourses} />
             </Switch>
-            <ChatBotButton/>
-            <Footer/> 
+            <ChatBotButton />
+            <Footer />
         </div>
     )
 }

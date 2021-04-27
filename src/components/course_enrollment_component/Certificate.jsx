@@ -1,11 +1,13 @@
 import React from 'react';
 import './courseEnroll.css';
-import { Modal } from 'react-bootstrap';
 import { PDFViewer, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import pic from './img/persistent_logo.png';
+import { Container } from 'react-bootstrap';
 
 const Certificate = (props) => {
+    // const courseId = props.match.params.id;
     const name = localStorage.getItem('username');
+    const courseName = "React Js";
     const styles = StyleSheet.create({
         header: {
             width: '30%',
@@ -46,42 +48,28 @@ const Certificate = (props) => {
         }
     });
     return (
-        <Modal
-            {...props}
-            size="xl"
-            aria-labelledby="certificate-modal"
-            style={{
-                width: '100%', height: '350vw', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="certificate-modal">
-                    Course Completion Certificate
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <PDFViewer width="100%" height="500" >
-                    <Document>
-                        <Page size="A4" orientation="landscape" style={styles.page}>
-                            <View style={styles.outerBorder}>
-                                <View style={styles.containerCertificate}>
-                                    <View style={styles.header}>
-                                        <View style={styles.image}>
-                                            <Image style={{ width: 50, height: 50 }} src={pic} />
-                                            <Text style={{ fontSize: 32, fontWeight: 'bold' }}>Gurukul</Text>
-                                        </View>
+        <Container className='p-2'>
+            <PDFViewer width="100%" height="500" >
+                <Document>
+                    <Page size="A4" orientation="landscape" style={styles.page}>
+                        <View style={styles.outerBorder}>
+                            <View style={styles.containerCertificate}>
+                                <View style={styles.header}>
+                                    <View style={styles.image}>
+                                        <Image style={{ width: 50, height: 50 }} src={pic} />
+                                        <Text style={{ fontSize: 32, fontWeight: 'bold' }}>Gurukul</Text>
                                     </View>
-                                    <Text style={styles.marquee} >Certificate of Completion </Text>
-                                    <Text style={{ margin: 20 }} >This certificate is presented to </Text>
-                                    <Text style={styles.person} >{name}</Text>
-                                    <Text style={{ margin: 20 }}>For successfully completing <span style={{color:'rgb(255, 145, 0)', fontWeight:'bold'}}>{props.courseName}</span> course at Gurukul</Text>
                                 </View>
+                                <Text style={styles.marquee} >Certificate of Completion </Text>
+                                <Text style={{ margin: 20 }} >This certificate is presented to </Text>
+                                <Text style={styles.person} >{name}</Text>
+                                <Text style={{ margin: 20 }}>For successfully completing <span style={{ color: 'rgb(255, 145, 0)', fontWeight: 'bold' }}>{courseName}</span> course at Gurukul</Text>
                             </View>
-                        </Page>
-                    </Document >
-                </PDFViewer>
-            </Modal.Body>
-        </ Modal >
+                        </View>
+                    </Page>
+                </Document >
+            </PDFViewer>
+        </Container>
     )
 }
 export default Certificate;
