@@ -5,6 +5,7 @@ import LectureVid from './LectureVid';
 import Quiz from './Quiz';
 import './courseEnroll.css';
 import axios from 'axios';
+import LoadingPage from './LoadingPage';
 
 const Body = (props) => {
     const courseId = props.match.params.id;
@@ -63,31 +64,25 @@ const Body = (props) => {
 
     return (
         <div>
-            <Container className="container-main">
-                <Row>
-                    <Col className="sidebar-main" style={{ padding: 0 }}>
-                        {syllabus ?
-                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName}/>
-                            :
-                            null
-                        }
-                    </Col>
-                    <Col md={9} >
-                        {
-                            quiz ?
-                                questions ?
-                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} courseName={courseName} />
+            { syllabus && questions && resources && currentLink ?
+                <Container className="container-main">
+                    <Row>
+                        <Col className="sidebar-main" style={{ padding: 0 }}>
+                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName} />
+                        </Col>
+                        <Col md={9} >
+                            {
+                                quiz ?
+                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} />
                                     :
-                                    null
-                                :
-                                resources && currentLink ?
                                     <LectureVid resources={resources} link={currentLink} author={author} />
-                                    :
-                                    null
-                        }
-                    </Col>
-                </Row>
-            </Container >
+                            }
+                        </Col>
+                    </Row>
+                </Container >
+                :
+                <LoadingPage />
+            }
         </div>
     );
 }
