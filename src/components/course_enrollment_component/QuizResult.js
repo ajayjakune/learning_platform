@@ -10,7 +10,7 @@ const QuizResultComponent = props => {
                     <span className="quiz-badge pass">&nbsp;Pass&nbsp;</span>
                     <br /><br />
                     <div className="certificate-link-div bg-primary" style={{ borderRadius: "20px" }}>
-                        <Nav.Link href={`/course-content/${props.courseId}/certificate`} className="text-white" style={{ fontSize: "18px" }}>View Certificate</Nav.Link>
+                        <Nav.Link href={`/course/${props.courseId}/certificate`} className="text-white" style={{ fontSize: "18px" }}>View Certificate</Nav.Link>
                     </div>
                 </div>
                 : <div className="result-div mt-4">

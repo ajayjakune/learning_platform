@@ -1,21 +1,23 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react'
 import LoginSignUp from './components/Auth/loginSignUp';
-import Certificate from './components/course_enrollment_component/Certificate';
 import Main from './Main';
 
 function App() {
 
+  // Checks if the token is present in localStorage, and sets it if not present 
+  const token = localStorage.getItem('jwt');
+
+  // Gets set from LoginSignUp Component
+  const [authToken, setAuthToken] = useState(token);
   return (
     <div>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={LoginSignUp} />
-          <Route path="/auth" exact component={LoginSignUp} />
-          <Route path="/homepage" exact component={Main} />
-        </Switch>
-      </BrowserRouter>
-    </div>
+      {
+        authToken ?
+          <Main />
+          :
+          <LoginSignUp setToken={setAuthToken} />
+      }
+    </div >
   );
 }
 

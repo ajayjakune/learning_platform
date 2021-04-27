@@ -44,8 +44,10 @@ class LoginSignUp extends Component {
                 localStorage.setItem('username', username);
                 localStorage.setItem('user', JSON.stringify(data.user));
                 localStorage.setItem('userid', data.user._id);
-                localStorage.setItem('userImg',data.user.profile_photo)
-                this.props.history.push('/Homepage');
+                localStorage.setItem('userImg', data.user.profile_photo);
+
+                // Callback Added for setting the token value in App.js
+                this.props.setToken(data.token);
             });
         });
     };

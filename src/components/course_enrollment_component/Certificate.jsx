@@ -48,8 +48,8 @@ const Certificate = (props) => {
         }
     });
     return (
-        <Container className='p-2'>
-            <PDFViewer width="100%" height="500" >
+        <Container className='p-2' style={{ height: "100vh" }}>
+            <PDFViewer width="100%" height="600" >
                 <Document>
                     <Page size="A4" orientation="landscape" style={styles.page}>
                         <View style={styles.outerBorder}>
