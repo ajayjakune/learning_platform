@@ -5,25 +5,23 @@ import axios from 'axios';
 
 const RelatedCourses = (props) => {
 
-    const domainId = "60815a1b4643754a9c2f382b";
-    // const domainId = props.match.params.domainId;
     const [courseList, setCourseList] = useState([]);
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/${domainId}/courses`)
+        axios.get(`http://localhost:5000/${props.domainid}/courses`)
             .then(res => {
                 setCourseList(res.data)
                 console.log(res.data)
             })
             .catch(err => console.log(err))
-    }, [domainId])
+    }, [props.domainid])
 
     return (
         <div className="container-fluid bottom-parent">
-            <hr className="border border-primary"></hr>
+            <hr className="border-primary"></hr>
             <h2 className="text-center">Related Courses</h2>
-            <hr className="border border-primary"></hr>
+            <hr className="border-primary"></hr>
             <div className="row justify-content-center">
                 {
                     courseList.map((course, index) =>
@@ -32,7 +30,7 @@ const RelatedCourses = (props) => {
                             for='course' description={course.course_description}
                             image={course.course_photo}
                             cardId={course._id}
-                            buttonText={"view course"} />
+                            buttonText={"View course"} />
                     )
                 }
             </div>

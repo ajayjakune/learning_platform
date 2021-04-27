@@ -31,6 +31,7 @@ const CourseContent = (props) => {
                     })
                     .catch(err => console.log(err))
             }).catch(e => console.log(e))
+            window.scrollTo(0, 0);
     }, [courseId])
 
     const handleEnrollment = () => {
