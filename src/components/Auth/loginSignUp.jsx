@@ -14,7 +14,7 @@ class LoginSignUp extends Component {
         };
     }
 
-    handleChecked = (e) => {
+    handleChecked = () => {
         if (this.state.checked === true) {
             this.setState({ ...this.state, checked: false });
         } else {
@@ -70,146 +70,140 @@ class LoginSignUp extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <div class='row'>
-                    <div class='col-md-6 mx-auto p-0'>
-                        <div class='card'>
-                            <div class='login-box'>
-                                <div class='login-snip'>
-                                    <input
-                                        id='tab-1'
-                                        type='radio'
-                                        name='tab'
-                                        class='sign-in'
-                                        checked={this.state.checked}
-                                    />
-                                    <label for='tab-1' class='tab'>
-                                        Login
-                                    </label>
-                                    <input
-                                        id='tab-2'
-                                        type='radio'
-                                        name='tab'
-                                        class='sign-up'
-                                        onClick={this.handleChecked.bind(this)}
-                                    />
-                                    <label for='tab-2' class='tab'>
-                                        Sign Up
-                                    </label>
-                                    <div class='login-space'>
-                                        <div class='login'>
-                                            <form onSubmit={this.handleSignInSubmit.bind(this)}>
-                                                <div class='group'>
-                                                    <label for='user' class='label'>
-                                                        Username
-                                                    </label>
-                                                    <input
-                                                        type='text'
-                                                        class='input'
-                                                        placeholder='Enter email address'
-                                                        name='email'
-                                                        value={this.state.email}
-                                                        onChange={this.handleInputChange.bind(this)}
-                                                    />
-                                                </div>
-                                                <div class='group'>
-                                                    <label for='pass' class='label'>
-                                                        Password
-                                                    </label>
-                                                    <input
-                                                        type='password'
-                                                        class='input'
-                                                        data-type='password'
-                                                        placeholder='Enter password'
-                                                        name='password'
-                                                        value={this.state.password}
-                                                        onChange={this.handleInputChange.bind(this)}
-                                                    />
-                                                </div>
-                                                <div class='group'>
-                                                    <input type='submit' class='button' value='Sign In' />
-                                                </div>
-                                                <div class='hr'></div>
-                                            </form>
-                                        </div>
+            <>
+                <div className='mt-5'>
+                    <div className='col-md-6 mx-auto p-0'>
+                        <div className='login-box'>
+                            <div className='login-snip'>
+                                <input
+                                    id='tab-1'
+                                    type='radio'
+                                    name='tab'
+                                    className='sign-in'
+                                    checked={this.state.checked}
+                                    onClick={this.handleChecked.bind(this)}
+                                />
+                                <label for='tab-1' className='tab'>
+                                    Login
+                                </label>
+                                <input
+                                    id='tab-2'
+                                    type='radio'
+                                    name='tab'
+                                    className='sign-up'
+                                    onClick={this.handleChecked.bind(this)}
+                                />
+                                <label for='tab-2' className='tab'>
+                                    Sign Up
+                                </label>
+                                <div className='login-space'>
+                                    <div className='login'>
+                                        <form onSubmit={this.handleSignInSubmit.bind(this)}>
+                                            <div className='group'>
+                                                <label for='user' className='label'>
+                                                    Username
+                                                </label>
+                                                <input
+                                                    type='text'
+                                                    className='input'
+                                                    placeholder='Enter email address'
+                                                    name='email'
+                                                    value={this.state.email}
+                                                    onChange={this.handleInputChange.bind(this)}
+                                                />
+                                            </div>
+                                            <div className='group'>
+                                                <label for='pass' className='label'>
+                                                    Password
+                                                </label>
+                                                <input
+                                                    type='password'
+                                                    className='input'
+                                                    data-type='password'
+                                                    placeholder='Enter password'
+                                                    name='password'
+                                                    value={this.state.password}
+                                                    onChange={this.handleInputChange.bind(this)}
+                                                />
+                                            </div>
+                                            <div className='group'>
+                                                <input type='submit' className='button' value='Sign In' />
+                                            </div>
+                                            <div className='hr'></div>
+                                        </form>
+                                    </div>
 
-                                        <div class='sign-up-form'>
-                                            <form onSubmit={this.handleSignUpSubmit.bind(this)}>
-                                                <div class='group'>
-                                                    <label for='user' class='label'>
-                                                        First Name
-                                                    </label>
-                                                    <input
-                                                        type='text'
-                                                        class='input'
-                                                        placeholder='Enter first name'
-                                                        name='firstName'
-                                                        value={this.state.firstName}
-                                                        onChange={this.handleInputChange.bind(this)}
-                                                    />
-                                                </div>
-                                                <div class='group'>
-                                                    <label for='user' class='label'>
-                                                        Last Name
-                                                    </label>
-                                                    <input
-                                                        type='text'
-                                                        class='input'
-                                                        placeholder='Enter last name'
-                                                        name='lastName'
-                                                        value={this.state.lastName}
-                                                        onChange={this.handleInputChange.bind(this)}
-                                                    />
-                                                </div>
-                                                <div class='group'>
-                                                    <label for='user' class='label'>
-                                                        Email Address
-                                                    </label>
-                                                    <input
-                                                        type='text'
-                                                        class='input'
-                                                        placeholder='Enter email address'
-                                                        name='email'
-                                                        value={this.state.email}
-                                                        onChange={this.handleInputChange.bind(this)}
-                                                    />
-                                                </div>
-                                                <div class='group'>
-                                                    <label for='pass' class='label'>
-                                                        Password
-                                                    </label>
-                                                    <input
-                                                        type='password'
-                                                        class='input'
-                                                        data-type='password'
-                                                        placeholder='Create your password'
-                                                        name='password'
-                                                        value={this.state.password}
-                                                        onChange={this.handleInputChange.bind(this)}
-                                                    />
-                                                </div>
-                                                <div class='group'>
-                                                    <input
-                                                        type='submit'
-                                                        class='button'
-                                                        value='Sign Up'
-                                                        onClick={this.handleChecked.bind(this)}
-                                                    />
-                                                </div>
-                                                <div class='hr'></div>
-                                                <div class='foot'>
-                                                    {' '}
-                                                    <label for='tab-1'>Already Member?</label>{' '}
-                                                </div>
-                                            </form>
-                                        </div>
+                                    <div className='sign-up-form'>
+                                        <form onSubmit={this.handleSignUpSubmit.bind(this)}>
+                                            <div className='group'>
+                                                <label for='user' className='label'>
+                                                    First Name
+                                                </label>
+                                                <input
+                                                    type='text'
+                                                    className='input'
+                                                    placeholder='Enter first name'
+                                                    name='firstName'
+                                                    value={this.state.firstName}
+                                                    onChange={this.handleInputChange.bind(this)}
+                                                />
+                                            </div>
+                                            <div className='group'>
+                                                <label for='user' className='label'>
+                                                    Last Name
+                                                </label>
+                                                <input
+                                                    type='text'
+                                                    className='input'
+                                                    placeholder='Enter last name'
+                                                    name='lastName'
+                                                    value={this.state.lastName}
+                                                    onChange={this.handleInputChange.bind(this)}
+                                                />
+                                            </div>
+                                            <div className='group'>
+                                                <label for='user' className='label'>
+                                                    Email Address
+                                                </label>
+                                                <input
+                                                    type='text'
+                                                    className='input'
+                                                    placeholder='Enter email address'
+                                                    name='email'
+                                                    value={this.state.email}
+                                                    onChange={this.handleInputChange.bind(this)}
+                                                />
+                                            </div>
+                                            <div className='group'>
+                                                <label for='pass' className='label'>
+                                                    Password
+                                                </label>
+                                                <input
+                                                    type='password'
+                                                    className='input'
+                                                    data-type='password'
+                                                    placeholder='Create your password'
+                                                    name='password'
+                                                    value={this.state.password}
+                                                    onChange={this.handleInputChange.bind(this)}
+                                                />
+                                            </div>
+                                            <div className='group'>
+                                                <input
+                                                    type='submit'
+                                                    className='button'
+                                                    value='Sign Up'
+                                                    onClick={this.handleChecked.bind(this)}
+                                                />
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 }
