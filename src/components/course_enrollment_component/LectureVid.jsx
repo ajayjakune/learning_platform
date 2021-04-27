@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, ResponsiveEmbed, Card, Tab, Tabs, Form, Button, Modal } from 'react-bootstrap';
+import { Container, Row, ResponsiveEmbed, Card, Tab, Tabs, Modal } from 'react-bootstrap';
 import { AiOutlineLink } from "react-icons/ai";
 import { useForm, ValidationError } from '@formspree/react';
 
