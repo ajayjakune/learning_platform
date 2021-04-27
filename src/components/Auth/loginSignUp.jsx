@@ -86,7 +86,7 @@ class LoginSignUp extends Component {
         };
 
         Axios.post(url, user)
-            .then((res) => { })
+            .then((res) => { alert("user successfully created") })
             .catch((e) => {
                 alert('user already exist');
             });

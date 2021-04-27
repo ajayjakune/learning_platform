@@ -1,8 +1,13 @@
 .about-align {
-  margin-top: 10%;
+  margin-top: 30px;
 }
 
 .total {
   width: 50%;
   margin-left: 15%;
+  margin-top: 30px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
