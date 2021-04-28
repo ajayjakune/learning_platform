@@ -3,20 +3,24 @@ import { Button, Card, Accordion, Nav, Navbar } from 'react-bootstrap';
 import './courseEnroll.css';
 import { GiBookPile } from 'react-icons/gi'
 import { MdVideoLibrary } from 'react-icons/md';
+import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 
 const SideNav = function (props) {
-
-    function handleLecture(event, link, resources) {
+    console.log("Open Quiz :" + props.openQuiz)
+    function handleLecture(event, link, resources, lectureId) {
         event.preventDefault();
         const { lectureCallback } = props;
-        lectureCallback(link, resources);
+        lectureCallback(link, resources, lectureId);
     }
     function handleQuiz(event) {
         event.preventDefault();
-        const { quizCallback } = props;
-        quizCallback("quiz");
+        if (props.openQuiz) {
+            const { quizCallback } = props;
+            quizCallback("quiz");
+        }
     }
+    console.log(props.lectureCompleted);
 
     return (
         <>
@@ -36,7 +40,11 @@ const SideNav = function (props) {
                                     <Accordion.Collapse eventKey={`${index}`}>
                                         <Card.Body>
                                             {chapter.lectures.map((lecture, l_index) => (
-                                                <li key={`${l_index}`} > <Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources)}><MdVideoLibrary />&nbsp;{lecture.title}</Nav.Link></li>
+                                                <li key={`${l_index}`} > <Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources, `c${index}l${l_index}`)}>
+                                                    {props.passStatus || (props.lectureCompleted && props.lectureCompleted.has(`c${index}l${l_index}`))
+                                                        ? <div><MdVideoLibrary />&nbsp;<span>{lecture.title}</span>{' '}<IoCheckmarkDoneCircleSharp style={{ color: 'green', zIndex: 100, fontSize: '21px' }} /> </div>
+                                                        : <div><MdVideoLibrary />&nbsp;{lecture.title}</div>}
+                                                </Nav.Link></li>
                                             ))}
                                         </Card.Body>
                                     </Accordion.Collapse>
