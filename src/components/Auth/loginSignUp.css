@@ -101,6 +101,15 @@ body {
   font-size: 12px;
 }
 
+.background-login{
+  padding: 3%;
+  background-image: url('../../gurukulIcon.png');
+  height: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
 .login-space .group .button {
   background: #1161ee;
 }

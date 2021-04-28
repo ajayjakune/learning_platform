@@ -73,8 +73,8 @@ class LoginSignUp extends Component {
 
     render() {
         return (
-            <>
-                <div className='mt-5'>
+            <div className='background-login'>
+                <div className='mt-3'>
                     <div className='col-md-6 mx-auto p-0'>
                         <div className='login-box'>
                             <div className='login-snip'>
@@ -206,7 +206,7 @@ class LoginSignUp extends Component {
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }
