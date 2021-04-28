@@ -1,0 +1,10 @@
+.dash-container{
+    background-color: aqua;
+    height: 80vh !important;
+    width: 80vw !important;
+}
+
+.dash {
+    display: flex;
+    justify-content: center;
+}
