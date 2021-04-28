@@ -22,7 +22,7 @@ function CompletedCourses() {
             {
                 completedCourses.map( (course, index) => 
                     course.isCompleted === true &&  
-                    <CourseCard key={index} img={course.courseid.course_photo} name={course.courseid.course_name} text={'View Certificate'}/>
+                    <CourseCard key={index} img={course.courseid.course_photo} name={course.courseid.course_name} courseId={course.courseid._id} text={'View Certificate'}/>
                 )
             }
             </div>

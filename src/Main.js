@@ -19,7 +19,6 @@ function Main() {
             <BrowserRouter>
                 <Header />
                 <Switch>
-                    <Route path="/" exact component={Homepage} />
                     <Route path="/homepage" exact component={Homepage} />
                     <Route path="/domain/:id" component={AllCoursesCards} />
                     <Route exact path="/course/:id" component={CourseContent} />

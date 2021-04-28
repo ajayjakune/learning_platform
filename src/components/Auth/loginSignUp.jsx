@@ -48,6 +48,7 @@ class LoginSignUp extends Component {
 
                 // Callback Added for setting the token value in App.js
                 this.props.setToken(data.token);
+                // this.props.history.push('/Homepage');
             });
         });
     };
@@ -82,10 +83,10 @@ class LoginSignUp extends Component {
                                     type='radio'
                                     name='tab'
                                     className='sign-in'
-                                    checked={this.state.checked}
+                                    defaultChecked={this.state.checked}
                                     onClick={this.handleChecked.bind(this)}
                                 />
-                                <label for='tab-1' className='tab'>
+                                <label htmlFor='tab-1' className='tab'>
                                     Login
                                 </label>
                                 <input
@@ -95,14 +96,14 @@ class LoginSignUp extends Component {
                                     className='sign-up'
                                     onClick={this.handleChecked.bind(this)}
                                 />
-                                <label for='tab-2' className='tab'>
+                                <label htmlFor='tab-2' className='tab'>
                                     Sign Up
                                 </label>
                                 <div className='login-space'>
                                     <div className='login'>
                                         <form onSubmit={this.handleSignInSubmit.bind(this)}>
                                             <div className='group'>
-                                                <label for='user' className='label'>
+                                                <label htmlFor='user' className='label'>
                                                     Username
                                                 </label>
                                                 <input
@@ -115,7 +116,7 @@ class LoginSignUp extends Component {
                                                 />
                                             </div>
                                             <div className='group'>
-                                                <label for='pass' className='label'>
+                                                <label htmlFor='pass' className='label'>
                                                     Password
                                                 </label>
                                                 <input
@@ -138,7 +139,7 @@ class LoginSignUp extends Component {
                                     <div className='sign-up-form'>
                                         <form onSubmit={this.handleSignUpSubmit.bind(this)}>
                                             <div className='group'>
-                                                <label for='user' className='label'>
+                                                <label htmlFor='user' className='label'>
                                                     First Name
                                                 </label>
                                                 <input
@@ -151,7 +152,7 @@ class LoginSignUp extends Component {
                                                 />
                                             </div>
                                             <div className='group'>
-                                                <label for='user' className='label'>
+                                                <label htmlFor='user' className='label'>
                                                     Last Name
                                                 </label>
                                                 <input
@@ -164,7 +165,7 @@ class LoginSignUp extends Component {
                                                 />
                                             </div>
                                             <div className='group'>
-                                                <label for='user' className='label'>
+                                                <label htmlFor='user' className='label'>
                                                     Email Address
                                                 </label>
                                                 <input
@@ -177,7 +178,7 @@ class LoginSignUp extends Component {
                                                 />
                                             </div>
                                             <div className='group'>
-                                                <label for='pass' className='label'>
+                                                <label htmlFor='pass' className='label'>
                                                     Password
                                                 </label>
                                                 <input

@@ -1,13 +1,18 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import './courseEnroll.css';
 import { PDFViewer, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import pic from './img/persistent_logo.png';
 import { Container } from 'react-bootstrap';
+import axios from 'axios';
 
 const Certificate = (props) => {
-    // const courseId = props.match.params.id;
     const name = localStorage.getItem('username');
-    const courseName = "React Js";
+    const [courseName, setCourseName] = useState('')
+    useEffect(()=> {
+        axios.get(`http://localhost:5000/course/${props.match.params.id}`)
+        .then(res => setCourseName(res.data.course_name))
+        .catch( err => console.log(err))
+    },[props.match.params.id])
     const styles = StyleSheet.create({
         header: {
             width: '30%',
@@ -49,7 +54,7 @@ const Certificate = (props) => {
     });
     return (
         <Container className='p-2' style={{ height: "100vh" }}>
-            <PDFViewer width="100%" height="600" >
+            <PDFViewer width="100%" height="700" >
                 <Document>
                     <Page size="A4" orientation="landscape" style={styles.page}>
                         <View style={styles.outerBorder}>

@@ -5,7 +5,7 @@ import axios from 'axios';
 import './Header.css'
 import SearchCourse from './SearchCourse';
 
-function Header() {   
+function Header(props) {   
     const [searchText, setSearchText] = useState('');
     const [searchResult, setSearchResult] = useState([]);
 
@@ -76,7 +76,7 @@ function Header() {
               <NavDropdown.Item as={Link} to="/ongoing-courses">Ongoing Courses</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/completed-courses">Completed Courses</NavDropdown.Item>
               <NavDropdown.Divider/>
-              <NavDropdown.Item as={Link} to="/auth" onClick={() => localStorage.clear()}>Sign Out</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => {localStorage.clear(); window.location = '/'}}>Sign Out</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
