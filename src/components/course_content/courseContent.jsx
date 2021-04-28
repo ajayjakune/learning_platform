@@ -24,7 +24,6 @@ const CourseContent = (props) => {
                 axios.get(`http://localhost:5000/course/${courseId}`)
                     .then(res => {
                         setCourseData(res.data)
-                        console.log(res.data)
                         axios.get(`http://localhost:5000/syllabus/${courseId}`)
                             .then(res1 => setSyllabus(res1.data.syllabus))
                             .catch(err => console.log(err))

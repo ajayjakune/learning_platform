@@ -17,8 +17,6 @@ const Body = (props) => {
     const [questions, setQuestions] = useState([]);
     const [score, setScore] = useState(0);
     const [passStatus, setPassStatus] = useState(false);
-    const [lectureCompleted, setLectureCompleted] = useState(new Set(['c0l0']))
-    const [totalLecture, setTotalLecture] = useState(0)
 
     useEffect(() => {
         axios.get(`http://localhost:5000/syllabus/${courseId}`)
@@ -27,13 +25,6 @@ const Body = (props) => {
                 setCurrentLink(res.data.syllabus[0].lectures[0].link);
                 setResources(res.data.syllabus[0].lectures[0].resources);
                 setCourseName(res.data.course.course_name);
-                return res.data.syllabus;
-            }).then(res => {
-                let sum = 0;
-                for (let chapter of res) {
-                    sum += chapter.lectures.length;
-                }
-                setTotalLecture(sum);
             })
             .catch(err => console.log(err))
 
@@ -53,7 +44,6 @@ const Body = (props) => {
     function handleLecture(link, newResources, lectureId) {
         setCurrentLink(link);
         setResources(newResources);
-        setLectureCompleted(lectureCompleted.add(lectureId));
         setQuiz(false);
     }
     function handleQuiz() {
@@ -71,7 +61,7 @@ const Body = (props) => {
                 <Container className="container-main">
                     <Row>
                         <Col className="sidebar-main" style={{ padding: 0 }}>
-                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName} passStatus={passStatus} openQuiz={passStatus || (lectureCompleted.size === totalLecture)} lectureCompleted={lectureCompleted} />
+                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName} courseId={courseId} />
                         </Col>
                         <Col md={9} >
                             {

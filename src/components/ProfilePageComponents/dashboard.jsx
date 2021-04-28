@@ -51,8 +51,7 @@ const RenderDashBoard = (props) => {
                 loader={'Loading Chart'}
                 data={[
                   ["Course", "No. of Courses"],
-                  ["Web Dev", 2],
-                  ["AI", 2],
+                  ...props.chartData
                 ]}
                 options={{
                   title: "Domain Wise Insights",
@@ -86,6 +85,7 @@ const RenderDashBoard = (props) => {
 function DashBoard() {
   const [userData, setUserDate] = useState({});
   const [pendingAssignments, setPendingAssignments] = useState([])
+  const [chartData, setChartData] = useState([])
 
   useEffect(() => {
       axios
@@ -101,14 +101,14 @@ function DashBoard() {
       .then((res) => setPendingAssignments(res.data))
       .catch((err) => console.log(err))
 
-      // axios.get(`http://localhost:5000/profileChart`,{headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
-      // .then((res) => console.log(res.data))
-      // .catch((err) => console.log(err))
+      axios.get(`http://localhost:5000/profileChart`,{headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
+      .then((res) => setChartData(Object.entries(res.data)))
+      .catch((err) => console.log(err))
   }, []);
   
 
   return <div className="container">{
-    <RenderDashBoard userData={userData} assignments={pendingAssignments}/>
+    <RenderDashBoard userData={userData} assignments={pendingAssignments} chartData={chartData}/>
     }</div>;
 }
 

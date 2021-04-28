@@ -11,6 +11,7 @@ import CompletedCourses from './components/ProfilePageComponents/CompletedCourse
 import ChatBotButton from './components/ChatbotComponents/chatbotButton'
 import Body from './components/course_enrollment_component/body'
 import Certificate from './components/course_enrollment_component/Certificate';
+import Insights from './components/DashBoard/insights';
 
 
 function Main() {
@@ -28,6 +29,8 @@ function Main() {
                     <Route path="/user-dashboard" component={DashBoard} />
                     <Route path="/ongoing-courses" component={OngoingCourses} />
                     <Route path="/completed-courses" component={CompletedCourses} />
+                    <Route path="/insights" component={Insights} />
+
                 </Switch>
                 <ChatBotButton />
                 <Footer />

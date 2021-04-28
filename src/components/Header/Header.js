@@ -40,6 +40,7 @@ function Header(props) {
         <Nav className="mr-auto">
         <Nav.Link as={Link} to='/homepage'>Home</Nav.Link>
         <Nav.Link as={Link} to='/insights'>Insights</Nav.Link>
+        <Nav.Link as={Link} to='/about-us'>About Us</Nav.Link>
             <Form inline>
               <FormControl 
                 type="text" 

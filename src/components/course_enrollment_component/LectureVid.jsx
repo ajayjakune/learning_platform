@@ -57,7 +57,7 @@ function LectureVid(props) {
                                                         <p>We will try to reach you as soon as possible</p>
                                                     </Modal.Body>
                                                 </Modal>
-                                                : console.log(state.succeeded)
+                                                : null
                                         }
                                     </form>
 

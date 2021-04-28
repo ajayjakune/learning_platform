@@ -12,7 +12,6 @@ const RelatedCourses = (props) => {
         axios.get(`http://localhost:5000/${props.domainid}/courses`)
             .then(res => {
                 setCourseList(res.data)
-                console.log(res.data)
             })
             .catch(err => console.log(err))
     }, [props.domainid])

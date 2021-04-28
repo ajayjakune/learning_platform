@@ -1,24 +1,45 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Button, Card, Accordion, Nav, Navbar } from 'react-bootstrap';
 import './courseEnroll.css';
 import { GiBookPile } from 'react-icons/gi'
 import { MdVideoLibrary } from 'react-icons/md';
 import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
+import axios from 'axios';
 
-const SideNav = function (props) {
-    function handleLecture(event, link, resources, lectureId) {
+const  SideNav = function (props) {
+
+    const [topicStatus, setTopicStatus] = useState(null)
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/checkTopicStatus/${props.courseId}`,
+        {headers:{ Authorization: `Bearer ${localStorage.getItem('jwt')}`}})
+        .then( res => {
+            res.data.courseTopics[0][0].isCompleted = true;
+            setTopicStatus(res.data.courseTopics)
+            console.log(res.data.courseTopics)
+        })
+        .catch( err => console.log(err))
+    }, [props.courseId])
+
+    function handleLecture(event,link, resources, c_index, l_index) {
         event.preventDefault();
         const { lectureCallback } = props;
-        lectureCallback(link, resources, lectureId);
+        lectureCallback(link, resources);
+        axios.put(`http://localhost:5000/updateTopicStatus/${props.courseId}`,
+        {chapterIndex:c_index, topicIndex:l_index},
+        {headers:{'Authorization' : `Bearer ${localStorage.getItem('jwt')}`}})
+        .then(() => topicStatus[c_index][l_index].isCompleted = true)
+        .catch(err => console.log(err))
     }
+    
     function handleQuiz(event) {
         event.preventDefault();
-        if (props.openQuiz) {
-            const { quizCallback } = props;
-            quizCallback("quiz");
+        let ans = topicStatus.flat().filter(obj => obj.isCompleted === false)
+        if (ans.length > 0) {
+            alert('Please complete the Course Learnings and then try for the Quiz.')
         }
         else{
-            alert('Please complete the Course Learnings and then try for the Quiz.')
+            props.quizCallback();
         }
     }
 
@@ -40,9 +61,10 @@ const SideNav = function (props) {
                                     <Accordion.Collapse eventKey={`${index}`}>
                                         <Card.Body>
                                             {chapter.lectures.map((lecture, l_index) => (
-                                                <li key={`${l_index}`} > <Nav.Link onClick={(event) => handleLecture(event, lecture.link, lecture.resources, `c${index}l${l_index}`)}>
-                                                    {props.passStatus || (props.lectureCompleted && props.lectureCompleted.has(`c${index}l${l_index}`))
-                                                        ? <div><MdVideoLibrary />&nbsp;<span>{lecture.title}</span>{' '}<IoCheckmarkDoneCircleSharp style={{ color: 'green', zIndex: 100, fontSize: '21px' }} /> </div>
+                                                <li key={`${l_index}`} > 
+                                                <Nav.Link onClick={(event) => handleLecture(event,lecture.link, lecture.resources, index, l_index)}>
+                                                    { topicStatus && topicStatus[index][l_index].isCompleted ?
+                                                        <div><MdVideoLibrary />&nbsp;<span>{lecture.title}</span>{' '}<IoCheckmarkDoneCircleSharp style={{ color: 'green', zIndex: 100, fontSize: '21px' }} /> </div>
                                                         : <div><MdVideoLibrary />&nbsp;{lecture.title}</div>}
                                                 </Nav.Link></li>
                                             ))}
