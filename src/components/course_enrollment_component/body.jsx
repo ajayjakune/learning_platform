@@ -17,6 +17,8 @@ const Body = (props) => {
     const [questions, setQuestions] = useState([]);
     const [score, setScore] = useState(0);
     const [passStatus, setPassStatus] = useState(false);
+    const [lectureCompleted, setLectureCompleted] = useState(new Set(['c0l0']))
+    const [totalLecture, setTotalLecture] = useState(0)
 
     useEffect(() => {
         axios.get(`http://localhost:5000/syllabus/${courseId}`)
@@ -24,7 +26,14 @@ const Body = (props) => {
                 setSyllabus(res.data.syllabus);
                 setCurrentLink(res.data.syllabus[0].lectures[0].link);
                 setResources(res.data.syllabus[0].lectures[0].resources);
-                setCourseName(res.data.course.course_name)
+                setCourseName(res.data.course.course_name);
+                return res.data.syllabus;
+            }).then(res => {
+                let sum = 0;
+                for (let chapter of res) {
+                    sum += chapter.lectures.length;
+                }
+                setTotalLecture(sum);
             })
             .catch(err => console.log(err))
 
@@ -41,9 +50,10 @@ const Body = (props) => {
             .catch(err => console.log(err))
     }, [courseId]);
 
-    function handleLecture(link, resources1) {
+    function handleLecture(link, newResources, lectureId) {
         setCurrentLink(link);
-        setResources(resources1);
+        setResources(newResources);
+        setLectureCompleted(lectureCompleted.add(lectureId));
         setQuiz(false);
     }
     function handleQuiz() {
@@ -61,12 +71,12 @@ const Body = (props) => {
                 <Container className="container-main">
                     <Row>
                         <Col className="sidebar-main" style={{ padding: 0 }}>
-                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName} />
+                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName} passStatus={passStatus} openQuiz={passStatus || (lectureCompleted.size === totalLecture)} lectureCompleted={lectureCompleted} />
                         </Col>
                         <Col md={9} >
                             {
                                 quiz ?
-                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} />
+                                    <Quiz questions={questions} courseId={courseId} score={score} passStatus={passStatus} updateScore={scoreUpdater} />
                                     :
                                     <LectureVid resources={resources} link={currentLink} />
                             }

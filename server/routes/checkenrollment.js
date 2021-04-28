@@ -24,4 +24,11 @@ router.post("/checkenrollment", requireLogin, (req, res) => {
       });
     });
 });
+
+
+router.get('/checkCompleted/:id', requireLogin, (req, res) => {
+  const courseid = req.params.id;
+  const userid = req.user._id;
+  CourseEnrollment.findOne({userid, courseid}).populate('courseid','course_name').select('isCompleted').then( data => res.json(data)).catch( err => console.log(err));
+})
 module.exports = router;

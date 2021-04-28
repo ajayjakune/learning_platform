@@ -3,14 +3,18 @@ import './courseEnroll.css';
 import { PDFViewer, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import pic from './img/persistent_logo.png';
 import { Container } from 'react-bootstrap';
+import PageNotFound from '../PageNotFound/pageNotFound'
 import axios from 'axios';
 
 const Certificate = (props) => {
     const name = localStorage.getItem('username');
     const [courseName, setCourseName] = useState('')
+    const [isCompleted, setIsCompleted] = useState(false)
     useEffect(()=> {
-        axios.get(`http://localhost:5000/course/${props.match.params.id}`)
-        .then(res => setCourseName(res.data.course_name))
+        axios.get(`http://localhost:5000/checkCompleted/${props.match.params.id}`,{ headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
+        .then(res => {
+            setIsCompleted(res.data.isCompleted)
+            setCourseName(res.data.courseid.course_name)})
         .catch( err => console.log(err))
     },[props.match.params.id])
     const styles = StyleSheet.create({
@@ -53,6 +57,9 @@ const Certificate = (props) => {
         }
     });
     return (
+        <>
+        {
+        isCompleted ? (
         <Container className='p-2' style={{ height: "100vh" }}>
             <PDFViewer width="100%" height="700" >
                 <Document>
@@ -74,7 +81,9 @@ const Certificate = (props) => {
                     </Page>
                 </Document >
             </PDFViewer>
-        </Container>
-    )
+        </Container>)
+        : <PageNotFound/>
+    }
+    </>)
 }
 export default Certificate;
