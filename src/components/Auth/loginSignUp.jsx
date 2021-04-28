@@ -83,7 +83,7 @@ class LoginSignUp extends Component {
                                     type='radio'
                                     name='tab'
                                     className='sign-in'
-                                    defaultChecked={this.state.checked}
+                                    checked={this.state.checked}
                                     onClick={this.handleChecked.bind(this)}
                                 />
                                 <label htmlFor='tab-1' className='tab'>

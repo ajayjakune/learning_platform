@@ -1,6 +1,7 @@
 .result-component{
     position: absolute;
     top: 3.3rem;
+    left:20rem;
     background-color: white;
     border-radius: 5px;
     z-index: 2;
@@ -19,7 +20,8 @@
 
 @media screen and (max-width: 991px) {
     .result-component {
-      top: 6rem;
+      top: 11rem;
+      left: 1rem;
     }
 }
 

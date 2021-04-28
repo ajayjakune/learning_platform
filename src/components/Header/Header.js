@@ -23,7 +23,7 @@ function Header(props) {
     const handleResultClick = () => setSearchText('')
 
     return (
-      <Navbar collapseOnSelect expand="lg" variant="dark" bg="dark" className="justify-content-between" sticky="top">
+      <Navbar collapseOnSelect expand="lg" variant="dark" bg="dark"  sticky="top">
         <Link to="/homepage">
         <Navbar.Brand>  
             <img
@@ -38,6 +38,8 @@ function Header(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
+        <Nav.Link as={Link} to='/homepage'>Home</Nav.Link>
+        <Nav.Link as={Link} to='/insights'>Insights</Nav.Link>
             <Form inline>
               <FormControl 
                 type="text" 
