@@ -76,7 +76,7 @@ const Body = (props) => {
                         <Col md={9} >
                             {
                                 quiz ?
-                                    <Quiz questions={questions} courseId={courseId} score={score} show_score={passStatus} updateScore={scoreUpdater} />
+                                    <Quiz questions={questions} courseId={courseId} score={score} passStatus={passStatus} updateScore={scoreUpdater} />
                                     :
                                     <LectureVid resources={resources} link={currentLink} />
                             }

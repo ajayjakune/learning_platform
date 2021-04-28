@@ -3,11 +3,9 @@ import { Button, Card, Accordion, Nav, Navbar } from 'react-bootstrap';
 import './courseEnroll.css';
 import { GiBookPile } from 'react-icons/gi'
 import { MdVideoLibrary } from 'react-icons/md';
-import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
 
 const SideNav = function (props) {
-    console.log("Open Quiz :" + props.openQuiz)
     function handleLecture(event, link, resources, lectureId) {
         event.preventDefault();
         const { lectureCallback } = props;
@@ -20,7 +18,6 @@ const SideNav = function (props) {
             quizCallback("quiz");
         }
     }
-    console.log(props.lectureCompleted);
 
     return (
         <>
@@ -51,7 +48,7 @@ const SideNav = function (props) {
                                 </Card>)
                             )}
                         </Accordion>
-                        <Button as={Link} to="#quiz" onClick={handleQuiz} className="mt-2 justify-content-between" variant="dark" size="lg">< GiBookPile />&nbsp;Quiz</Button>
+                        <Button onClick={handleQuiz} className="mt-2 justify-content-between" variant="dark" size="lg">< GiBookPile />&nbsp;Quiz</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

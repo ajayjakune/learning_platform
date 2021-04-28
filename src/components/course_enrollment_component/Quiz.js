@@ -3,12 +3,17 @@ import { Button } from 'react-bootstrap';
 import QuizResultComponent from './QuizResult';
 
 export default function Quiz(props) {
+	const var_score = props.score;
+	const var_showScore = props.passStatus;
+	const var_toggle = props.passStatus;
+	const var_result = props.passStatus;
+
 	const questions = props.questions;
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showScore, setShowScore] = useState(props.show_score);
-	const [score, setScore] = useState(props.score);
-	const [toggle, setToggle] = useState(props.show_score);
-	const [result, setResult] = useState(props.show_score);
+	const [showScore, setShowScore] = useState(var_showScore);
+	const [score, setScore] = useState(var_score);
+	const [toggle, setToggle] = useState(var_toggle);
+	const [result, setResult] = useState(var_result);
 
 	const handleAnswerOptionClick = (answer) => {
 		if (questions[currentQuestion].correct_answer === answer) {
@@ -47,6 +52,14 @@ export default function Quiz(props) {
 
 	};
 
+	function reattemptQuiz() {
+		setShowScore(false);
+		setCurrentQuestion(0);
+		setScore(0);
+		setToggle(false);
+		setResult(false);
+	}
+
 	/*
 	  	
 		  dataFromResponse[0].questions structure:- Array of questions
@@ -68,7 +81,7 @@ export default function Quiz(props) {
 						<Button variant="primary" onClick={checkScoreHandler}>Check your score</Button>
 						<div>
 							{toggle === true
-								? <QuizResultComponent res={result} score={score} quesLength={questions.length} feedback={!props.show_score} courseId={props.courseId} courseName={props.courseName} />
+								? <QuizResultComponent res={result} score={score} quesLength={questions.length} courseId={props.courseId} reattemptQuiz={reattemptQuiz} />
 								: null
 							}
 						</div>

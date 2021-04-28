@@ -1,9 +1,9 @@
 import React from 'react';
-import { Nav } from 'react-bootstrap';
+import { Nav, Button, Container } from 'react-bootstrap';
 
 const QuizResultComponent = props => {
     return (
-        <div>
+        <Container>
             { props.res === true
                 ? <div className="result-div mt-4">
                     <p className="mt-2">Hooray! You have scored <strong>{props.score}</strong></p>
@@ -16,10 +16,11 @@ const QuizResultComponent = props => {
                 : <div className="result-div mt-4">
                     <p className="mt-2">Oops! You have scored <strong>{props.score}</strong></p>
                     <p style={{ fontSize: "20px" }}>Required grades - <strong>{Math.ceil(props.quesLength / 2)}</strong>/{props.quesLength}</p>
-                    <span className="quiz-badge fail">&nbsp;Fail&nbsp;</span>
+                    <span className="quiz-badge fail">&nbsp;Fail&nbsp;</span><br /><br />
+                    <Button className="mt-4 w-50 btn-success" style={{ borderRadius: '20px' }} onClick={props.reattemptQuiz}>Retry</Button>
                 </div>
             }
-        </div>
+        </Container>
     )
 }
 
