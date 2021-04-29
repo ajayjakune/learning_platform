@@ -84,7 +84,7 @@ class LoginSignUp extends Component {
                                     name='tab'
                                     className='sign-in'
                                     checked={this.state.checked}
-                                    onClick={this.handleChecked.bind(this)}
+                                    onChange={this.handleChecked.bind(this)}
                                 />
                                 <label htmlFor='tab-1' className='tab'>
                                     Login

@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<DocumentFragment>
+  <div
+    class="background-login"
+  >
+    <div
+      class="mt-3"
+    >
+      <div
+        class="col-md-6 mx-auto p-0"
+      >
+        <div
+          class="login-box"
+        >
+          <div
+            class="login-snip"
+          >
+            <input
+              checked=""
+              class="sign-in"
+              id="tab-1"
+              name="tab"
+              type="radio"
+            />
+            <label
+              class="tab"
+              for="tab-1"
+            >
+              Login
+            </label>
+            <input
+              class="sign-up"
+              id="tab-2"
+              name="tab"
+              type="radio"
+            />
+            <label
+              class="tab"
+              for="tab-2"
+            >
+              Sign Up
+            </label>
+            <div
+              class="login-space"
+            >
+              <div
+                class="login"
+              >
+                <form>
+                  <div
+                    class="group"
+                  >
+                    <label
+                      class="label"
+                      for="user"
+                    >
+                      Username
+                    </label>
+                    <input
+                      class="input"
+                      name="email"
+                      placeholder="Enter email address"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="group"
+                  >
+                    <label
+                      class="label"
+                      for="pass"
+                    >
+                      Password
+                    </label>
+                    <input
+                      class="input"
+                      data-type="password"
+                      name="password"
+                      placeholder="Enter password"
+                      type="password"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="group"
+                  >
+                    <input
+                      class="button"
+                      type="submit"
+                      value="Sign In"
+                    />
+                  </div>
+                  <div
+                    class="hr"
+                  />
+                </form>
+              </div>
+              <div
+                class="sign-up-form"
+              >
+                <form>
+                  <div
+                    class="group"
+                  >
+                    <label
+                      class="label"
+                      for="user"
+                    >
+                      First Name
+                    </label>
+                    <input
+                      class="input"
+                      name="firstName"
+                      placeholder="Enter first name"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="group"
+                  >
+                    <label
+                      class="label"
+                      for="user"
+                    >
+                      Last Name
+                    </label>
+                    <input
+                      class="input"
+                      name="lastName"
+                      placeholder="Enter last name"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="group"
+                  >
+                    <label
+                      class="label"
+                      for="user"
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      class="input"
+                      name="email"
+                      placeholder="Enter email address"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="group"
+                  >
+                    <label
+                      class="label"
+                      for="pass"
+                    >
+                      Password
+                    </label>
+                    <input
+                      class="input"
+                      data-type="password"
+                      name="password"
+                      placeholder="Create your password"
+                      type="password"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="group"
+                  >
+                    <input
+                      class="button"
+                      type="submit"
+                      value="Sign Up"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -29,7 +29,6 @@ test("SingleCard matches the snapshot", () => {
         </BrowserRouter>
         </>).toJSON()
 
-    console.log(tree)
     expect(tree).toMatchSnapshot()
 
 })
