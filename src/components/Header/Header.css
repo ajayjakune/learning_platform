@@ -1,7 +1,7 @@
 .result-component{
     position: absolute;
     top: 3.3rem;
-    left:20rem;
+    left:25rem;
     background-color: white;
     border-radius: 5px;
     z-index: 2;
@@ -13,7 +13,6 @@
 }
 
 .result-course:hover{
-    /* background-color: beige; */
     cursor: pointer;
     background: #02AAB0;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
@@ -30,7 +29,7 @@
 
 @media screen and (max-width: 991px) {
     .result-component {
-      top: 11rem;
+      top: 14rem;
       left: 1rem;
     }
 }
