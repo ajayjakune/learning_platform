@@ -25,7 +25,7 @@ router.get('/:id/courses', (req,res) => {
 
 router.get('/course/:id', (req, res) => {
     const courseId = req.params.id;
-    Course.findById(courseId).populate('author','-_id author_name').populate('domain','-_id domain_name')
+    Course.findById(courseId).populate('author','-_id author_name').populate('domain','_id domain_name')
     .select('-__v')
     .then( course => res.json(course))
     .catch( err => console.log(err))

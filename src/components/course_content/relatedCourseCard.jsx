@@ -1,25 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import './css/relatedCoursesCard.css'
 
-class RelatedCourseCard extends Component {
-    render() {
-        return (
-            <div className="column">
-                <div className="card card-size">
-                    <iframe className="card-img-top"
-                        src="https://www.youtube.com/embed/QFaFIcGhPoM"
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                    <div className="card-body">
-                        <h5 className="card-title">React JS</h5>
-                        <p className="card-text">Enroll for react js course and make your career grow</p>
-                    </div>
+const RelatedCourseCard = (props) => {
+    return (
+        <div>
+            <div className="card card-size border border-dark" style={{ height: "400px"}}>
+                <img className="card-img-top" src={props.image} alt="course_img" />
+                <div className="card-body row justify-content-center">
+                    <h5 className="card-title text-center">{props.title}</h5>
+                    <p className="card-text text-center" style={{ "overflow": "hidden", "height": "50px" }}>{props.description}</p>
+                    <Link to={`/course/${props.cardId}`} className="btn btn-outline-primary">
+                        {props.buttonText}
+                    </Link>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default RelatedCourseCard;

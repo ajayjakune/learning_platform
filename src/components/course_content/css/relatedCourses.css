@@ -1,14 +1,13 @@
 .bottom-parent {
-  margin-top: 5%;
+  margin-top: 50px;
 }
 
 h2 {
-  padding-bottom: 1%;
-  padding-right: 5%;
-  color: white;
+  padding: 10px;
 }
 
 .full-container {
-  height: 400px;
+  min-height: 450px;
+  height: auto;
   background-color: rgb(250, 140, 140);
 }

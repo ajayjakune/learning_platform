@@ -1,152 +1,115 @@
-import React, { Component } from "react";
-import ProfileImage from "./res/profile.jpg";
+import React,{ useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import Button from "react-bootstrap/Button";
 import SeparatorImage from "./res/separator.png";
 import Chart from "react-google-charts";
 import AssignmentImage from "./res/assignment.png";
 import "./css/dashboard.css";
-import {dashboardData} from "./data/dashboardData.js";
+import axios from "axios";
 
-const renderDashBoard = (profile, index) => {
-    return (
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <Card className="text-center">
-                    <Card.Header>Profile Overview</Card.Header>
-                    <br></br>
-                        <Image
-                            className="profileImage"
-                            src={ProfileImage}
-                            roundedCircle
-                        />
-                        <Card.Body>
-                            <Card.Title>
-                                {profile.userName} | {profile.empCode}
-                            </Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">
-                                {profile.designation}
-                            </Card.Subtitle>
-                            <Card.Subtitle className="mb-2 text-muted">
-                                {profile.location}
-                            </Card.Subtitle>
-                            <Image src={SeparatorImage} fluid />
-                            <Card.Text>
-                                <div className="leftRight">
-                                    <p>Login</p>
-                                    <p>
-                                        Last Login:- {profile.lastLogin}
-                                        <br></br>Platform:- {profile.platform}
-                                    </p>
-                                </div>
 
-                                <div className="leftRight">
-                                    <p>Email</p>
-                                    <p>{profile.email}</p>
-                                </div>
+const RenderDashBoard = (props) => {
+  return (
+    <div className="row">
+      <div className="col-lg-6 col-md-12">
+        <Card className="text-center card-profile">
+          <Card.Header className="card-profile-header">Profile Overview</Card.Header>
+          <br></br>
+          <Image className="profileImage" src={props.userData["profile_photo"]} roundedCircle />
+          <Card.Body className="card-profile-body">
+            <Card.Title>
+              {props.userData["first_name"]} {props.userData["last_name"]}
+            </Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">Intern</Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted">Pune</Card.Subtitle>
+            <Image src={SeparatorImage} fluid />
+            <Card.Text>
+              <div className="leftRight">
+                <p>Last Login</p>
+                <p>{props.userData["last_login"]}</p>
+              </div>
 
-                                {/* This card has supporting text below as a natural
-                        lead-in to additional content.{" "} */}
-                            </Card.Text>
-                            <Image src={SeparatorImage} fluid />
-                            <br></br>
-                            <div>
-                                <Button variant="primary">
-                                    Change Password
-                                </Button>
-                                <Button variant="primary">
-                                    Reset Progress
-                                </Button>
-                            </div>
-                            <div>
-                                <Button variant="primary">
-                                    More Options
-                                </Button>
-                            </div>
-                            <Card.Text>
-                                <small className="text-muted">
-                                    Last updated 3 mins ago
-                                </small>
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </div>
+              <div className="leftRight">
+                <p>Email</p>
+                <p>{props.userData["email"]}</p>
+              </div>
+            </Card.Text>
+            <Image src={SeparatorImage} fluid />
+          </Card.Body>
+        </Card>
+      </div>
 
-                <div class="col-lg-6 col-md-12">
-                    <Card>
-                    <Card.Header>Insights</Card.Header>
-                        <Card.Body>
-                            <Card.Text>
-                                <Chart
-                                    width={"auto"}
-                                    height={"auto"}
-                                    chartType="PieChart"
-                                    loader={<div>Loading Chart</div>}
-                                    data={[
-                                        ["Course", "No. of Learnings"],
-                                        ["React JS", 11],
-                                        ["C/C++", 2],
-                                        ["Python", 2],
-                                        ["DBMS", 2],
-                                        ["Java", 7],
-                                    ]}
-                                    options={{
-                                        title: "Domain Wise Insights",
-                                        // Just add this option
-                                        is3D: true,
-                                    }}
-                                    rootProps={{ "data-testid": "2" }}
-                                />
-                            </Card.Text>
-                            <Card.Text>
-                                <small className="text-muted">
-                                    Last updated 3 mins ago
-                                </small>
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card>
-                    <Card.Header>Upcoming Assignments</Card.Header>
-                        <Card.Body>
-                            <Card.Title>3 Assignments in close due</Card.Title><br></br>
-                            <Card.Text>
-                            <div className="leftRight">
-                                    <p><Image className="iconImage" src={AssignmentImage} fluid />  Assignment 1</p>
-                                    <p>Due:- This Week</p>
-                                </div>
-                                
-                                <div className="leftRight">
-                                    <p><Image className="iconImage" src={AssignmentImage} fluid />  Assignment 2</p>
-                                    <p>Due:- This Week</p>
-                                </div>
+      <div className="col-lg-6 col-md-12">
+        <Card className="card-profile">
+          <Card.Header className="card-profile-header">Insights</Card.Header>
+          <Card.Body className="card-profile-body">
+            <Card.Text>
+              <Chart
+                width={"auto"}
+                height={"auto"}
+                chartType="PieChart"
+                loader={'Loading Chart'}
+                data={[
+                  ["Course", "No. of Courses"],
+                  ...props.chartData
+                ]}
+                options={{
+                  title: "Domain Wise Insights",
+                  is3D: true,
+                }}
+                rootProps={{ "data-testid": "2" }}
+              />
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card className="card-profile">
+          <Card.Header className="card-profile-header">Pending Final Assignments</Card.Header>
+          <Card.Body className="card-profile-body">
+            <Card.Text>
+              { props.assignments.map((course, index) => (
+                  <div key={index} className="leftRight">
+                    <p>
+                      <Image className="iconImage" src={AssignmentImage} fluid /> {course.course.course_name}
+                    </p>
+                  </div>
+              ))
+              }
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
+    </div>
+  );
+};
 
-                                <div className="leftRight">
-                                    <p><Image className="iconImage" src={AssignmentImage} fluid />  Assignment 3</p>
-                                    <p>Due:- Next Week</p>
-                                </div>
-                            </Card.Text>
-                            <Card.Text>
-                                <small className="text-muted">
-                                    Last updated 3 mins ago
-                                </small>
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </div>
-            </div>
-    )
-}
+function DashBoard() {
+  const [userData, setUserDate] = useState({});
+  const [pendingAssignments, setPendingAssignments] = useState([])
+  const [chartData, setChartData] = useState([])
 
-class DashBoard extends Component {
-    state = {};
-    render() {
-        return (
-            <div class="container">
-                {dashboardData.map(renderDashBoard)}
-            </div>
-        );
-    }
+  useEffect(() => {
+      axios
+      .get(`http://localhost:5000/user/${localStorage.getItem('userid')}`)
+      .then((res) => {
+        setUserDate(res.data.user);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+      axios.get(`http://localhost:5000/pendingassignments`,{headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
+      .then((res) => setPendingAssignments(res.data))
+      .catch((err) => console.log(err))
+
+      axios.get(`http://localhost:5000/profileChart`,{headers: { 'Authorization': `Bearer ${localStorage.getItem("jwt")}`}})
+      .then((res) => setChartData(Object.entries(res.data)))
+      .catch((err) => console.log(err))
+  }, []);
+  
+
+  return <div className="container">{
+    <RenderDashBoard userData={userData} assignments={pendingAssignments} chartData={chartData}/>
+    }</div>;
 }
 
 export default DashBoard;

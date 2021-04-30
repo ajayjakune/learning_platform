@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+  }
+.container-main{ 
+    min-width: 100%;
+    width: auto;
+}
+.sidebar-main{
+    background-color:rgb(211, 208, 208);
+    border:1px solid black;
+}
+
+/* quiz component */
+
+.quiz-main{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 100vh;
+    padding: 10px;
+}
+.quiz-card {
+    background-color: #b3c0f1;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0 0 0;
+}
+  
+.score-section {
+    display: block;
+    font-size: 24px;
+    align-items: center;
+    padding-top: 30px;
+    height: 100%;
+}
+  
+.question-section {
+    width: 100%;
+    position: relative;
+}
+  
+.question-count {
+    margin-bottom: 20px;
+}
+  
+.question-count span {
+    font-size: 28px;
+}
+  
+.question-text {
+    margin-bottom: 12px;
+    font-size: 20px
+}
+  
+.answer-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+  /* .answer-section > span {
+    display: inline;
+  } */
+  
+.quiz-button {
+    width: 100%;
+    font-size: 16px;
+    color: #000000;
+    background-color: #f3f3f3;
+    border-radius: 15px;
+    display: flex;
+    padding: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    border: 3px solid #868c92;
+    cursor: pointer;
+}
+  
+.quiz-button:hover {
+    background-color: #3c3d3c;
+    color: white;
+}
+  
+  .quiz-button:focus {
+    outline: none;
+}
+  
+.quiz-button svg {
+    margin-right: 5px;
+}
+  
+.quiz-badge{
+    padding-right: 10em;
+    padding-left: 10em;
+    border-radius: 10rem;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+.fail{
+    background-color: rgb(240, 46, 46);
+}
+.pass{
+    background-color: green;
+}
+  .result-div{
+    width: 100%;
+}
+
+.cert-main{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.container-certificate {
+    width: 97%;
+    height: 100%;
+    margin: 10px 10px 10px 10px;
+    border: 10px solid gray;
+    background-color: rgb(191, 235, 246);
+    padding: 20px;
+}
+.logo {
+    width: 100%;
+}
+.logo > img {
+    width: 70px;
+    height: 70px;
+}
+.logo > span {
+    font-family: 'Lato';
+    font-size: 2.5vw;
+}

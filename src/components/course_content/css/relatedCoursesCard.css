@@ -1,7 +1,8 @@
 .card-size {
-  width: 18rem;
-  margin: auto;
+  width: 16rem;
+  margin: 30px;
 }
-.column {
+
+/* .column {
   float: left;
-}
+} */

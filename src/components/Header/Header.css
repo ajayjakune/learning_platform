@@ -1,0 +1,42 @@
+.result-component{
+    position: absolute;
+    top: 3.3rem;
+    left:25rem;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.result-course{
+    border-bottom: 2px solid gainsboro;
+    padding: 2px;
+}
+
+.result-course:hover{
+    cursor: pointer;
+    background: #02AAB0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+.course-name{
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 991px) {
+    .result-component {
+      top: 14rem;
+      left: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 420px) {
+    .course-name {
+      width: 65vw;
+    }
+}

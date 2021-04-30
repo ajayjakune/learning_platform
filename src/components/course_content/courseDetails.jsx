@@ -1,42 +1,84 @@
 import React, { Component } from 'react';
+import { Jumbotron, Table } from 'react-bootstrap';
 import './css/courseDetails.css';
 
 class courseDetails extends Component {
     render() {
         return (
-            <div>
-                <article className="container about-align">
-                    <h3>About Course</h3>
-                    <p>React is an open-source, front end, JavaScript library<br />
-                    for building user interfaces or UI components.<br />
-                    It is maintained by Facebook and a community of<br />
-                    individual developers and companies.<br />
-                    </p>
-                </article>
-                <article className="container">
-                    <h3>Syllabus</h3>
-                    <p>
-                        <h4>Overview</h4>
-                    What Is React?<br />
-                    Inspecting the Starter Code<br />
-                    Passing Data Through Props<br />
-                    Making an Interactive Component<br />
-                    Developer Tools<br /><br />
-                        <h4>Completing the Game</h4>
-                    Lifting State Up<br />
-                    Why Immutability Is Important<br />
-                    Function Components<br />
-                    Taking Turns<br />
-                    Declaring a Winner<br /><br />
-                        <h4>Adding Time Travel</h4>
-                    Storing a History of Moves<br />
-                    Lifting State Up, Again<br />
-                    Showing the Past Moves<br />
-                    Picking a Key<br />
-                    Implementing Time Travel<br />
-                    Wrapping Up<br />
-                    </p>
-                </article>
+            <div className="total">
+                <Table striped hover variant="dark" className="text-center lead rounded" responsive="sm" >
+                    <thead>
+                        <tr>
+                            <th>Domain</th>
+                            <th>Level</th>
+                            <th>Enrollment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                            <td>{this.props.courseDomain}</td>
+                            <td>Beginner</td>
+                            <td>{this.props.enrollments}</td>
+                        </tr>
+                    </tbody>
+                </Table>
+                 <Jumbotron style={{ "margin-top": "30px" }}>
+                    <h1 className="display-4">About Course</h1>
+                    <h6 className="lead">
+                        {this.props.cousrseDes}
+                    </h6>
+                    <div className="row ">
+                        <p className="lead">
+                            <a href="#related_courses" className="btn btn-outline-primary" variant="primary">View Related Courses</a>
+                        </p>
+                    </div>
+                </Jumbotron>
+                 <div className="syllabus">
+                    <article className="container">                       
+                        <ul class="list-group">
+                            <li class="list-group-item active" aria-current="true"> <h4>Syllabus</h4></li>
+                        </ul>
+                        {
+                            this.props.courseSyllabus.map((chapter,index) => {
+                                return(
+                                <ul key={index} class="list-group">
+                                    <li class="list-group-item"><h5>{chapter.title}</h5></li>
+                                       { chapter.lectures.map( (topic, index1) => 
+                                            <li key={index1} class="list-group-item">{topic.title}</li>
+                                        )}
+                                </ul>
+                                )
+                            })
+                        }
+                    </article>
+                </div>
+                <div >
+                    {/* <Table striped bordered hover variant="dark" responsive="sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h3 className="display-4">Syllabus</h3>
+                                </th>
+                            </tr>
+                        </thead>
+                        {this.props.courseSyllabus.map((chapter, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td><h4>{chapter.title}</h4>
+                                        {chapter.lectures.map((topic, index1) =>
+                                            <td key={index1}>
+                                                {topic.title}
+                                            </td>
+                                        )}
+                                    </td>
+                                </tr>
+                            )
+                        })
+                        }
+                    </Table> */}
+                </div>
+                <p id="related_courses" />
             </div>
         )
     }

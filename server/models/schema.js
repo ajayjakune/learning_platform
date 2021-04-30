@@ -57,13 +57,17 @@ const userCoursesEnrollmentSchema = new mongoose.Schema({
   },
   date_of_enrollment: {
     type: Date,
-    require: true,
+    required: true,
   },
   isCompleted: {
     type: Boolean,
-    require: false,
+    required: false,
     default: false
   },
+  courseTopics: {
+    type: Array,
+    required: true
+  }
 });
 
 const courseSchema = new mongoose.Schema({

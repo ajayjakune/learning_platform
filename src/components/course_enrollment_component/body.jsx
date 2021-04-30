@@ -1,31 +1,82 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Extras from './extras';
-import Video from './video';
 import SideNav from './SideNav';
-import '../../App.css'
-import { Switch, Route } from 'react-router-dom';
 import LectureVid from './LectureVid';
 import Quiz from './Quiz';
-import '../../quiz_box.css';
+import './courseEnroll.css';
+import axios from 'axios';
+import LoadingPage from './LoadingPage';
 
 const Body = (props) => {
+    const courseId = props.match.params.id;
+    const [syllabus, setSyllabus] = useState(null);
+    const [courseName, setCourseName] = useState('');
+    const [quiz, setQuiz] = useState(false);
+    const [currentLink, setCurrentLink] = useState('');
+    const [resources, setResources] = useState('');
+    const [questions, setQuestions] = useState([]);
+    const [score, setScore] = useState(0);
+    const [passStatus, setPassStatus] = useState(false);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/syllabus/${courseId}`)
+            .then(res => {
+                setSyllabus(res.data.syllabus);
+                setCurrentLink(res.data.syllabus[0].lectures[0].link);
+                setResources(res.data.syllabus[0].lectures[0].resources);
+                setCourseName(res.data.course.course_name);
+            })
+            .catch(err => console.log(err))
+
+        axios.get(`http://localhost:5000/${courseId}/test`, { headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` } })
+            .then(res => {
+                if (res.data.isPassed) {
+                    setScore(res.data.score);
+                    setPassStatus(res.data.isPassed);
+                }
+                else {
+                    setQuestions(res.data[0].questions);
+                }
+            })
+            .catch(err => console.log(err))
+    }, [courseId]);
+
+    function handleLecture(link, newResources, lectureId) {
+        setCurrentLink(link);
+        setResources(newResources);
+        setQuiz(false);
+    }
+    function handleQuiz() {
+        setQuiz(true);
+    }
+
+    function scoreUpdater(quizScore) {
+        setScore(quizScore);
+        setPassStatus(true);
+    }
+
     return (
-        <Container className="container-main">
-            <Row style={{ height: "50px", backgroundColor: "orange" }}>..</Row>
-            <Row>
-                <Col style={{ padding: 0 }}>
-                    <SideNav />
-                </Col>
-                <Col className="order-md-2" md={9} >
-                    <Switch>
-                        <Route exact path="/" component={LectureVid} />
-                        <Route path="/chapter/:chapterNumber/lecture/:lectureNumber/" component={LectureVid} />
-                        <Route path="/chapter/:chapterNumber/quiz" component={Quiz} />
-                    </Switch>
-                </Col>
-            </Row>
-        </Container >
+        <div>
+            { syllabus && questions && resources && currentLink ?
+                <Container className="container-main">
+                    <Row>
+                        <Col className="sidebar-main" style={{ padding: 0 }}>
+                            <SideNav syllabus={syllabus} lectureCallback={handleLecture} quizCallback={handleQuiz} courseName={courseName} courseId={courseId} />
+                        </Col>
+                        <Col md={9} >
+                            {
+                                quiz ?
+                                    <Quiz questions={questions} courseId={courseId} score={score} passStatus={passStatus} updateScore={scoreUpdater} />
+                                    :
+                                    <LectureVid resources={resources} link={currentLink} />
+                            }
+                        </Col>
+                    </Row>
+                </Container >
+                :
+                <LoadingPage />
+            }
+        </div>
     );
 }
 

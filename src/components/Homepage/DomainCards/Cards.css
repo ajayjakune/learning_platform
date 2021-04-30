@@ -1,0 +1,107 @@
+ .cus-card-wrapper {
+    margin-bottom: 30px;
+  }
+
+  p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  .cus-card-image .cus-card .cus-card-img-wrapper {
+    height: 100%;
+  }
+  .cus-card-image .cus-card .cus-card-body {
+    display: none;
+  }
+  .cus-card-image-title-description .cus-card .cus-card-img-wrapper {
+    max-height: 160px;
+  }
+  .cus-card-image-title-description .cus-card {
+    position: relative;
+    min-height: 300px;
+  }
+  .cus-card-image-title-description .cus-card .cus-card-body {
+    height: auto;
+    position: relative;
+    top: 0;
+    margin-bottom: -70px;
+  }
+  .cus-card-image-title-description .cus-card:hover .cus-card-body {
+    top: -70px;
+  }
+  .cus-card-image-title-description .cus-card .cus-card-body .cus-card-title {
+    margin-bottom: .75rem;
+  }
+
+  .cus-card {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border-radius: 10px !important;
+  }
+  
+  .cus-card:hover {
+    box-shadow: 8px 12px 31px -10px #ab98ab;
+  }
+
+  .cus-card-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    overflow: hidden;
+  }
+  .cus-card-img-wrapper img {
+    transition: 1.5s ease;
+  }
+  .cus-card:hover .cus-card-img-wrapper img {
+    transform: scale(1.15);
+  }
+  .cus-card-body .cus-card-title {
+    margin-bottom: calc(50% + 20px);
+    transition: 1.5s ease;
+  }
+  .cus-card:hover .cus-card-body .cus-card-title {
+    margin-bottom: .75rem;
+  }
+  
+  .cus-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background-color: #fff;
+    transition: 1.5s ease;
+  }
+  .cus-card-content {
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    transition: 1.5s ease;
+  }
+  .cus-card:hover .cus-card-body {
+    height: 80%;
+  }
+  .cus-card:hover .cus-card-content {
+    bottom: 0;
+  }
+
+  .upper-space {
+      margin-top: 50px;
+  }
+
+  .fbtn:hover {
+    transition: all 0.8 !important;
+    transform: scale(1.05);
+    background-color: #FD5F07 !important;
+  }
+
+  .foutline {
+    border-color: lightsteelblue !important;
+  }

@@ -1,44 +1,31 @@
-import React, { Component } from "react";
-import Card from 'react-bootstrap/Card';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import Button from 'react-bootstrap/Button';
-import { CourseData } from "./data/CourseData";
+import React,{ useState, useEffect } from "react";
+import axios from "axios";
+import CourseCard from "./CourseCard";
 
-const renderCard = (card, index) => {
-        return (
-            <div class="col-lg-3 col-md-6">
-                <Card key={index}>
-                <Card.Img variant="top" src={card.Photo} style={{height: '15rem', padding: "20px"}}/>               
-                <Card.Body>
-                    <Card.Title>{card.Name}</Card.Title>
-                    <Card.Text>
-                        {card.Description}
-                    </Card.Text>
+function OngoingCourses() {
+  const [enrolledCourseData, setEnrolledCourseData] = useState([]);
+  const userid = localStorage.getItem('userid');
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/user/${userid}`)
+      .then((res) => {
+        setEnrolledCourseData(res.data.courses);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [userid]);
 
-                    <div style={{paddingBottom:20}}>
-                        <ProgressBar style={{borderRadius:18}} variant="success" now={card.Progress} label={`${card.Progress}%`} />
-                    </div>
-                    
-                    <Button variant="primary" style={{borderRadius:12}}>Resume</Button>
-                </Card.Body>               
-            </Card>
-            </div>
+  return (
+    <div className="container-profile" style={{height:"100vh"}}>
+      <div className="row justify-content-center">{
+        enrolledCourseData.map( (course, index) => 
+          course.isCompleted === false &&  
+          <CourseCard key={index} img={course.courseid.course_photo} name={course.courseid.course_name} courseId={course.courseid._id} text={'Resume'}/>
         )
-}
-
-
-class OngoingCourses extends Component {
-    state = {};
-    render() {
-        return (
-            <div class="container">
-                <div class="row justify-content-center">
-
-                    {CourseData.map(renderCard)}
-                    </div>
-            </div>          
-        );
-    }
+      }</div>
+    </div>
+  );
 }
 
 export default OngoingCourses;
